@@ -1111,6 +1111,19 @@ button,
   button:active,
   .button:active {
     background-color: rgba(150, 66, 106, 0.125); }
+  input[type="submit"].secondary:hover,
+  input[type="reset"].secondary:hover,
+  input[type="button"].secondary:hover,
+  button.secondary:hover,
+  .button.secondary:hover {
+    box-shadow: inset 0 0 0 2px #ffe4b4;
+		color: #ffe4b4 !important; }
+  input[type="submit"].secondary:active,
+  input[type="reset"].secondary:active,
+  input[type="button"].secondary:active,
+  button.secondary:active,
+  .button.secondary:active {
+    background-color: rgba(255, 228, 180, 0.125); }
   input[type="submit"].icon:before,
   input[type="reset"].icon:before,
   input[type="button"].icon:before,
