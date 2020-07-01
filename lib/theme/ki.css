@@ -122,7 +122,9 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   font-weight: bold; }
 
 .reveal em {
-  font-style: italic; }
+  font-style: normal;
+  color: var(--heading-color);
+ }
 
 .reveal ol,
 .reveal dl,
@@ -161,10 +163,14 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   position: relative;
   width: 70%;
   margin: 20px auto;
-  padding: 5px;
+  padding: 16px;
+
   font-style: italic;
+  font-size: 60%;
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }
+  border-left: 4px solid var(--heading-color);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
 
 .reveal blockquote p:first-child,
 .reveal blockquote p:last-child {

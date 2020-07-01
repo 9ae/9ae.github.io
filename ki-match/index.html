@@ -15,7 +15,7 @@
 			<div class="slides">
 				<section><h1>How may we find potential matches for our users?</h1></section>
 				<section>
-					<p>One problem our CEO identified in his competitive analysis of existing fetish dating apps (Whiplr, KNKI, Vanilla Umbrella) is that there is no way to find people who match with you in a reciprocal interest when it comes to fetishes that involve one giving and receiving.</p><p>For example, two people may be both into bondage, but do they like to do the tying or being tied up? It’s no use if we match two people who enjoy being tied up. </p>
+					<p>One problem our CEO identified in his competitive analysis of existing fetish dating apps (Whiplr, KNKI, Vanilla Umbrella) is that there is no way to find people who match with you in a reciprocal interest when it comes to fetishes that involve one giving and receiving.</p><p class="fragment">For example, two people may be both into bondage, but do they like to do the tying or being tied up? It’s no use if we match two people who enjoy being tied up. </p>
 				</section>
 				<section>
 					<h5>Let’s draw this out!</h5>
@@ -23,13 +23,13 @@
 				</section>
 				<section>
 					<h3>Eureka!</h3>
-					<blockquote>After drawing the problem out on my blackboard, I realized our problem can be abstracted into a graph theory problem.</blockquote>
+					<p>After drawing the problem out on my blackboard, I realized our problem can be abstracted into a graph theory problem.</p>
 				</section>
 				<section>
 					<h4>We can rephrase our problem as…</h4>
 					<p class="left">Users are potential matches for each other, if there exist a path of length 2, between them. i.e: If we were to return matches for Gretchen: Jimmy would be a good candidate but not Edgar.</p>
-					<p class="left">Users are better potential matches for each other, if the number of paths that link them together are more.</p>
-					<p class="left">This realization, made the solution of finding matches for our users clear, since it’s already solvable using existing mathematics principles.</p>
+					<p class="left fragment">Users are better potential matches for each other, the more length 2-edge paths they have between eachother.</p>
+					<p class="left fragment">This realization, made the solution of finding matches for our users clear, since it’s already solvable using existing mathematics principles.</p>
 				</section>
 				<!-- <section>
 					<h4>Other Considerations</h4>
@@ -45,16 +45,21 @@
 					<p>When users setup their profiles they can choose the way (give/recieve) they are interested in it.</p>
 				</section>
 				<section><h2>Testing</h2>
-					<p>One of the design challenges we’ve been having is figuring out how to make selecting the long list of kinks and fetishes intuitive. Our initial implementation was very methodological, we it was almost a direct approach to how our graph database stores data.</p>
+					<p>After we made a quick profile setup UI, and a discovery (find users that share your same interest). We put our partial-app in front to users to test these core parts out.</p>
+					<div class="fragment" style="margin-top: 50px;">
+						<h4>Results</h4>
+						<p>Users liked our matching logic in discovery. But what they didn't like was how cumbersome it was to setup their profiles.</p>
+					</div>
 				</section>
 				<section>
 					<img src="kinks-select-old.jpeg" style="width:60%;" />
-					<p><small>This part of the flow in the profile setup felt overall awkward and cumbersome.</small></p>
+					<p><small>This part of the flow in the profile setup was awkward and cumbersome. And it's a core part of our value proposition!</small></p>
 				</section>
 				<section>
+					<h3>And we learned...</h3>
 					<p class="left">We realized the language directional provide/receive may not apply for all of them, making the sentence sound awkward. Also with each kink you like it leads to to another screen describing the kink and asking you to select direction. The process of checking things you are interested in got tiring.</p>
-<p class="left">Most people stopped after selecting 5, even if there’s more they are interested in.</p>
-<p class="left">How one engages with their latex fetish, is very different from how they may engage with the desire for discipline.</p>
+<p class="left fragment">Our initial implementation was very methodological, we it was almost a direct approach to how our graph database stores data. Most people stopped after selecting 5, even if there’s more they are interested in.</p>
+<p class="left fragment">How one engages with their latex fetish, is very different from how they may engage with the desire for discipline.</p>
 				</section>
 				<section>
 					<h3>New Problem Statements</h3>
@@ -75,6 +80,17 @@
 				<section>
 					<img src="kinks-select-new.jpeg" style="width:65%;" />
 					<p><small>The new select interest screens</small></p>
+				</section>
+				<section>
+					<h2>until future improvements</h2>
+						<p>
+							Checkout other KinkedIn case studies:
+						</p>
+						<ul>
+							<li><a href="../ki-logo">Define values with logo design</a></li>
+							<li><a href="../ki-respect">Encouraging people to respect eachother</a></li>
+							<li><a href="../ki-safety">Ensuring the safety of our community</a></li>
+						</ul>
 				</section>
 			</div>
 		</div>
