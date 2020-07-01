@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Finding likely matches for people @ KinkedIn</title>
+
+		<link rel="stylesheet" href="../lib/reset.css">
+		<link rel="stylesheet" href="../lib/reveal.css">
+		<link rel="stylesheet" href="../lib/theme/ki.css" id="theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section><h1>How may we find potential matches for our users?</h1></section>
+				<section>
+					<p>One problem our CEO identified in his competitive analysis of existing fetish dating apps (Whiplr, KNKI, Vanilla Umbrella) is that there is no way to find people who match with you in a reciprocal interest when it comes to fetishes that involve one giving and receiving.</p><p>For example, two people may be both into bondage, but do they like to do the tying or being tied up? It’s no use if we match two people who enjoy being tied up. </p>
+				</section>
+				<section>
+					<h5>Let’s draw this out!</h5>
+					<img src="graph.gif" />
+				</section>
+				<section>
+					<h3>Eureka!</h3>
+					<blockquote>After drawing the problem out on my blackboard, I realized our problem can be abstracted into a graph theory problem.</blockquote>
+				</section>
+				<section>
+					<h4>We can rephrase our problem as…</h4>
+					<p class="left">Users are potential matches for each other, if there exist a path of length 2, between them. i.e: If we were to return matches for Gretchen: Jimmy would be a good candidate but not Edgar.</p>
+					<p class="left">Users are better potential matches for each other, if the number of paths that link them together are more.</p>
+					<p class="left">This realization, made the solution of finding matches for our users clear, since it’s already solvable using existing mathematics principles.</p>
+				</section>
+				<!-- <section>
+					<h4>Other Considerations</h4>
+					<p>At the end of the day, we are still building a dating app. And so much of a user’s experience with the our brand is depends on things that happen outside the app. How do we address general dating app issues?</p>
+					<ul>
+						<li><a href="/ki-respect/" target="_blank">Can encourage our users to treat each other with respect?</a></li>
+						<li><a href="/ki-safety/" target="_blank">How can we hold ourselves accountable for users’ safety?</a></li>
+					</ul>
+				</section> -->
+				<section>
+					<h2>Solution</h2>
+					<p>We can represent all fetishes as nodes in our graph database (Neo4j).</p>
+					<p>When users setup their profiles they can choose the way (give/recieve) they are interested in it.</p>
+				</section>
+				<section><h2>Testing</h2>
+					<p>One of the design challenges we’ve been having is figuring out how to make selecting the long list of kinks and fetishes intuitive. Our initial implementation was very methodological, we it was almost a direct approach to how our graph database stores data.</p>
+				</section>
+				<section>
+					<img src="kinks-select-old.jpeg" style="width:60%;" />
+					<p><small>This part of the flow in the profile setup felt overall awkward and cumbersome.</small></p>
+				</section>
+				<section>
+					<p class="left">We realized the language directional provide/receive may not apply for all of them, making the sentence sound awkward. Also with each kink you like it leads to to another screen describing the kink and asking you to select direction. The process of checking things you are interested in got tiring.</p>
+<p class="left">Most people stopped after selecting 5, even if there’s more they are interested in.</p>
+<p class="left">How one engages with their latex fetish, is very different from how they may engage with the desire for discipline.</p>
+				</section>
+				<section>
+					<h3>New Problem Statements</h3>
+					<ul>
+						<li>How do we accommodate for the different types of kinks in which the language use for them are vastly different?</li>
+						<li>How do we make the extensive list of kinks less overwhelming?</li>
+						<li>How can we let users selection for the directional nature of kinks, without having to take them to another screen or disrupt flow with an alert?</li>
+					</ul>
+				</section>
+				<section>
+					<h4>Solution? Segmentation!</h4>
+					<img src="kinks-seg.gif" style="width: 50%;" />
+				</section>
+				<section>
+					<h3>Revisions</h3>
+					<p>We went through our list and sorted everything into groups. We can now construct sentences with these groups. And let our user fill in the blanks with fetishes. This method reads more fluidly and does not make the user go from screen to screen.</p>
+				</section>
+				<section>
+					<img src="kinks-select-new.jpeg" style="width:65%;" />
+					<p><small>The new select interest screens</small></p>
+				</section>
+			</div>
+		</div>
+
+		<script src="../lib/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				hash: true,
+				progress: true,
+			});
+		</script>
+	</body>
+</html>
