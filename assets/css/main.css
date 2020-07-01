@@ -795,6 +795,7 @@ input[type="radio"] + label:before {
 .project-preview {
   width: calc(100% + 7rem);
   height: auto;
+  max-height: 250px;
   margin-bottom: 1.5rem;
   margin-top: -3.5rem;
   margin-left: -3.5rem;
@@ -2552,7 +2553,7 @@ button,
   transition-delay: 0.25s;
   cursor: default;
   position: relative;
-  height: 34rem;
+  height: 36rem;
   box-shadow: 0 2rem 4rem 0.25rem rgba(46, 43, 55, 0.575); }
   #wrapper > .scrollZone {
     position: fixed;
