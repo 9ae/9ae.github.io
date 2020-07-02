@@ -51,21 +51,67 @@
 					<li style="visibility: hidden;">Code sharing empowers users to learn from eachother and build upon eachother's knowledge.</li>
 					</ul>
 				</section>
-				<section>Inciting Incident: Task: ID visual problems that can be quick fixes (focus on leverage).
-					In consistent tool tips.
-				</section>
-				<section>Investigation: ID "tooltips across the editor"</section>
-				<section>Theory: Recognized that consistency is not just about style.
-					We didn't end up here because each engineer that made a tooltip had a different aesthetic choice.
-					Our tooltips server a variety of purposes.
-				</section>
-				<section> Theory:
-					Drill down to their purpose & categorize.
-					Also! We need to future proof, else we'll run into this problem again next time we need a helper message.
-					* tooltips are most useful for new users & new features. We can use them for in-editor onboarding.
+				<section>
+					<p>We already have tooltips, but they are inconsistent in both style and behavior.</p>
+					<table><tr>
+						<td><img src="bad1.png" /></td>
+						<td><img src="bad2.gif" /></td>
+					</tr>
+					<tr>
+						<td><img src="bad4.gif" /></td>
+						<td><img src="bad3.png" /></td>
+					</tr>
+					</table>
 				</section>
 				<section>
-					Solution: Compo design (w/o detail message)
+					<h2>My role: Design consistent tooltips</h2>
+					<p>How do we change existing tooltips to single style?</p>
+					<p>How can we future-proof, so new tooltips will be in the same style?</p>
+
+					<p><em>But consistency can't be achieved with just rigor to a style.</em></p>
+					<p class="fragment">We did not get into this mess because every contributor had different aesthetic preferences. We got here because each new tooltip added aimed only to solve the current issue. Let's take a step back to understand what we were trying to achieve in the <em>past</em>, and what we want to achieve in the <em>future</em>.</p>
+				</section>
+				<section>
+					<h2>I approached this problem...</h2>
+						<p class="left">First by scavanging across entire product to find all instances in which "tooltips" are used.</p>
+						<p class="left">Then I categorized them by the function they serve.</p>
+						<p  class="left">Lastly, theorized how we can use tooltips in the future to introduce Dark to new users, or highlight new features to seasoned users.</p>
+				</section>
+				<section>
+					<h3>Taxonomize the chaos</h3>
+					<p>Our editor has over 60 instances of tooltips, but they all fall into at least one of the four categories:</p>
+					<ul>
+						<li>Labels -- provide text equivalents (in 5 words or less) to icons</li>
+						<li>Descriptions -- explain UI elements in more detail in a few sentences</li>
+						<li>Exceptions -- explain deviations from expected behaviors</li>
+						<li>Suggested actions -- tells a user to do something to help them along</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Imagining a better world</h3>
+					<p>Right now our tooltips have no memory.</p>
+					<p>They will show regardless if the user had seem the before. This can be more obstructive than helpful to a seasoned user's workflow.</p>
+
+					<p>If only we can determine the conditions they will appear in, then we can use them more often. And use them to help users learn Dark within the editor.</p>
+				</section>
+				<section>
+					<p>Now that we know, what our tooltip component will need. And also what we want our component to be able to support. <em>Let's get designing!</em></p>
+				</section>
+				<section>
+					<h2>Define product requirements</h2>
+					<img src="simple.png" />
+					<p>What do all tooltips have? <em class="fragment" data-fragment-index="1">Text.</em></p>
+
+					<img src="details.png" class="fragment" data-fragment-index="2" />
+					<p class="fragment" data-fragment-index="2">What type of text?<br /><em class="fragment" data-fragment-index="3">Always a short message, sometimes followed by a longer description.</em></p>
+				</section>
+				<section>
+					<h3>and what else?</h3>
+					CTA
+				</section>
+				<section>
+					<h3>when should they show?</h3>
+					Trigger action
 				</section>
 				<section>
 					Applied compo to existing & proposed tooltips.
@@ -73,7 +119,8 @@
 					Ex: of new tooltip we can used for onboarding
 				</section>
 				<section>
-					Realized we need detail msg
+					What information is not capture here?
+					Realized we need an exception UI
 				</section>
 				<section>
 					Pretty up: UI design
