@@ -2515,25 +2515,31 @@ button,
   -ms-flex-shrink: 1;
   flex-shrink: 1;
   height: 100%;
-  padding: 5rem; }
+  padding: 5rem;
+  padding-bottom: 8rem; }
   @media screen and (orientation: portrait) {
     #page-wrapper {
       padding-left: 2rem;
-      padding-right: 2rem; } }
+      padding-right: 2rem;
+      padding-bottom: 5rem; } }
   @media screen and (min-aspect-ratio: 16 / 7) {
     #page-wrapper {
-      padding: 6vh; } }
+      padding: 6vh;
+      padding-bottom: 6vh;  } }
   @media screen and (min-aspect-ratio: 16 / 6) {
     #page-wrapper {
-      padding: 0; } }
+      padding: 0;
+      padding-bottom: 0;  } }
 
 @media screen and (max-width: 736px) {
   #page-wrapper {
     height: auto;
-    padding: 1rem; } }
+    padding: 1rem;
+    padding-bottom: 1rem;  } }
 @media screen and (max-width: 480px) {
   #page-wrapper {
-    padding: 0; } }
+    padding: 0;
+    padding-bottom: 0;  } }
 /* Wrapper */
 #wrapper {
   display: -moz-flex;
