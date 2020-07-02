@@ -11,7 +11,7 @@
 :root {
   --background-color: #484848;
   --main-font: Open Sans, sans-serif;
-  --main-font-size: 40px;
+  --main-font-size: 26px;
   --main-color: #eee;
   --block-margin: 20px;
   --heading-margin: 0 0 20px 0;
@@ -34,12 +34,12 @@
   --selection-color: #fff; }
 
 .reveal-viewport {
-  background: #484848;
-  background-color: #484848; }
+  background: var(--background-color);
+  background-color: var(--background-color); }
 
 .reveal {
   font-family: "Open Sans", sans-serif;
-  font-size: 40px;
+  font-size: var(--main-font-size);
   font-weight: normal;
   color: #eee; }
 
@@ -98,6 +98,14 @@
 .reveal p {
   margin: 20px 0;
   line-height: 1.3; }
+
+.reveal p.left {
+  text-align: left;
+}
+
+.reveal p.right {
+  text-align: right;
+}
 
 .reveal .font-blue {
   color: #7cafc2;

@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>{PROJECT Title}</title>
+		<title>Onboard with tooltips @ Dark</title>
 
 		<link rel="stylesheet" href="../lib/reset.css">
 		<link rel="stylesheet" href="../lib/reveal.css">
@@ -13,11 +13,44 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section><h1>Onboard with context-aware with tooltips</h1></section>
-				<section><h2>Backstory: Our new user problem.</h2>
-					<blockquote> Onboarding as a theme.</blockquote>
-					
-					<p>Wanting in <a>editor</a> onboarding</p></section>
+				<section><h1>Onboard with tooltips</h1></section>
+				<section><h2>Backstory: Our new users problem</h2>
+					<p>It is near impossible to learn Dark by exploration. New users would need the aid of our reference document or walkthrough videos.</p>
+					<p>I've been a big advocate for in-editor onboarding from the start, but we were never able to make time for the project.</p>
+				</section>
+				<section>
+					<h4>Why? The Navigator vs The Explorer</h4>
+					<p class="fragment">Our initial business positioning rippled into our roadmap (and how we prioritized features).</p>
+					<div class="fragment" style="width:100%; display: flex; justify-content: space-between; align-items: center;">
+						<img src="pl.png" style="width:150px; margin-right: 20px;" />
+						<p>Dark initially positioned itself as as a new language; it attracted attention from the programming languages community.<br />
+							They approached new concepts with patience, willing to learn first before doing.
+							<em>But they rarely ship projects in Dark.</em>
+						</p>
+					</div>
+					<div  class="fragment" style="width:100%; display: flex; justify-content: space-between; align-items: center;">
+						<p>Our most sucessful demographic turns out being new developers, students, and front-end or fullstack engineers.<br />
+							<em>And they learn by doing!</em>
+						</p>
+						<img src="fe.png" style="width:150px; margin-left: 20px;" />
+					</div>
+				</section>
+				<section data-transition="slide-in fade-out">
+					<h4>How can we tailor learning for the explorer?</h4>
+					<ul>
+					<li class="fragment fade-up">Sample project tutorials. Most Javascript Frameworks start with a todo List tutorial, because many frontend engineers are explorers.</li>
+					<li class="fragment fade-up">Tooltips have been aiding people learn software through exploration. They provide additional information to what non-obvious icons mean, and suggest actions users can perform.</li>
+					<li class="fragment fade-up">Code sharing empowers users to learn from eachother and build upon eachother's knowledge.</li>
+					</ul>
+				</section>
+				<section data-transition="fade-in slide-out">
+					<h4 class="fragment fade-in">Let's focus on just this for now</h4>
+					<ul>
+					<li style="visibility: hidden;">Sample project tutorials. Most Javascript Frameworks start with a todo List tutorial, because many frontend engineers are explorers.</li>
+					<li>Tooltips have been aiding people learn software through exploration. They provide additional information to what non-obvious icons mean, and suggest actions users can perform.</li>
+					<li style="visibility: hidden;">Code sharing empowers users to learn from eachother and build upon eachother's knowledge.</li>
+					</ul>
+				</section>
 				<section>Inciting Incident: Task: ID visual problems that can be quick fixes (focus on leverage).
 					In consistent tool tips.
 				</section>
