@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Teamwork inside the Editor @ Dark</title>
+
+		<link rel="stylesheet" href="../lib/reset.css">
+		<link rel="stylesheet" href="../lib/reveal.css">
+		<link rel="stylesheet" href="../lib/theme/dark.css" id="theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section><h1>Teamwork in Dark's Editor</h2></section>
+				<section><p>Dark was first built for one developer. But developers normally work in teams, and we struggled to get larger projects onboard because of our lack of support for a team's workflow.</p>
+				<p class="fragment">For a New Year's hack day, I looked into what are the steps necessary to give us a UI for enabling users to collaborate with each.</p>
+				</section>
+				<section><h2>The Problem</h2>
+				<blockquote>Multiple developers will struggle to work on the same project because they don't know <span class="font-blue">who</span> made <span class="font-pink">what</span> changes <span class="font-green">where</span>.</blockquote>
+				</section>
+				<section><h3>Let's breakdown it down</h3>
+					<p>For teamwork to be possible within Dark's editor, developers need to be able to:</p>
+					<ol>
+					<li class="fragment">Learn about the codebase. They should be able to find out who to ask for help.</li>
+					<li class="fragment">Communicate about their code in the editor.</li>
+					<li class="fragment">Make changes to their codebase without changing production. They need to package their changes for another to review or a deploy.</li>
+					</ol>
+				</section>
+				<!-- Goal 1 -->
+				<section>
+					<h2>Solving subgoal 1: Who wrote what wehere</h2>
+					<blockquote>Developers need to be able to learn about the codebase. They should be able to find out who to ask for help.</blockquote>
+				</section>
+				<section>
+					<p>With the popular demand for collaboration features, we have the ability to see other users who are on the same project.</small>
+					<img src="teamwork-1-b.png" />
+					<small>If another user is editing the a code block on the same canvas you are on, their avatar will show to the right.</small>
+				</section>
+				<section>
+					<p class="idea">It would make sense to extend that functionality, and show change of code changes to the right.</p>
+				</section>
+				<section>
+					<h3>Constraints</h3>
+					<p>However, we are limited by the space we have to a code block on all sides.</p>
+					<img src="teamwork-1-a.png" />
+					<small>Above is the documentation box. To the left is live values, the right side has references (and also sometimes feature flags), below is the evaluated return value.</small>
+				</section>
+				<section>
+					<p class="question">How can we get around with the fact we are constantly running out of space?</p>
+				</section>
+				<section>
+					<h3>Arriving at a solution</h3>
+					<small>For over a year our product has been struggling with limited dimensionality. In multiple instances, colleagues and I have been proposing having different modes in which only certain things will be visible.</small>
+
+					<blockquote><em>Introducting Layers!</em> As we add more features to Dark, we must give affordances for users to see different things, when performing different tasks. Not everything needs to be on the screen at all once. Layers help us reduce visual noise and solves out our no-space problem.
+					</blockquote>
+				</section>
+				<section data-background-color="#efeff4">
+					<img src="story-2.png" class="light" />
+					<small class="font-blue">By activating the change log layer, developers can see who edit last.</small>
+				</section>
+
+				<!-- bringing it all together -->
+				<section>
+					<h3>Out of scope</h3>
+					<p>Why we solve to solve those three and not others. Other concerns I thought of but tabled were:</p>
+					<ul><li class="fragment"><em>Merge conflicts</em> - there might be some usability issues we need to consider later. Our main bottleneck is a backend engineering concern.</li>
+						<li class="fragment"><em>Pair-programming</em> - maybe something down the line. Right now developers will have to do it through a third party voice/video service.</li>
+						<li class="fragment"><em>Forking and contributing common code</em> - to be addressed with our package manager and embed darklang code project. Right now we will focus on users working on the same project.</li></ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="../lib/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				hash: true,
+				progress: true,
+			});
+		</script>
+	</body>
+</html>

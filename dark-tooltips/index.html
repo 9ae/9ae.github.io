@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>{PROJECT Title}</title>
+
+		<link rel="stylesheet" href="../lib/reset.css">
+		<link rel="stylesheet" href="../lib/reveal.css">
+		<link rel="stylesheet" href="../lib/theme/dark.css" id="theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section><h1>Onboard with context-aware with tooltips</h1></section>
+				<section><h2>Backstory: Our new user problem.</h2>
+					<blockquote> Onboarding as a theme.</blockquote>
+					
+					<p>Wanting in <a>editor</a> onboarding</p></section>
+				<section>Inciting Incident: Task: ID visual problems that can be quick fixes (focus on leverage).
+					In consistent tool tips.
+				</section>
+				<section>Investigation: ID "tooltips across the editor"</section>
+				<section>Theory: Recognized that consistency is not just about style.
+					We didn't end up here because each engineer that made a tooltip had a different aesthetic choice.
+					Our tooltips server a variety of purposes.
+				</section>
+				<section> Theory:
+					Drill down to their purpose & categorize.
+					Also! We need to future proof, else we'll run into this problem again next time we need a helper message.
+					* tooltips are most useful for new users & new features. We can use them for in-editor onboarding.
+				</section>
+				<section>
+					Solution: Compo design (w/o detail message)
+				</section>
+				<section>
+					Applied compo to existing & proposed tooltips.
+					Ex: of existing tooltip updated
+					Ex: of new tooltip we can used for onboarding
+				</section>
+				<section>
+					Realized we need detail msg
+				</section>
+				<section>
+					Pretty up: UI design
+				</section>
+				<section>
+					Style spec, link to code pen. (whenever I'm uncertain about the feasibility of my own designs, I test it out first. Since I am the most senior web UI engineer @ Dark)
+				</section>
+				<section>
+					Surprise! It got implemented even with onboarding tutorial.
+				</section>
+				<section>
+					Retro: It's ok to let go of your ideas. Maybe they can still happen. You don't have to be the one to do everything.
+				</section>
+			</div>
+		</div>
+
+		<script src="../lib/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				hash: true,
+				progress: true,
+			});
+		</script>
+	</body>
+</html>
