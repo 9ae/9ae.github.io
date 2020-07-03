@@ -247,17 +247,13 @@
 .reveal img {
   margin: 20px 0; }
 
-.reveal img.light {
-  width:600px;
-  box-shadow: #e5e5ea 0 1px 6px 2px;
-}
 
 /*********************************************
  * LINKS
  *********************************************/
 .reveal a {
   color: #e7ad52;
-  text-decoration: none;
+  text-decoration: underline;
   transition: color .15s ease; }
 
 .reveal a:hover {
