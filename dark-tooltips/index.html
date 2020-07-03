@@ -9,6 +9,15 @@
 		<link rel="stylesheet" href="../lib/reset.css">
 		<link rel="stylesheet" href="../lib/reveal.css">
 		<link rel="stylesheet" href="../lib/theme/dark.css" id="theme">
+		<style type="text/css">
+		.reveal table.top-align-cells td {
+			vertical-align: top;
+		}
+
+		.reveal table.middle-align-cells td {
+			vertical-align: middle;
+		}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
@@ -106,33 +115,151 @@
 					<p class="fragment" data-fragment-index="2">What type of text?<br /><em class="fragment" data-fragment-index="3">Always a short message, sometimes followed by a longer description.</em></p>
 				</section>
 				<section>
+					<h3>when & where should the tooltip show?</h3>
+					<img src="adj.png" />
+					<p>All tooltips are attached to a UI element to it will appear adjacent. And <em>all tooltips will have a trigger condition</em>. This defines the situations when the tooltip should appear. For most cases it is on hover.</p> 
+				</section>
+				<section>
 					<h3>and what else?</h3>
-					CTA
+					<img src="actions.png" />
+					<p>Some tooltips any contain a CTA. So our action button will have <em>button text</em> and <em>on click handler</em></p>
 				</section>
 				<section>
-					<h3>when should they show?</h3>
-					Trigger action
+					<h2>Tooltip component model</h2>
+					<p>A tooltip component will have...</p>
+					<table>
+						<tr><th>Property</th><th>Data type</th><th>Required?</th></tr>
+						<tr><td>Attach to element</td><td>DOM element</td><td>Yes</td></tr>
+						<tr><td>Title</td><td>Text</td><td>Yes</td></tr>
+						<tr><td>Description</td><td>Text</td><td>No</td></tr>
+						<tr><td>Trigger condition</td><td>Function</td><td>Yes</td></tr>
+						<tr><td>Button label</td><td>Text</td><td>No</td></tr>
+						<tr><td>Button action</td><td>Function</td><td>No</td></tr>
+					</table>
+					<p>Now we've got the product down, let's make it pretty</p>
+				</section>
+				<section data-transition="slide-in fade-out">
+					<h3>Let's try it all</h3>
+					<p>I made 6 different treatments. Just mocking out the simple case.</p>
+					<table>
+						<tr><td><img src="design1.png" /></td><td><img src="design2.png" /></td><td><img src="design3.png" /></td></tr>
+						<tr><td><img src="design4.png" /></td><td><img src="design5.png" /></td><td><img src="design6.png" /></td></tr>
+					</table>
+					<p>&nbsp;</p>
+				</section>
+				<section  data-transition="fade-in slide-out">
+					<h3>Let's try it all</h3>
+					<p>We voted internally and chose the top 3 for which to hash out the details.</p>
+					<table>
+						<tr><td><img src="design1.png" /></td><td><img src="design2.png" /></td><td>&nbsp;</td></tr>
+						<tr><td>&nbsp;</td><td>&nbsp;</td><td><img src="design6.png" /></td></tr>
+					</table>
+					<p>They were within the Dark style guidelines, so any choice they made will be ok.</p>
 				</section>
 				<section>
-					Applied compo to existing & proposed tooltips.
-					Ex: of existing tooltip updated
-					Ex: of new tooltip we can used for onboarding
+					<h3>now with details & action button</h3>
+					<table>
+						<tr><td><img src="d2-details.png" /></td>
+							<td><img src="d3-details.png" /></td>
+							<td><img src="d1-details.png" /></td></tr>
+						
+							<tr><td><img src="d2-action.png" /></td>
+								<td><img src="d3-action.png" /></td>
+								<td><img src="d1-action.png" /></td></tr>
+					</table>
 				</section>
 				<section>
-					What information is not capture here?
-					Realized we need an exception UI
+					<h3>giving our users a voice</h3>
+					<p>We asked our users to vote on the top 3 styles</p>
+					<table class="top-align-cells">
+						<tr class="fragment" data-fragment-index="1"><td colspan="3">and this won out</td></tr>
+						<tr class="fragment" data-fragment-index="1"><td><img src="design6.png" /></td><td><img src="d1-details.png" /></td><td><img src="d1-action.png" /></td></tr>
+						<tr class="fragment" data-fragment-index="2"><td colspan="3">then we had to make some additional adjustments for contrast</td></tr>
+						<tr class="fragment" data-fragment-index="2"><td><img src="simple.png" /></td><td><img src="details.png" /></td><td><img src="actions.png" /></td></tr>
+					</table>
 				</section>
 				<section>
-					Pretty up: UI design
+					<h2>Testing out the tooltip component</h2>
+
+					<p>If you recall, the goal of this project is to make all our existing tooltips conform to this style. When I took the component model to apply to all places we've been using tooltips. I realized we missed capturing one category.</p>
+					<blockquote>Exceptions -- explain deviations from expected behaviors</blockquote>
+
+					<p>Nowhere in our component design, do we distinguish between an informational tooltip vs an exception tooltip. <em>So let's revise our tooltip model</em></p>
 				</section>
 				<section>
-					Style spec, link to code pen. (whenever I'm uncertain about the feasibility of my own designs, I test it out first. Since I am the most senior web UI engineer @ Dark)
+					<h2>Revised model</h2>
+					<table>
+						<tr><th>Property</th><th>Data type</th><th>Required?</th></tr>
+						<tr><td>Attach to element</td><td>DOM element</td><td>Yes</td></tr>
+						<tr><td>Title</td><td>Text</td><td>Yes</td></tr>
+						<tr><td>Description</td><td>Text</td><td>No</td></tr>
+						<tr><td>Trigger condition</td><td>Function</td><td>Yes</td></tr>
+						<tr><td>Button label</td><td>Text</td><td>No</td></tr>
+						<tr><td>Button action</td><td>Function</td><td>No</td></tr>
+						<tr><td><em>Style</em></td><td><em>INFO</em> or <em>EXCEPTION</em></td><td><em>Yes</em></td></tr>
+					</table>
 				</section>
 				<section>
-					Surprise! It got implemented even with onboarding tutorial.
+					<h3>Translating the new <em>style</em> property into UI</h3>
+					<table class="middle-align-cells">
+						<tr><td>INFO</td><td><img src="simple.png" /></td><td><img src="details.png" /></td><td><img src="actions.png" /></td></tr>
+						<tr><td>EXCEPTION</td><td><img src="err-simple.png" /></td><td><img src="err-details.png" /></td><td><img src="err-action.png" /></td></tr>
+					</table>
+					<p>The choice to have red on off-white was deliberate. I didn't want red-green color blind users to have difficulty telling the marine from the crimson. So instead of red-ish background, I used red title text.</p>
 				</section>
 				<section>
-					Retro: It's ok to let go of your ideas. Maybe they can still happen. You don't have to be the one to do everything.
+					<h2>Feasibility Test</h2>
+					<p>If I am ever unsure the feasibility of my designs, I will test it out first.</p>
+					<p class="codepen" data-height="400" data-theme-id="dark" data-default-tab="css,result" data-user="alice" data-slug-hash="QWbmbEj" style="height: 400px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Tooltips">
+						<span>See the Pen <a href="https://codepen.io/alice/pen/QWbmbEj">
+						Tooltips</a> by Alice Q (<a href="https://codepen.io/alice">@alice</a>)
+						on <a href="https://codepen.io">CodePen</a>.</span>
+					</p>
+					<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+					<p>I had to made sure it is possible for the engineer implementing this feature to easily designate on which side the tooltip should appear relative to the UI element it is attached to.</p>
+				</section>
+				<section>
+					<h2>Future tooltips</h2>
+					<p>The first part of this project was to make existing tooltips consistent. But I also want make onboarding new users easier with tooltips. </p>
+
+					<p>From watching many first time users struggle with our product, I wrote an proposal for all the places we should have tooltips that don't at the moment.</p>
+
+					<p>For example, <em>Dark captures all incoming data, even invalid requests. Users can use that data to construct their program.</em> We want to make sure new users knew about this feature.</p>
+				</section>
+				<section>
+					<h3>Context aware tooltips</h3>
+					<p><small>The image shows the element that the tooltip should be attached with, and also the style property (info or exception). The rest of the model is dictated in writing. For all design that requires copy, I write the copy in the specification document. This not only makes it easy for developers to copy and paste, but also for product people to edit it.</small></p>
+					
+					<table class="top-align-cells" style="font-size: 0.6em;">
+						<tr><td rowspan="3"><img src="future-404.png"></td> <td><b>Title</b></td><td>Handle your 404 errors</td></tr>
+						<tr><td><b>Description</b></td><td>Dark keeps tracks of all incoming requests. You can create an HTTP handler populated with the data from the 404 requests.</td></tr>
+						<tr><td><b>Trigger</b></td><td>This tooltip will appear, if the project has 404s, and the user has not yet created a handler from their 404s yet. It will appear without them hovering over the 404 icon.</td></tr>
+					</table>
+				</section>
+				<section>
+					<p>and when they create a request handler from the 404 or manually</p>
+					<img src="future-trace.png" style="width:400px;" />
+					<table  class="top-align-cells" style="font-size: 0.6em;">
+						<tr><td><b>Title</b></td><td>Data from your incoming requests will appear here</td></tr>
+						<tr><td><b>Trigger</b></td><td>When a HTTP handler is first is created, it appears automatically</td></tr>
+					</table>
+				</section>
+				<section>
+					<ul>After defining...
+						<li>UI & behavior of tooltips</li>
+						<li>Conversion guidelines of existing tooltips</li>
+						<li>Ideas for new tooltips</li>
+					</ul>
+					<p>I crossed my fingers and hope this feature will be prioritized to be implemented one day.</p>
+					<hr />
+					<p><em>Luckly, after re-positioning our product to focus on in-editor learning. A product owner used this as a jumping off point to create an in-editor onboarding flow. And a frontend engineer implemented the tooltip component.</em></p>
+				</section>
+				<section>
+					<h2>Lessons Learned</h2>
+					<ul>
+						<li>I should have done contrast check at the very beginnin.</li>
+						<li>When sharing this with teammates, I should have highlighted future tooltips part, instead of presenting it as an auxiliary bonus. It would have provided greater value to users than style consistency.</li>
+					</ul>
 				</section>
 			</div>
 		</div>
