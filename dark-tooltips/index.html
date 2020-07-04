@@ -21,46 +21,53 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
-				<section><h1>Onboard with tooltips</h1></section>
+			<div class="slides" contenteditable="true">
+				<section
+					data-background-image="impl.png"
+					data-background-size="70%"
+					data-background-position="top right"
+					data-background-repeat="no-repeat"
+					data-background-opacity="0.8"
+				><h1>Onboard <br />with tooltips</h1></section>
 				<section><h2>Our onboarding problem</h2>
-					<p>It is near impossible to learn Dark by exploration. New users would need the aid of our reference document or walkthrough videos.</p>
-					<p>I've been a big advocate for in-editor onboarding from the start, but we were never able to make time for the project.</p>
+					<p>New users are unable to learn Dark without the aid of an external source (ie: a reference or walkthrough videos).</p>
+					<p>I've been an advocate for in-editor onboarding since I joined. But we were never able to make time for the initiative until recently.</p>
+					<h4><em>Why did it take be a priority?</em></h4>
 				</section>
 				<section>
-					<h4>Why? The Navigator vs The Explorer</h4>
+					<h4>The Navigator and the Explorer</h4>
 					<p class="fragment">Our initial business positioning rippled into our roadmap (and how we prioritized features).</p>
 					<div class="fragment" style="width:100%; display: flex; justify-content: space-between; align-items: center;">
 						<img src="pl.png" style="width:150px; margin-right: 20px;" />
 						<p>Dark initially positioned itself as a new language; it attracted attention from the programming languages community.<br />
-							They approached new concepts with patience, willing to learn first before doing.
+							People within it approached new concepts with patience, willing to learn first before doing.
 							<em>But they rarely ship projects in Dark.</em>
 						</p>
 					</div>
 					<div  class="fragment" style="width:100%; display: flex; justify-content: space-between; align-items: center;">
-						<p>Our most successful demographic turns out to be new developers, students, and front-end or fullstack engineers.<br />
-							<em>And they learn by doing!</em>
+						<p>The most successful demographic, who ship projects in Dark, turns out to be new developers, students, and front-end or fullstack engineers. They explore new territory <em>and learn by doing!</em>
 						</p>
 						<img src="fe.png" style="width:150px; margin-left: 20px;" />
 					</div>
 				</section>
 				<section data-transition="slide-in fade-out">
-					<h4>How can we tailor learning for the explorer?</h4>
+					<h4>How can we tailor learning Dark for the explorer?</h4>
 					<ul>
-					<li class="fragment fade-up">Sample project tutorials. Most Javascript Frameworks start with a todo List tutorial because many frontend engineers are explorers.</li>
-					<li class="fragment fade-up">Tooltips have been aiding people to learn software through exploration. They provide additional information to what non-obvious icons mean and suggest actions users can perform.</li>
-					<li class="fragment fade-up">Code sharing empowers users to learn from one another and build upon eachother's knowledge.</li>
+					<li class="fragment fade-up"><em>Project tutorials</em>. Most Javascript frameworks start with a todo List tutorial because many frontend engineers are explorers.</li>
+					<li class="fragment fade-up"><em>Tooltips</em> have been aiding people to learn software through exploration. They provide additional information to what non-obvious icons mean and suggest actions users can perform.</li>
+					<li class="fragment fade-up"><em>Code sharing</em> empowers users to learn from one another and build upon eachother's knowledge.</li>
 					</ul>
 				</section>
 				<section data-transition="fade-in slide-out">
-					<h4 class="fragment fade-in">Let's focus on just this for now</h4>
+					<h4>Let's focus one for now</h4>
 					<ul>
 					<li style="visibility: hidden;">Sample project tutorials. Most Javascript Frameworks start with a todo List tutorial, because many frontend engineers are explorers.</li>
-					<li>Tooltips have been aiding people to learn software through exploration. They provide additional information to what non-obvious icons mean and suggest actions users can perform.</li>
+					<li><em>Tooltips</em> have been aiding people to learn software through exploration. They provide additional information to what non-obvious icons mean and suggest actions users can perform.</li>
 					<li style="visibility: hidden;">Code sharing empowers users to learn from eachother and build upon eachother's knowledge.</li>
 					</ul>
 				</section>
 				<section>
+					<h3>Current conditions</h3>
 					<p>We already have tooltips, but they are inconsistent in both style and behavior.</p>
 					<table><tr>
 						<td><img src="bad1.png" /></td>
@@ -74,27 +81,42 @@
 				</section>
 				<section>
 					<h2>My role: Design consistent tooltips</h2>
-					<p>How do we change existing tooltips to a single style?</p>
-					<p>How can we future-proof, so new tooltips will be in the same style?</p>
 
-					<p><em>But consistency can't be achieved with just rigor to a style.</em></p>
-					<p class="fragment">We did not get into this mess because every contributor had different aesthetic preferences. We got here because each new tooltip added aimed only to solve the current issue. Let's take a step back to understand what we were trying to achieve in the <em>past</em>, and what we want to achieve in the <em>future</em>.</p>
+					<p>To do so I must consider:<br />
+						How do we change existing tooltips to a single style?<br />
+						And also how can we future-proof the solution to ensure new tooltips adhere will to the same style?</p>
 				</section>
 				<section>
+					<h3>Understanding the problem</h3>
+				<p>
+					<em>Consistency can't be achieved with just rigor to a style alone.</em><br />
+					Our tooltips mess did not happen because every contributor had a different aesthetic taste. We got here because, every time we added a new tooltip, we aimed only to solve the current problem.</p>
+				<p  class="fragment">Let's take a step back to understand what we were trying to achieve in the <em>past</em>, and what we want to achieve in the <em>future</em>.</p>
+			</section>
+				<section>
 					<h2>I approached this problem...</h2>
-						<p class="left">First find all instaces tooltips are used in the editor.</p>
-						<p class="left">Then I categorized them by the function they serve.</p>
-						<p  class="left">Lastly, theorized how we can use tooltips in the future to introduce Dark to new users or highlight new features to seasoned users.</p>
+						<p class="left">First, find all instances where tooltips are used in the editor.</p>
+						<p class="left">Then I categorized them by the functions they serve.</p>
+						<p  class="left">Lastly, theorized how we can use tooltips in the future to either introduce Dark to new users or highlight new features to seasoned users.</p>
 				</section>
 				<section>
 					<h3>Taxonomize the chaos</h3>
-					<p>Our editor has over 60 instances of tooltips, but they all fall into at least one of the four categories:</p>
-					<ul>
-						<li>Labels -- provide text equivalents (in 5 words or less) to icons</li>
-						<li>Descriptions -- explain UI elements in more detail in a few sentences</li>
-						<li>Exceptions -- explain deviations from expected behaviors</li>
-						<li>Suggested actions -- tells a user to do something to help them along</li>
-					</ul>
+					<table class="middle-align-cells">
+						<tr><td colspan="2">Our editor has over 60 instances of tooltips, but they all fall into at least one of the four categories:</td></tr>
+						<tr>
+							<td><small>Labels -- provide text equivalents (in 5 words or less) to icons</small></td>
+							<td align="center"><img src="cat-label.png" style="max-height: 50px;" /></td>
+						</tr>
+						<tr><td><small> Descriptions -- explain UI elements in more detail in a few sentences</small></td>
+							<td align="center"><img src="cat-detail.png" style="max-height: 50px;" /></td>
+						</tr>
+						<tr><td><small>Exceptions -- explain deviations from expected behaviors</small></td>
+							<td align="center"><img src="cat-except.png" style="max-height: 50px;" /></td>
+						</tr>
+						<tr><td><small>Suggested actions -- tells a user to do something to help them along</small></td>
+							<td align="center"><img src="bad3.png" style="max-height: 50px;" /></td>
+						</tr>
+					</table>
 				</section>
 				<section>
 					<h3>Imagining a better world</h3>
@@ -102,9 +124,11 @@
 					<p>They will show regardless if the user had seen them before. This can be more obstructive than helpful to a seasoned user's workflow.</p>
 
 					<p>If only we can determine the conditions they will appear in, then we can use them more often. And use them to help users learn Dark within the editor.</p>
+
+					<p>Tooltips will also need a <em>trigger condition</em>. It will determine if the tooltip should appear or not. For example: has the user seen this tooltip 10 times already?</p>
 				</section>
 				<section>
-					<p>Now that we know, what our tooltip component will need. And also what we want our component to be able to support. <em>Let's get designing!</em></p>
+					<h3>Now that we know, what our tooltip component will need. And also what it should be able to support. <em>Let's get designing!</em></h3>
 				</section>
 				<section>
 					<h2>Define product requirements</h2>
@@ -117,7 +141,7 @@
 				<section>
 					<h3>when & where should the tooltip show?</h3>
 					<img src="adj.png" />
-					<p>All tooltips are attached to a UI element to it will appear adjacent. And <em>all tooltips will have a trigger condition</em>. This defines the situations when the tooltip should appear. in most cases, it is upon hover.</p> 
+					<p>All tooltips are attached to a UI element, to which it will appear adjacent. And all tooltips will have a trigger condition. In most cases, it is upon hover.</p> 
 				</section>
 				<section>
 					<h3>and what else?</h3>
@@ -125,11 +149,11 @@
 					<p>Some tooltips may contain a CTA. The action button will have a <em>button label</em> and an <em>on click handler</em></p>
 				</section>
 				<section>
-					<h2>Tooltip component model</h2>
+					<h2>The component model</h2>
 					<p>A tooltip component will have...</p>
 					<table>
 						<tr><th>Property</th><th>Data type</th><th>Required?</th></tr>
-						<tr><td>Attach to element</td><td>DOM element</td><td>Yes</td></tr>
+						<tr><td>Attached element</td><td>DOM element</td><td>Yes</td></tr>
 						<tr><td>Title</td><td>Text</td><td>Yes</td></tr>
 						<tr><td>Description</td><td>Text</td><td>No</td></tr>
 						<tr><td>Trigger condition</td><td>Function</td><td>Yes</td></tr>
@@ -139,7 +163,7 @@
 					<p>Now we've got the product down, let's make it pretty</p>
 				</section>
 				<section data-transition="slide-in fade-out">
-					<h3>Let's try it all</h3>
+					<h2>Decide on a style</h2>
 					<p>I made 6 different treatments.</p>
 					<table>
 						<tr><td><img src="design1.png" /></td><td><img src="design2.png" /></td><td><img src="design3.png" /></td></tr>
@@ -148,16 +172,16 @@
 					<p>&nbsp;</p>
 				</section>
 				<section  data-transition="fade-in slide-out">
-					<h3>Let's try it all</h3>
-					<p>We voted internally and chose the top 3 for which to hash out the details.</p>
+					<h2>Decide on a style</h2>
+					<p>We voted internally and chose the top 3.</p>
 					<table>
 						<tr><td><img src="design1.png" /></td><td><img src="design2.png" /></td><td>&nbsp;</td></tr>
 						<tr><td>&nbsp;</td><td>&nbsp;</td><td><img src="design6.png" /></td></tr>
 					</table>
-					<p>They were within the Dark style guidelines, so any choice they made will be ok.</p>
+					<p><small>They were within the Dark style guidelines, so any chosen made will be ok.</small></p>
 				</section>
 				<section>
-					<h3>now with details & action button</h3>
+					<p>I hashed out the details for our top contenders. And made mocks for tooltips with a description and an action button.</p>
 					<table>
 						<tr><td><img src="d2-details.png" /></td>
 							<td><img src="d3-details.png" /></td>
@@ -169,19 +193,19 @@
 					</table>
 				</section>
 				<section>
-					<h3>giving our users a voice</h3>
+					<h3>Giving our users a voice</h3>
 					<p>We asked our users to vote on the top 3 styles</p>
 					<table class="top-align-cells">
 						<tr class="fragment" data-fragment-index="1"><td colspan="3">and this won out</td></tr>
 						<tr class="fragment" data-fragment-index="1"><td><img src="design6.png" /></td><td><img src="d1-details.png" /></td><td><img src="d1-action.png" /></td></tr>
-						<tr class="fragment" data-fragment-index="2"><td colspan="3">then we had to make some additional adjustments for contrast visibility</td></tr>
+						<tr class="fragment" data-fragment-index="2"><td colspan="3">then I made additional adjustments for contrast visibility</td></tr>
 						<tr class="fragment" data-fragment-index="2"><td><img src="simple.png" /></td><td><img src="details.png" /></td><td><img src="actions.png" /></td></tr>
 					</table>
 				</section>
 				<section>
 					<h2>Testing out the tooltip component</h2>
 
-					<p>If you recall, the goal of this project is to make all our existing tooltips conform to this style. When I took the component model to apply to all places we've been using tooltips. I realized we missed capturing one category.</p>
+					<p>If you recall, the goal of this project is to make all our existing tooltips conform to the new component's style. When I applied the component model to exisiting tooltips, I realized we missed capturing one category.</p>
 					<blockquote>Exceptions -- explain deviations from expected behaviors</blockquote>
 
 					<p>Nowhere in our component design, do we distinguish between an informational tooltip from an exception tooltip.<br /> <em>So let's revise our tooltip model</em></p>
@@ -190,7 +214,7 @@
 					<h2>Revised model</h2>
 					<table>
 						<tr><th>Property</th><th>Data type</th><th>Required?</th></tr>
-						<tr><td>Attach to element</td><td>DOM element</td><td>Yes</td></tr>
+						<tr><td>Attached element</td><td>DOM element</td><td>Yes</td></tr>
 						<tr><td>Title</td><td>Text</td><td>Yes</td></tr>
 						<tr><td>Description</td><td>Text</td><td>No</td></tr>
 						<tr><td>Trigger condition</td><td>Function</td><td>Yes</td></tr>
@@ -205,22 +229,22 @@
 						<tr><td>INFO</td><td><img src="simple.png" /></td><td><img src="details.png" /></td><td><img src="actions.png" /></td></tr>
 						<tr><td>EXCEPTION</td><td><img src="err-simple.png" /></td><td><img src="err-details.png" /></td><td><img src="err-action.png" /></td></tr>
 					</table>
-					<p>The choice to have red on off-white was deliberate. I didn't want red-green color-blind users to have difficulty telling the marine from the crimson. So instead of the red background, I used red title text.</p>
+					<p>Instead of giving the exception style tooltips a red background, I made a deliberate choice to have the red title text on light background. Otherwise color-blind users will have difficulty distinguishing between red and marine tooltips.</p>
 				</section>
 				<section>
 					<h2>Feasibility Test</h2>
-					<p>If I am ever unsure the feasibility of my designs, I will test it out first.</p>
-					<p class="codepen" data-height="400" data-theme-id="dark" data-default-tab="css,result" data-user="alice" data-slug-hash="QWbmbEj" style="height: 400px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Tooltips">
+					<p>If I am ever unsure about the feasibility of my designs, I will test it out first.</p>
+					<p class="codepen" data-height="400" data-theme-id="dark" data-default-tab="result" data-user="alice" data-slug-hash="QWbmbEj" style="height: 400px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Tooltips">
 						<span>See the Pen <a href="https://codepen.io/alice/pen/QWbmbEj">
 						Tooltips</a> by Alice Q (<a href="https://codepen.io/alice">@alice</a>)
 						on <a href="https://codepen.io">CodePen</a>.</span>
 					</p>
 					<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-					<p>I had to make sure it is possible for the engineer implementing this feature to easily designate on which side the tooltip should appear relative to the UI element it is attached to.</p>
+					<p><small>I checked it is possible for the engineer implementing this feature to easily designate on which side the tooltip should appear relative to the UI element it is attached to.</small></p>
 				</section>
 				<section>
 					<h2>Future tooltips</h2>
-					<p>The first part of this project was to make existing tooltips consistent. But I also want to make onboarding new users easier with tooltips. </p>
+					<p>The first part of this project was to make existing tooltips consistent. But I also want to make it possible to onboard new users with them.</p>
 
 					<p>From watching many first time users struggle with our product, I wrote a proposal for all the places we should have tooltips that don't at the moment.</p>
 
@@ -232,27 +256,29 @@
 					
 					<table class="top-align-cells" style="font-size: 0.6em;">
 						<tr><td rowspan="3"><img src="future-404.png"></td> <td><b>Title</b></td><td>Handle your 404 errors</td></tr>
-						<tr><td><b>Description</b></td><td>Dark keeps tracks of all incoming requests. You can create an HTTP handler populated with the data from the 404 requests.</td></tr>
+						<tr><td><b>Description</b></td><td>Dark keeps tracks of all incoming requests. You can create an HTTP handler populated with the data from a 404 request.</td></tr>
 						<tr><td><b>Trigger</b></td><td>This tooltip will appear if the project has 404s, and the user has not yet created a handler from their 404s yet. It will appear without them hovering over the 404 icon.</td></tr>
 					</table>
 				</section>
 				<section>
-					<p>and when they create a request handler from the 404 or manually</p>
+					<h4>and when they create a request handler from the 404</h4>
 					<img src="future-trace.png" style="width:400px;" />
 					<table  class="top-align-cells" style="font-size: 0.6em;">
 						<tr><td><b>Title</b></td><td>Data from your incoming requests will appear here</td></tr>
-						<tr><td><b>Trigger</b></td><td>When an HTTP handler is first is created, it appears automatically</td></tr>
+						<tr><td><b>Trigger</b></td><td>When an HTTP handler is first is created, this tooltip appears automatically</td></tr>
 					</table>
 				</section>
 				<section>
-					<ul>After defining...
-						<li>UI & behavior of tooltips</li>
-						<li>Conversion guidelines of existing tooltips</li>
-						<li>Ideas for new tooltips</li>
-					</ul>
-					<p>I crossed my fingers and hope this feature will be prioritized to be implemented one day.</p>
-					<hr />
-					<p><em>Luckily, after re-positioning our product to focus on in-editor learning. A product owner used this as a jumping-off point to create an in-editor onboarding flow. And a frontend engineer implemented the tooltip component.</em></p>
+					<p>After defining UI & behavior of tooltips as a component, the conversion guidelines for existing tooltips, and ideas for new tooltips...</p>
+
+					<p>I crossed my fingers and hope this feature will be implemented one day.</p>
+				</section>
+				<section>
+				<h4>Luckily, after re-positioning our product with increased focus on in-editor learning.</h4>
+
+				<p>A product owner used this as a jumping-off point to create an in-editor onboarding flow. And a frontend engineer implemented the tooltip component.</p>
+
+				<img src="impl.png" />
 				</section>
 				<section>
 					<h2>Lessons Learned</h2>
