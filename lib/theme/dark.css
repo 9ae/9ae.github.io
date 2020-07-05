@@ -295,3 +295,27 @@
 @media print {
   .backgrounds {
     background-color: #111; } }
+
+/* Shortcut menu */
+div.shortcuts {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  font-family: "Open Sans", sans-serif; 
+  width: calc(100% - 100px);
+
+  display: flex;
+  justify-content: space-evenly;
+}
+
+div.shortcuts a {
+  display: inline-block;
+  color: var(--link-color);
+  text-decoration: underline;
+  transition: color .15s ease;
+  text-transform: uppercase;
+}
+
+div.shortcuts a:hover {
+  color: var(--link-color-hover);
+}

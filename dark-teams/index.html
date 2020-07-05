@@ -20,13 +20,13 @@
 		<div class="reveal">
 			<div class="slides">
 				<section><h1>Collaborate with teammates</h2></section>
-				<section><p>Dark was first built for one developer. But developers normally work in teams, and we struggled to get larger projects onboard because of our lack of support for a team's workflow.</p>
+				<section id="empathize"><p>Dark was first built for one developer. But developers normally work in teams, and we struggled to get larger projects onboard because of our lack of support for a team's workflow.</p>
 				<p class="fragment">For a New Year's hack day, I looked into what are the steps necessary to give us a UI for enabling users to collaborate with each.</p>
 				</section>
 				<section><h2>The Problem</h2>
-				<blockquote>Multiple developers will struggle to work on the same project because they don't know <span class="font-blue">who</span> made <span class="font-pink">what</span> changes <span class="font-green">where</span>.</blockquote>
+				<blockquote>Multiple developers will struggle to work on the same project because they don't know <span class="font-blue">who</span> made <span class="font-pink">what</span> changes <span class="font-green">how</span>.</blockquote>
 				</section>
-				<section><h3>Let's breakdown it down</h3>
+				<section id="breakdown"><h3>Let's breakdown it down</h3>
 					<p>For teamwork to be possible within the editor, developers need to be able to:</p>
 					<ol>
 					<li class="fragment">Learn about the codebase. They should be able to find out who to ask for help.</li>
@@ -43,7 +43,7 @@
 						<li class="fragment"><em>Forking and contributing common code</em> - to be addressed with our package manager and embed darklang code project. Right now we will focus on users working on the same project.</li></ul>
 				</section>
 				<!-- Goal 1 -->
-				<section>
+				<section id="solve1">
 					<h2>Solving: Who wrote what where</h2>
 					<blockquote>Developers need to be able to learn about the codebase. They should be able to find out who to ask for help.</blockquote>
 				</section>
@@ -77,7 +77,7 @@
 				</section>
 
 				<!-- Goal 2 -->
-				<section>
+				<section id="solve2">
 					<h2>Solving: What does this code do?</h2>
 					<blockquote>Developers need to be able to communicate about their code in the editor.</blockquote>
 				</section>
@@ -123,7 +123,7 @@
 				</section>
 
 				<!-- Goal 3 -->
-				<section>
+				<section id="solve3">
 					<h2>Solving: How do I edit code without affecting production?</h2>
 					<blockquote>Developers need to be able to make changes to their codebase without changing production. They need to package their changes for another to review or a deploy</blockquote>
 				</section>
@@ -179,7 +179,7 @@
 				</section>
 
 				<!-- bringing it all together -->
-				<section><h2>Putting it all together</h2>
+				<section id="combine"><h2>Putting it all together</h2>
 					<p>Now let's see how these three solutions work together in an engineering team scenario.</p>
 
 					<blockquote style="text-align: left;">New developer Ryan joins the team and is tasked to update the registration flow. <br /><br />
@@ -224,7 +224,7 @@
 					<img src="story-9.png"  class="light" />
 					<h4><em>Everyone is delighted and go out for Happy Hour!</em></h4>
 				</section>
-				<section>
+				<section id="future">
 					<h2>Future Considerations</h2>
 
 <ul>We cut scope on this to get out the best ideas within a day. There are additional considerations that would be taken into account in the next phases:
@@ -238,6 +238,16 @@
 				</section>
 
 			</div>
+		</div>
+
+		<div class="shortcuts">
+			<a href="#/empathize">Empathize</a>
+			<a href="#/breakdown">Breakdown</a>
+			<a href="#/solve1">Solve Who</a>
+			<a href="#/solve2">Solve What</a>
+			<a href="#/solve3">Solve How</a>
+			<a href="#/combine">Combine solutions</a>
+			<a href="#/future">Next Steps</a>
 		</div>
 
 		<script src="../lib/reveal.js"></script>

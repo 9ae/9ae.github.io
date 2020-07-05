@@ -21,7 +21,7 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides" contenteditable="true">
+			<div class="slides">
 				<section
 					data-background-image="impl.png"
 					data-background-size="70%"
@@ -29,7 +29,7 @@
 					data-background-repeat="no-repeat"
 					data-background-opacity="0.8"
 				><h1>Onboard <br />with tooltips</h1></section>
-				<section><h2>Our onboarding problem</h2>
+				<section id="empathize"><h2>Our onboarding problem</h2>
 					<p>New users are unable to learn Dark without the aid of an external source (ie: a reference or walkthrough videos).</p>
 					<p>I've been an advocate for in-editor onboarding since I joined. But we were never able to make time for the initiative until recently.</p>
 					<h4><em>Why did it take be a priority?</em></h4>
@@ -58,7 +58,7 @@
 					<li class="fragment fade-up"><em>Code sharing</em> empowers users to learn from one another and build upon eachother's knowledge.</li>
 					</ul>
 				</section>
-				<section data-transition="fade-in slide-out">
+				<section id="define" data-transition="fade-in slide-out">
 					<h4>Let's focus one for now</h4>
 					<ul>
 					<li style="visibility: hidden;">Sample project tutorials. Most Javascript Frameworks start with a todo List tutorial, because many frontend engineers are explorers.</li>
@@ -93,7 +93,7 @@
 					Our tooltips mess did not happen because every contributor had a different aesthetic taste. We got here because, every time we added a new tooltip, we aimed only to solve the current problem.</p>
 				<p  class="fragment">Let's take a step back to understand what we were trying to achieve in the <em>past</em>, and what we want to achieve in the <em>future</em>.</p>
 			</section>
-				<section>
+				<section id="ideate">
 					<h2>I approached this problem...</h2>
 						<p class="left">First, find all instances where tooltips are used in the editor.</p>
 						<p class="left">Then I categorized them by the functions they serve.</p>
@@ -148,7 +148,7 @@
 					<img src="actions.png" />
 					<p>Some tooltips may contain a CTA. The action button will have a <em>button label</em> and an <em>on click handler</em></p>
 				</section>
-				<section>
+				<section id="build">
 					<h2>The component model</h2>
 					<p>A tooltip component will have...</p>
 					<table>
@@ -179,7 +179,7 @@
 					</table>
 					<p>&nbsp;</p>
 				</section>
-				<section  data-transition="fade-in slide-out">
+				<section data-transition="fade-in slide-out">
 					<h2>Decide on a style</h2>
 					<p>We voted internally and chose the top 3.</p>
 					<table>
@@ -210,7 +210,7 @@
 						<tr class="fragment" data-fragment-index="2"><td><img src="simple.png" /></td><td><img src="details.png" /></td><td><img src="actions.png" /></td></tr>
 					</table>
 				</section>
-				<section>
+				<section id="test1">
 					<h2>Testing out the tooltip component</h2>
 
 					<p>If you recall, the goal of this project is to make all our existing tooltips conform to the new component's style. When I applied the component model to exisiting tooltips, I realized we missed capturing one category.</p>
@@ -218,7 +218,7 @@
 
 					<p>Nowhere in our component design, do we distinguish between an informational tooltip from an exception tooltip.<br /> <em>So let's revise our tooltip model</em></p>
 				</section>
-				<section>
+				<section id="revise">
 					<h2>Revised model</h2>
 					<table>
 						<tr><th>Property</th><th>Data type</th><th>Required?</th></tr>
@@ -250,7 +250,7 @@
 					<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 					<p><small>I checked it is possible for the engineer implementing this feature to easily designate on which side the tooltip should appear relative to the UI element it is attached to.</small></p>
 				</section>
-				<section>
+				<section id="ideate3">
 					<h2>Future tooltips</h2>
 					<p>The first part of this project was to make existing tooltips consistent. But I also want to make it possible to onboard new users with them.</p>
 
@@ -258,7 +258,7 @@
 
 					<p>For example, <em>Dark captures all incoming data, even invalid requests. Users can use that data to construct their program.</em> We want to make sure new users knew about this feature.</p>
 				</section>
-				<section>
+				<section id="build3">
 					<h3>Context-aware tooltips</h3>
 					<p><small>The image shows the element that the tooltip should be attached with, and also the style property (info or exception). The rest of the model is dictated in writing. For all design that requires copy written, I write the copy in the specification document. This not only makes it easy for developers to copy and paste but also for product people to edit it.</small></p>
 					
@@ -288,7 +288,7 @@
 
 				<img src="impl.png" />
 				</section>
-				<section>
+				<section id="reflect">
 					<h2>Lessons Learned</h2>
 					<ul>
 						<li>I should have done a contrast check at the very beginning.</li>
@@ -296,6 +296,17 @@
 					</ul>
 				</section>
 			</div>
+		</div>
+		<div class="shortcuts">
+			<a href="#/empathize">Empathize</a>
+			<a href="#/define"> Define</a>
+			<a href="#/ideate">Ideate</a>
+			<a href="#/build">Build</a>
+			<a href="#/test1">Test</a>
+			<a href="#/revise">Revise</a>
+			<a href="#/ideate3">Ideate</a>
+			<a href="#/build3">Build</a>
+			<a href="#/reflect">Reflect</a>
 		</div>
 
 		<script src="../lib/reveal.js"></script>
