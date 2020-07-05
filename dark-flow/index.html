@@ -43,17 +43,25 @@
 				</section>
 				<section>
 					Ctrl flow as streets analogy (show picture of arch)
-					<!-- IMG api arch -->
+					<img src="habits_map.jpg" />
 					<img src="dresden_map.png" />
+				</section>
+				<section>
 					A single car's path is a trace
-					<!-- IMG HTTP post > worker > db -->
+					<img src="habits_path.jpg" />
 					<img src="dresden_path.png" />
+				</section>
+				<section>
 					And cummulative flow (how we want to ultimately represent arch relations) is like goggle's map traffic layer.
-					<!-- IMG show bright lines with heavy traffic (add habit light), (update date heavy) -->
+					<img src="habits_traffic.jpg" />
 					<img src="dresden_traffic.png" />
 				</section>
 				<section>
 					First we must pave the streets
+					<img src="db_habits.png" />
+					<p>For this case we'll be using a simple habits tracker application.
+						You set a weekly goal for how many times you want to do the activity (ie: run 3 times a week). When you update with a habit complete, it checks to see if you've reached your goal. If you have, you'll get a text with a cute meme, else you'll just get an motivational quote to keep going.
+					</p>
 				</section>
 				<section>
 					City planning! (Proccess)
@@ -64,11 +72,16 @@
 				</section>
 				<section>
 					Architecture diagram
-					<!-- IMG wireframe arch of habit tracker -->
+					<img src="habits_map.jpg" />
 				</section>
 				<section>
-					Go down a single path, and how to go back and forth?
-					<!-- IMG wireframe /do habit  -->
+					Go down a single path. How can we map out the course your data will take trough the codebase?
+					
+					<!-- IMG path with horizontal path across -->
+					<img src="post_track.png" />
+					<img src="worker_didhabit.png" />
+					What is it that is missing? <em class="fragment">Send meme or quote!</em>
+					<!-- IMG with fx added -->
 				</section>
 				<section>
 					What to show? (Street signs... "Traffic light in 400 km")
