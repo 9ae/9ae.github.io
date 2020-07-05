@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Navigate your codebase @ Dark</title>
+
+		<link rel="stylesheet" href="../lib/reset.css">
+		<link rel="stylesheet" href="../lib/reveal.css">
+		<link rel="stylesheet" href="../lib/theme/dark.css" id="theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section><h1>Navigate your codebase</h2></section>
+				<section>Problem: users were having trouble finding stuff and wasting a lot of time panning, dragging, jumping around their project's canvas.
+					Ex: DBs and Workers
+					Handlers & user functions
+					<iframe src="https://player.vimeo.com/video/435405334" width="640" height="364" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+					
+				</section>
+				<section
+					data-background-image="nyc.jpeg"
+					data-background-position="bottom center -200px"
+					data-background-color="#010101"
+					data-background-size="cover"
+					data-background-opacity="0.3"
+					>Understanding the problem
+					Paul's vision for dark, city analogy... bring data into development.
+					Bring ops into code (you can see how popular some paths are)
+					Felt files are arbituary way of splitting code. (and he is right, think depdency cycles)
+
+				</section>
+				<section>
+					But at the time of this project, most of our users don't have live traffic yet.
+					The reason they don't have it is because they are unable to complete their project because they found using Dark so fustrating.
+
+					Unable to understand what their code is doing and how each code chunk is interacting with other code chunks. Barely able to understand the ctrl of their API's architecture. Everything is just in dis-organized floating (sometimes overlapping boxes).
+					<!-- IMG dragging to see things  -->
+				</section>
+				<section>
+					Ctrl flow as streets analogy (show picture of arch)
+					<!-- IMG api arch -->
+					<!-- IMG google maps -->
+					A single car's path is a trace
+					<!-- IMG HTTP post > worker > db -->
+					<!-- IMG nav to fairyland -->
+					And cummulative flow (how we want to ultimately represent arch relations) is like goggle's map traffic layer.
+					<!-- IMG show bright lines with heavy traffic (add habit light), (update date heavy) -->
+					<!-- IMG goggle traffic view -->
+				</section>
+				<section>
+					First we must pave the streets
+				</section>
+				<section>
+					City planning! (Proccess)
+					
+					- What are the path a trace can take?
+					- How do we show the navigation of the paths, enable backtracking, and forward going?
+					- What do information do we show?
+				</section>
+				<section>
+					Architecture diagram
+					<!-- IMG wireframe arch of habit tracker -->
+				</section>
+				<section>
+					Go down a single path, and how to go back and forth?
+					<!-- IMG wireframe /do habit  -->
+				</section>
+				<section>
+					What to show? (Street signs... "Traffic light in 400 km")
+					A well planned city are designed with the behavior of it's residents in mind.
+					Let's look at our users.
+					
+					<iframe src="https://player.vimeo.com/video/435405240" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+					- Drag dbs around to check schema
+					- Drag worker's around to see expected object
+					- Keep going to Fns to see what it does to your data (and also params at that time was not showing in the docstrings)
+				</section>
+				<section>
+					Proposed Solution!
+					<!-- IMG from previous wireframe now show with data -->
+					Interactive example. HTTP -> Worker -> Fn
+					<!-- GIF expand references on hover (and highligh where it's used in code) -->
+					<!-- GIF focus on click into, with it's own references and moving over -->
+				</section>
+				<section>
+					Constraint! Live values
+					<!-- IMG of live values on the left -->
+				</section>
+				<section>
+					Patch up constraint. Just use backwards and foward arrows.
+					<!-- IMG screencap what we have for references now -->
+				</section>
+				<section>
+					MVP: Scope cuts
+					- Don't show the worker's event expected shape (because it involves complex programming)
+					- Don't expand functions or other code, and just link to it.
+				</section>
+				<section>
+					Testing!
+					Over users loved it. We learned references also provide them a useful way to depreciate (DBs, functions, etc.)
+
+					But they didn't like:
+					- functions going to another place entirely, and not being able to see code side by side.
+					- The arrows are a little too subtle.
+				</section>
+				<section>
+					Since the side by side is a result of scope cut. we do plan to have it eventually, let's focus on our poor solution to LVs.
+				</section>
+				<section>
+					<!-- IMG color refboxes differently -->
+					1. Easiest (color the arrows differently)
+					<!-- IMG fade out incoming to show live values -->
+					2. Fade away incoming referneces if editing (place them as top bread crumbs)
+					<!-- GIF Lv top with drop shadow, and expanding if needed -->
+					3. Move live values to above the cursor
+				</section>
+				<section>Retrospective
+					- considered constraints first
+					- should have fought harder for viewing functions side by side
+					- Have a plan to figure out when we will bring the learnings and follow up changes instead of leaving them hanging as just vaporware.
+				</section>
+			</div>
+		</div>
+
+		<script src="../lib/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				hash: true,
+				progress: true,
+			});
+		</script>
+	</body>
+</html>
