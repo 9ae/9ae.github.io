@@ -228,6 +228,28 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 .reveal table tbody tr:last-child td {
   border-bottom: none; }
 
+.reveal table.timeline {
+  font-size: 1.0rem;
+  width: 100%;
+}
+
+.reveal table.timeline th ,
+.reveal table.timeline td {
+  text-align: center;
+}
+
+.reveal table.timeline td.research {
+  background-color: #D1C4E9;
+}
+
+.reveal table.timeline td.test {
+  background-color: #B9F6CA;
+}
+
+.reveal table.timeline td.build {
+  background-color: #F48FB1;
+}
+
 .reveal sup {
   vertical-align: super;
   font-size: smaller; }
