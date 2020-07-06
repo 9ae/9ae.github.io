@@ -9,61 +9,106 @@
 		<link rel="stylesheet" href="../lib/reset.css">
 		<link rel="stylesheet" href="../lib/reveal.css">
 		<link rel="stylesheet" href="../lib/theme/dark.css" id="theme">
+		<style type="text/css">
+			.side-by-side {
+				width: 50%; display: flex; justify-content: space-evenly; margin: 0 auto;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
 				<section><h1>Navigate your codebase</h2></section>
-				<section>Problem: users were having trouble finding stuff and wasting a lot of time panning, dragging, jumping around their project's canvas.
-					Ex: DBs and Workers
-					Handlers & user functions
+				<section id="empathize">
+					<h2>Users have trouble getting around in their code base</h2>
 					<iframe src="https://player.vimeo.com/video/435405334" width="640" height="364" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-					
+					<p>Dark lays it's structural elements (code and data schemas) in floating boxes with no order to them. Users spend alot of time panning, dragging, jumping around their project space.</p>
 				</section>
-				<section
+				<section>
+					<h3>Problem 1: Checking up on DB schemas</h3>
+					<p>Users spend a lot of time dragging databses close to the code the code chunks that uses it. Because <code>DB::set</code> requires the data inserted to match the schema exactly.</p>
+					<iframe src="https://player.vimeo.com/video/435405240" width="505" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>.
+				</section>
+				<section>
+					<p>When their function references a DB it is even worse! Since functions are in their own seperate space, users must to go back to the main space to see the DB schema. They must either have fantastic short term memory, or take a screenshot of the DB double check their code.</p>
+					<iframe src="https://player.vimeo.com/video/435577183" width="450" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+				</section>
+				<section>
+					<h3>Problem 2: Working with functions</h3>
+					<iframe src="https://player.vimeo.com/video/435578880" width="727" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+					<p>Users can create functions, which will be accessible throughout their own project. But these functions are accessible within the main space; they exist in their own little world isolation. They are not accessible from the code that uses it, and only reached through clicking on a link in the sidebar.</p>
+				</section>
+				<section>
+					<h3>Problem 3: Understanding workers</h3>
+					<p>Workers are like async functions that live in the main space. But that doesn't make working with them any easier.</p>
+					<img src="worker_diff_inputs.gif" style="height: 200px; width: auto;" />
+					<p> Unlike functions they take only one argument <code>event</code> of type Any. The user has to drag them near their code to determine its expected input is, just like DBs. But unlike DBs, which have a set schema, the user must read through the code to figure out what is the expected type and structure of the input.</p>
+				</section>
+				<section id="analyze"
 					data-background-image="nyc.jpeg"
 					data-background-position="bottom center -200px"
 					data-background-color="#010101"
 					data-background-size="cover"
 					data-background-opacity="0.3"
-					>Understanding the problem
-					Paul's vision for dark, city analogy... bring data into development.
-					Bring ops into code (you can see how popular some paths are)
-					Felt files are arbituary way of splitting code. (and he is right, think depdency cycles)
+					><h2>How did we get here?</h2>
+					<q>Problems we face today are created by people in the past with the best intentions</q>
+					
+					<p>The founder's vision for Dark is to bring data into development. He would start off with "imagine a city, where you have boroughs and neighborhoods...", he wanted constructs in Dark to be laid out as if they are on a map. The value of Dark is it would show users' live (or cumulative) traffic as it flowed through the codebase.</p>
+
+					<p class="fragment">The floating boxes (of code and DBs) are one day suppose to have dots/lines flowing between them to show user live traffic. They will organize code for developers instead of having files. File systems, he theorized, are arbitrary ways of splitting code. It gives developers more problems to worry about, such as dependency cycles.</p>
+				</section>
+				<section>
+					<h4>Let's think through the city analogy</h4>
+					<div class="side-by-side">
+						<img src="dresden_map.png" />
+						<img src="habits_map.jpg" />
+					</div>
+					<small>Here we have a map of my favorite European city, Dresden (left) and the architecture diagram of simple habits tracker app (right).</small>
+					<p>If the endpoints and datastores are points of interest, then the paths data may take are streets and highways.</p>
 
 				</section>
 				<section>
-					But at the time of this project, most of our users don't have live traffic yet.
-					The reason they don't have it is because they are unable to complete their project because they found using Dark so fustrating.
+					<div class="side-by-side">
+						<img src="dresden_path.png" />
+						<img src="habits_path.jpg" />
+					</div>
+					<p>The path a single trace will take is a trip.</p>
+				</section>
+				<section>
+					<div class="side-by-side">
+						<img src="dresden_traffic.png" />
+						<img src="habits_traffic.jpg" />
+					</div>
+					<small>Google maps shows congestion. The API traffic map shows density of requests passing through endpoints and into databases.</small>
+
+					<p>Over time we can construct a cumulative flow of illustrate the popularity of certain paths. The developer will know which parts of the code base, they should devote more resources to.</p>
+
+				</section>
+				<section>
+					<h4>Unfortunately, most of our users don't have live traffic yet*</h4>
+
+					<p>for the traffic feature to be useful. They find Dark such a frustrating experience they never finish their projects.</p>
 
 					<img src="overlap.png" />
 
-					Unable to understand what their code is doing and how each code chunk is interacting with other code chunks. Barely able to understand the ctrl of their API's architecture. Everything is just in dis-organized floating (sometimes overlapping boxes).
+					<p>They struggle understand what is going on in their codebase because everything is too disorganized.</p>
+
+					<p><small>At the time of this project (early 2019). Now we have many users with live traffic</small></p>
+				</section>
+				<section id="define">
+						<h2>First, we must pave the streets</h2>
+						How can we help developers understand their code base? So they may  write, debug, and edit code with ease?
+
+						<hr />
+
+						<p class="fragment">For this case study, we'll be using a simple habits tracker application. <br />
+							The you sets a weekly goal for how many times you want to do the activity (ie: run 3 times a week). When you update with a habit done, the API checks to see if you've reached your goal. If you have, you'll get a text with a cute meme, otherwise you'll just get an motivational quote instead.
+						</p>
+				</section>
+				<section>
 
 				</section>
-				<section>
-					Ctrl flow as streets analogy (show picture of arch)
-					<img src="habits_map.jpg" />
-					<img src="dresden_map.png" />
-				</section>
-				<section>
-					A single car's path is a trace
-					<img src="habits_path.jpg" />
-					<img src="dresden_path.png" />
-				</section>
-				<section>
-					And cummulative flow (how we want to ultimately represent arch relations) is like goggle's map traffic layer.
-					<img src="habits_traffic.jpg" />
-					<img src="dresden_traffic.png" />
-				</section>
-				<section>
-					First we must pave the streets
-					<img src="db_habits.png" />
-					<p>For this case we'll be using a simple habits tracker application.
-						You set a weekly goal for how many times you want to do the activity (ie: run 3 times a week). When you update with a habit complete, it checks to see if you've reached your goal. If you have, you'll get a text with a cute meme, else you'll just get an motivational quote to keep going.
-					</p>
-				</section>
-				<section>
+				<section id="ideate">
 					City planning! (Proccess)
 					
 					- What are the path a trace can take?
@@ -93,7 +138,7 @@
 					- Drag worker's around to see expected object
 					- Keep going to Fns to see what it does to your data (and also params at that time was not showing in the docstrings)
 				</section>
-				<section>
+				<section id="design">
 					Proposed Solution!
 					<!-- IMG from previous wireframe now show with data -->
 					Interactive example. HTTP -> Worker -> Fn
@@ -108,12 +153,12 @@
 					Patch up constraint. Just use backwards and foward arrows.
 					<!-- IMG screencap what we have for references now -->
 				</section>
-				<section>
+				<section id="build">
 					MVP: Scope cuts
 					- Don't show the worker's event expected shape (because it involves complex programming)
 					- Don't expand functions or other code, and just link to it.
 				</section>
-				<section>
+				<section id="test">
 					Testing!
 					Over users loved it. We learned references also provide them a useful way to depreciate (DBs, functions, etc.)
 
@@ -138,6 +183,18 @@
 					- Have a plan to figure out when we will bring the learnings and follow up changes instead of leaving them hanging as just vaporware.
 				</section>
 			</div>
+		</div>
+
+		<div class="shortcuts">
+			<a href="#/empathize">Empathize</a>
+			<a href="#/analyze">Analyze</a>
+			<a href="#/define">Define</a>
+			<a href='#/ideate'>Ideate</a>
+			<a href='#/design'>Design</a>
+			<a href='#/build'>Build</a>
+			<a href='#/test'>Test</a>
+			<a href='#/revise'>Revise</a>
+			<a href="#/retro">Retrospective</a>
 		</div>
 
 		<script src="../lib/reveal.js"></script>

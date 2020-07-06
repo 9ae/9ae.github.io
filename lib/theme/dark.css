@@ -193,7 +193,8 @@
 
 .reveal code {
   font-family: monospace;
-  text-transform: none; }
+  text-transform: none;
+  color: var(--link-color-hover); }
 
 .reveal pre code {
   display: block;
