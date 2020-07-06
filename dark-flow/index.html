@@ -20,29 +20,29 @@
 			<div class="slides">
 				<section><h1>Navigate your codebase</h2></section>
 				<section id="empathize">
-					<h2>Users have trouble getting around in their code base</h2>
+					<h2>Developers have trouble getting around in their code base</h2>
 					<iframe src="https://player.vimeo.com/video/435405334" width="640" height="364" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-					<p>Dark lays it's structural elements (code and data schemas) in floating boxes with no order to them. Users spend alot of time panning, dragging, jumping around their project space.</p>
+					<p>Dark lays it's structural elements (code and data schemas) in floating boxes with no order to them. Developers spend alot of time panning, dragging, jumping around their project space. <em>Why do they do that?</em></p>
 				</section>
 				<section>
-					<h3>Problem 1: Checking up on DB schemas</h3>
-					<p>Users spend a lot of time dragging databses close to the code the code chunks that uses it. Because <code>DB::set</code> requires the data inserted to match the schema exactly.</p>
+					<h3>1. To check up on DB schemas</h3>
+					<p>Developers spend a lot of time dragging databses close to the code that uses it. Because <code>DB::set</code> requires the data inserted to match the schema exactly.</p>
 					<iframe src="https://player.vimeo.com/video/435405240" width="505" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>.
 				</section>
 				<section>
-					<p>When their function references a DB it is even worse! Since functions are in their own seperate space, users must to go back to the main space to see the DB schema. They must either have fantastic short term memory, or take a screenshot of the DB double check their code.</p>
+					<p>When a function references a DB that experience is is even worse! Since functions are in their own seperate space, developers must to go back to the main space to see the DB schema. They must either have fantastic short term memory, or take a screenshot of the DB double check their code.</p>
 					<iframe src="https://player.vimeo.com/video/435577183" width="450" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 				</section>
 				<section>
-					<h3>Problem 2: Working with functions</h3>
+					<h3>2. To read/write in functions</h3>
 					<iframe src="https://player.vimeo.com/video/435578880" width="727" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-					<p>Users can create functions, which will be accessible throughout their own project. But these functions are accessible within the main space; they exist in their own little world isolation. They are not accessible from the code that uses it, and only reached through clicking on a link in the sidebar.</p>
+					<p>Developers can create functions, which will be accessible throughout their own project. But these functions are NOT accessible within the main space; they exist in their own little world. Functions are not accessible from the code that uses it, and only reached through clicking on a link in the sidebar.</p>
 				</section>
 				<section>
-					<h3>Problem 3: Understanding workers</h3>
-					<p>Workers are like async functions that live in the main space. But that doesn't make working with them any easier.</p>
+					<h3>3. To understand workers</h3>
+					<p>Workers are like async functions, which appears in the main space. But that doesn't make working with them any easier.</p>
 					<img src="worker_diff_inputs.gif" style="height: 200px; width: auto;" />
-					<p> Unlike functions they take only one argument <code>event</code> of type Any. The user has to drag them near their code to determine its expected input is, just like DBs. But unlike DBs, which have a set schema, the user must read through the code to figure out what is the expected type and structure of the input.</p>
+					<p> Unlike functions they take only one argument <code>event</code> of type Any. The developer has to drag them near their code to determine its expected input, just like DBs. But unlike DBs, which have a set schema, the developer must read through the code to figure out what is the expected type and structure of the input.</p>
 				</section>
 				<section id="analyze"
 					data-background-image="nyc.jpeg"
@@ -109,7 +109,7 @@
 
 				</section>
 				<section id="ideate">
-					City planning! (Proccess)
+						<h2>City planning!</h2>
 					
 					- What are the path a trace can take?
 					- How do we show the navigation of the paths, enable backtracking, and forward going?
