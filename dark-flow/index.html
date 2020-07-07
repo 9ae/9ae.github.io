@@ -123,10 +123,10 @@
 					<img src="path.png" style="height: 50px;" />
 					<h4>Adding points along the path</h4>
 					<table>
-						<tr><td style="padding: 0;"><img src="start-path-1.png" style="max-width:100%;max-height:100%;" /></td><td style="padding: 0;"><img src="start-path-2.png" class="fragment" data-fragment-index="1" style="max-width:100%;max-height:100%;"/></td></tr>
+						<tr><td style="padding: 0; height:315px;"><img src="start-path-1.png" style="max-width:100%;max-height:100%;" /></td><td style="padding: 0; height:315px;"><img src="start-path-2.png" class="fragment" data-fragment-index="1" style="max-width:100%;max-height:100%;"/></td></tr>
 					</table>
 
-					<p>We start off with <code>POST /track</code>, its code it references <code>Habits DB</code> with <code>DB::get</code>. And emits an event to <code>"didHabit" worker</code>. <span class="fragment" data-fragment-index="1">So we add them as references.</span></p>
+					<p>We start off with <code>POST /track</code>, its code it references <code>Habits DB</code> with <code>DB::get</code>. And emits an event to <code>"didHabit" worker</code>. <span class="fragment" data-fragment-index="1">So we add them as references. <em>References allow the developer to preview or go down the path in their program's control flow.</em></span></p>
 				</section>
 				<section>
 					<img src="path.png" style="height: 50px;" />
@@ -136,14 +136,16 @@
 				</section>
 				<section>
 					<img src="path.png" style="height: 50px;" />
-					<h4>Changing focus</h4>
+					<h4>Going down the path</h4>
 					<img src="focus-worker.png" />
-					<p>When they click into the reference, the screen now show all its contents and focus on it. Adding its own references to the right. In our navigation analogy, you have made your turn and now directions for the next steps are visible. </p>
+					<small>With <code>didHabit worker</code> in focus, the developer should still see most of <code>POST /track</code>. The fade out on the left side is for aesthetic balance on this slide show.</small>
 
+					<p>When they click into the reference, the screen now show all its contents and focus on it. Adding its own references to the right. In our navigation analogy, you have made your turn and now directions for the next steps are visible. </p>
 				</section>
-				
 				<section>
-					<!-- IMG path with horizontal path across -->
+					<q>Are we there yet?</q>
+					
+					<p>Have we mapped out all the paths we want to capture? When <code>POST /track</code> gets hit, most of its execution is offloaded to a queue (the <code>"didHabit" worker</code>). The worker will add an entry to the <code>Tracker DB</code>, and <em>send you a meme</em> if you've meet your weekly goal.<p>
 
 					<table style="width: 100%;">
 						<tr>
@@ -151,8 +153,31 @@
 							<td><img src="worker_didhabit.png" /></td>
 						</tr>
 					</table>
-					What is it that is missing? <em class="fragment">Send meme or quote!</em>
-					<!-- IMG with fx added -->
+					<p>What is it that is missing? <em class="fragment">Send meme or encouragement!</em></p>
+				</section>
+				<section>
+					<p>Seems like they are in functions. One of the problems our developers face is:</p>
+					<blockquote><small>Functions are NOT accessible within the main space; they exist in their own little world. Functions are not accessible from the code that uses it, and only reached through clicking on a link in the sidebar.</small></blockquote>
+					<table>
+						<tr><td style="padding: 0; height:315px;"><img src="worker_hi_fn-1.jpg" style="max-width:100%;max-height:100%;" /></td>
+							<td style="padding: 0; height:315px;"><img src="worker_fn_refs.png" class="fragment" data-fragment-index="1" style="max-width:100%;max-height:100%;"/></td></tr>
+					</table>
+					<h4  class="fragment" data-fragment-index="1">Let's references for functions!</h4>
+				</section>
+				<section>
+					<q>Where else are there functions? Let's add those too!</q>
+					<table>
+					<tr><td style="padding: 0; height:315px;"><img src="post_hi_fn.jpg" style="max-width:100%;max-height:100%;" /></td>
+						<td style="padding: 0; height:315px;"><img src="start-path-3.png" class="fragment" data-fragment-index="1" style="max-width:100%;max-height:100%;"/></td></tr>
+				</table>
+				</section>
+				<section data-transition="fade-out">
+					<h4>Now, we can go into the code of functions too</h4>
+					<img src="focus_fn.png" />
+				</section>
+				<section data-transition="fade-in">
+					<h4>And all calls to the function appear on the left</h4>
+					<img src="focus_fn-allrefs.png" />
 				</section>
 				<section>
 					What to show? (Street signs... "Rest Stop in 400 km. Has gas station, Wendy's etc.")
