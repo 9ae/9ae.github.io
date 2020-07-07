@@ -105,31 +105,58 @@
 							The you sets a weekly goal for how many times you want to do the activity (ie: run 3 times a week). When you update with a habit done, the API checks to see if you've reached your goal. If you have, you'll get a text with a cute meme, otherwise you'll just get an motivational quote instead.
 						</p>
 				</section>
-				<section>
-
-				</section>
 				<section id="ideate">
 						<h2>City planning!</h2>
-					
-					- What are the path a trace can take?
-					- How do we show the navigation of the paths, enable backtracking, and forward going?
-					- What do information do we show?
+
+						<ul>In order to create a useful interface for writing & editing code, we must answer the following questions:
+							<li>What are all the possible paths a trace can take once an endpoint recieves the data?</li>
+							<li>How do we show the navigation of the through these paths?</li>
+							<li>What do information should be available for each component type?</li>
+						</ul>
 				</section>
 				<section>
-					Architecture diagram
-					<img src="habits_map.jpg" />
+					<h3>Let's consider one path</h3>
+					<img src="path.png" style="height: 50px;" />
+					<p><code>POST /track</code> gets hit it when you've completed a habit. Most of the execution is offloaded to a queue (the <code>"didHabit" worker</code>). The worker will add an entry to the <code>Tracker DB</code>, and <em>send you a meme</em> if you've meet your weekly goal.</p>
 				</section>
 				<section>
-					Go down a single path. How can we map out the course your data will take trough the codebase?
-					
+					<img src="path.png" style="height: 50px;" />
+					<h4>Adding points along the path</h4>
+					<table>
+						<tr><td style="padding: 0;"><img src="start-path_01.jpg" style="max-width:100%;max-height:100%;" /></td><td style="padding: 0;"><img src="start-path_02.jpg" class="fragment" data-fragment-index="1" style="max-width:100%;max-height:100%;"/></td></tr>
+					</table>
+					<p>We start off with <code>POST /track</code>, its code it references <code>Habits DB</code> with <code>DB::get</code>. And emits an event to <code>"didHabit" worker</code>. <span class="fragment" data-fragment-index="1">So we add them as references.</span></p>
+				</section>
+				<section>
+					<img src="path.png" style="height: 50px;" />
+					<h4>Seeing a head</h4>
+					<img src="expand-worker-1.png" />
+					<p>When the developer hovers over a reference that contains code (functions and workers), they will be able to see a preview of the code. Just like when your GPS tells you "in 500 km turn right into Blueberry Lane".</p>
+				</section>
+				<section>
+					<img src="path.png" style="height: 50px;" />
+					<h4>Changing focus</h4>
+					<img src="focus-worker-1.png" />
+					<p>When they click into the reference, the screen now show all its contents and focus on it. Adding its own references to the right. In our navigation analogy, you have made your turn and now directions for the next steps are visible. </p>
+
+				</section>
+				
+				<section>
 					<!-- IMG path with horizontal path across -->
-					<img src="post_track.png" />
-					<img src="worker_didhabit.png" />
+
+					<table style="width: 100%;">
+						<tr>
+							<td><img src="post_track.png" /></td>
+							<td><img src="worker_didhabit.png" /></td>
+						</tr>
+					</table>
 					What is it that is missing? <em class="fragment">Send meme or quote!</em>
 					<!-- IMG with fx added -->
 				</section>
 				<section>
-					What to show? (Street signs... "Traffic light in 400 km")
+					What to show? (Street signs... "Rest Stop in 400 km. Has gas station, Wendy's etc.")
+					Not the POI, but an abstraction of the POI that would be of interest for you.
+
 					A well planned city are designed with the behavior of it's residents in mind.
 					Let's look at our users.
 					
