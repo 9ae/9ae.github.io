@@ -19,6 +19,12 @@
 		<div class="reveal">
 			<div class="slides">
 				<section><h1>Navigate your codebase</h2></section>
+					<section>
+						<h2>Roles & Responsibilities</h2>
+
+						<p>For this project I did the <em>problem analysis</em>, <em>user interaction flow</em>, <em>wireframes</em>, <em>interactive designs</em>, and <em>MVP implementation</em>. The CTO helped me cut scope for the MVP and implemented follow-up changes.</p>
+
+					</section>
 				<section id="empathize">
 					<h2>Developers have trouble getting around in their code base</h2>
 					<iframe src="https://player.vimeo.com/video/435405334" width="640" height="364" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -128,12 +134,13 @@
 
 					<p>We start off with <code>POST /track</code>, its code it references <code>Habits DB</code> with <code>DB::get</code>. And emits an event to <code>"didHabit" worker</code>. <span class="fragment" data-fragment-index="1">So we add them as references. <em>References allow the developer to preview or go down the path in their program's control flow.</em></span></p>
 				</section>
-				<section>
+			<!--<section>
 					<img src="path.png" style="height: 50px;" />
 					<h4>Seeing ahead</h4>
 					<img src="expand-worker.png" />
 					<p>When the developer hovers over a reference that contains code (functions and workers), they will be able to see a preview of the code. Just like when your GPS tells you "in 500 km turn right into Blueberry Lane".</p>
 				</section>
+			-->
 				<section>
 					<img src="path.png" style="height: 50px;" />
 					<h4>Going down the path</h4>
@@ -174,22 +181,39 @@
 				<section data-transition="fade-out">
 					<h4>Now, we can go into the code of functions too</h4>
 					<img src="focus_fn.png" />
+					<h4 style="display: none;">And all calls to the function appear on the left</h4>
 				</section>
 				<section data-transition="fade-in">
-					<h4>And all calls to the function appear on the left</h4>
+					<h4 style="display: none;">Now, we can go into the code of functions too</h4>
 					<img src="focus_fn-allrefs.png" />
+					<h4>And all calls to the function appear on the left</h4>
 				</section>
 				<section>
-					What to show? (Street signs... "Rest Stop in 400 km. Has gas station, Wendy's etc.")
-					Not the POI, but an abstraction of the POI that would be of interest for you.
+					<h3>What should we show in the references?</h3>
+					<p>So far references are just boxy links, how can we use the space to provide useful information to the developer?</p>
 
-					A well planned city are designed with the behavior of it's residents in mind.
-					Let's look at our users.
-					
-					<iframe src="https://player.vimeo.com/video/435405240" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-					- Drag dbs around to check schema
-					- Drag worker's around to see expected object
-					- Keep going to Fns to see what it does to your data (and also params at that time was not showing in the docstrings)
+					<img src="reststop_good.jpg" style="height:240px;" />
+					<p>When we look at rest stop signs in highways, they provide information of what's coming up ahead. Sign designers anticapate a driver's needs as they are passing by. Do they need a bathroom break? More gas? A snack? <em>What are our developer's needs?</em></p>
+
+					<p><small>Reach out <a href="https://twitter.com/aliceaskwhy" target="_blank">@aliceaskwhy</a>, if you want to share badly designed highway signs.</small></p>
+				</section>
+				<section>
+					<blockquote>Developers pull databases closer to their code to double check its' schema.</blockquote>
+					<img src="post-db-refs.png" />
+				</section>
+				<section>
+					<blockquote>
+						Developers want to see what happesn to their code passed through the function.
+					</blockquote>
+					<img src="post-fn-refs.png" />
+					<p>We can derive the return type from the code and show the function's type signature.</p>
+				</section>
+				<section>
+					<blockquote>
+						Developers want to know what the worker expects for input
+					</blockquote>
+					<img src="post-worker-refs.png" />
+					<p>We can derive the expected input from the worker's code by seeing if there's field access to the <code>event</code> variable or it is passed into function as a typed argument</p>
 				</section>
 				<section id="design">
 					Proposed Solution!
@@ -206,10 +230,15 @@
 					Patch up constraint. Just use backwards and foward arrows.
 					<!-- IMG screencap what we have for references now -->
 				</section>
+				<section>
+					1. Hover states here
+					2. Add affordance in expanded code to be collapsed again.
+				</section>
 				<section id="build">
 					MVP: Scope cuts
 					- Don't show the worker's event expected shape (because it involves complex programming)
 					- Don't expand functions or other code, and just link to it.
+					- Only show references for HTTP handlers (dbs and user functions will have their references added in later.)
 				</section>
 				<section id="test">
 					Testing!
@@ -219,7 +248,7 @@
 					- functions going to another place entirely, and not being able to see code side by side.
 					- The arrows are a little too subtle.
 				</section>
-				<section>
+				<section id="revise">
 					Since the side by side is a result of scope cut. we do plan to have it eventually, let's focus on our poor solution to LVs.
 				</section>
 				<section>
@@ -230,7 +259,10 @@
 					<!-- GIF Lv top with drop shadow, and expanding if needed -->
 					3. Move live values to above the cursor
 				</section>
-				<section>Retrospective
+				<section>
+					<p>Later another engineer followed the implemented pattern I used for HTTP handlers and added references for: DBs, user functions, workers, CRON</p>
+				</section>
+				<section id="retro">Retrospective
 					- considered constraints first
 					- should have fought harder for viewing functions side by side
 					- Have a plan to figure out when we will bring the learnings and follow up changes instead of leaving them hanging as just vaporware.
