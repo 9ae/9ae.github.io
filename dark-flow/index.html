@@ -221,8 +221,8 @@
 
 					<p>Let's bring some color consistency and typographic hierarchy.</p>
 					<table><tr>
-						<td valign="center"><img src="refs_types.png" /></td>
-						<td valign="center"><img src="refs_designed.png" height="315" /></td>
+						<td style="vertical-align: middle;"><img src="refs_types.png" /></td>
+						<td style="vertical-align: middle;"><img src="refs_designed.png" height="280" /></td>
 						</tr>
 					</table>
 
@@ -242,45 +242,58 @@
 				</section>
 				<section>
 					<h3>Putting it all together</h3>
-					<!-- use DB that is referenced several times in example -->
+					<img src="hover.gif" />
 					<small>Hovering over references will highlight where they are used in the code.</small>
 				</section>
 				<section>
-					<!-- click into worker: focus center, fade caller, references show from behind -->
+					<img src="goto.gif" />
 					<small>If they are functions or workers, the code inside will also show. Clicking into them allows you to edit their code.</small>
 				</section>
 				<section id="build">
-					MVP: Scope cuts
-					- Don't show the worker's event expected shape (because it involves complex programming)
-					- Don't expand functions or other code, and just link to it.
-					- Only show references for HTTP handlers (dbs and user functions will have their references added in later.)
+					<h2>Making it real!</h2>
+					<p>When it came down to build, we had to trim down our requirement. And get an MVP out for users to test and play with. So we had to cut scope.</p>
+
+					<ul>
+						<li>Only show references for HTTP code blocks. Worker and function refenrences will be added in later</li>
+						<li>Don't show a worker's event structure (because it involves complex program analysis)</li>
+						<li>Instead of expanding to see the code in workers and functions, just jumpt to them their location in the project space.</li>
+					</ul>
 				</section>
 				<section id="test">
-					Testing!
-					Over users loved it. We learned references also provide them a useful way to depreciate (DBs, functions, etc.)
+					<h2>Field test</h2>
+					<p>Overall the feedback was positive. New developers said pointed out it was one of the features they thought made Dark unique. Existing developers event discovered an unintended use case. <em>They used it to depreciate functions and migrate DB schemas.</em></p>
 
-					But they didn't like:
-					- functions going to another place entirely, and not being able to see code side by side.
-					- The arrows are a little too subtle.
+					<ul>But there were several things they didn't like:
+						<li>The arrows, differentiating a reference as incoming or outgoing, are to subtle.</li>
+						<li>Viewing function code in another space is still disruptive to their workflow</li>
+						<li>They want to be able to see caller and reference code side by side.</li>
+					</ul>
 				</section>
 				<section id="revise">
-					Since the side by side is a result of scope cut. we do plan to have it eventually, let's focus on our poor solution to LVs.
+					<h2>Revisions</h2>
+					<img src="colorarrows.png" />
+					<small>A simple fix would be to color the arrow and box differently for incoming and outcoing references.</small>
+					<p>But the real cause of user confusion is because we threw everything to the right side, when we didn't want incoming references to overlap the live values. Let's look at how we can <em>solve our conflict with live values.</em></p>
 				</section>
 				<section>
-					<!-- IMG color refboxes differently -->
-					1. Easiest (color the arrows differently)
-					<!-- IMG fade out incoming to show live values -->
-					2. Fade away incoming referneces if editing (place them as top bread crumbs)
-					<!-- GIF Lv top with drop shadow, and expanding if needed -->
-					3. Move live values to above the cursor
+						<h3>Idea 1: Move it</h3>
+						<img src="lvabove.png" />
+						<p>We can move the live values into the code, and they would move above the cursor, appearing the line before. If the value is more than one line long, affordances can be added to expand and collapse it.</p>
 				</section>
 				<section>
-					<p>Later another engineer followed the implemented pattern I used for HTTP handlers and added references for: DBs, user functions, workers, CRON</p>
+					<h3>Idea 2: Show depending on mode</h3>
+					<p><small>The scope when reading live values is different from when they are looking at incoming references.</small></p>
+					<img src="just-refs.png" />
+					<small>A developer looks at incoming references to see its usage. The code (and consequentally live values) can be a black box. We don't need to show live values then.</small>
+
+					<img src="fade-ref.png" />
+					<small>When a developer edits code, they want to know what is happening to the data. We fade out the incoming references and show the live value.</small>
 				</section>
-				<section id="retro">Retrospective
-					- considered constraints first
-					- should have fought harder for viewing functions side by side
-					- Have a plan to figure out when we will bring the learnings and follow up changes instead of leaving them hanging as just vaporware.
+				<section id="retro"><h2>Retrospective</h2>
+
+					<p>After scope was cut, and we implemented references for workers and functions. We made no plan to implement the cut features nor the revisions.</p>
+
+					<p>Without moving our incoming references back to the left and showing code of the caller and function side by side. The map/navigation analogy is broken for this feature.</p>
 				</section>
 			</div>
 		</div>
