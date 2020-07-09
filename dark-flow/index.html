@@ -31,7 +31,7 @@
 					<p>Dark lays it's structural elements (code and data schemas) in floating boxes with no order to them. Developers spend alot of time panning, dragging, jumping around their project space. <em>Why do they do that?</em></p>
 				</section>
 				<section>
-					<h3>1. To check up on DB schemas</h3>
+					<h3>1. To check up on DB schemas</h3> 
 					<p>Developers spend a lot of time dragging databses close to the code that uses it. Because <code>DB::set</code> requires the data inserted to match the schema exactly.</p>
 					<iframe src="https://player.vimeo.com/video/435405240" width="505" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>.
 				</section>
@@ -181,13 +181,14 @@
 				<section data-transition="fade-out">
 					<h4>Now, we can go into the code of functions too</h4>
 					<img src="focus_fn.png" />
-					<h4 style="display: none;">And all calls to the function appear on the left</h4>
 				</section>
+				<!-- DO this later
 				<section data-transition="fade-in">
 					<h4 style="display: none;">Now, we can go into the code of functions too</h4>
 					<img src="focus_fn-allrefs.png" />
-					<h4>And all calls to the function appear on the left</h4>
+					<h4>And all calls to the function appear</h4>
 				</section>
+				-->
 				<section>
 					<h3>What should we show in the references?</h3>
 					<p>So far references are just boxy links, how can we use the space to provide useful information to the developer?</p>
@@ -216,23 +217,37 @@
 					<p>We can derive the expected input from the worker's code by seeing if there's field access to the <code>event</code> variable or it is passed into function as a typed argument</p>
 				</section>
 				<section id="design">
-					Proposed Solution!
-					<!-- IMG from previous wireframe now show with data -->
-					Interactive example. HTTP -> Worker -> Fn
-					<!-- GIF expand references on hover (and highligh where it's used in code) -->
-					<!-- GIF focus on click into, with it's own references and moving over -->
+					<h2>Designing our city</h2>
+
+					<p>Let's bring some color consistency and typographic hierarchy.</p>
+					<table><tr>
+						<td valign="center"><img src="refs_types.png" /></td>
+						<td valign="center"><img src="refs_designed.png" height="315" /></td>
+						</tr>
+					</table>
+
+					<p>Now how should we arrange our references in relation to the code?</p>
 				</section>
 				<section>
-					Constraint! Live values
-					<!-- IMG of live values on the left -->
+					<h3>Considering constraints</h3>
+					<img src="path.png" style="height: 50px;" />
+					<p>Going down the path horizontally might not work. <em>Live values are on the left!</em></p>
+					<img src="live_values.png" />
+					<p>Since they are a core value proposition of the product, we can't just move them without deeper consideration on my side and a lot time convincing the team. I decided to save my energy.</p>
 				</section>
 				<section>
-					Patch up constraint. Just use backwards and foward arrows.
-					<!-- IMG screencap what we have for references now -->
+					<p>Maybe we can just keep all the references on the right side, with <em>incoming and outgoing arrows</em> for now. We'll think more about their ideal placement later.</p>
+					<img src="lv_with_references.png" />
+					<h4>It is more important to bring the value of this feature to our users ASAP</h4>
 				</section>
 				<section>
-					1. Hover states here
-					2. Add affordance in expanded code to be collapsed again.
+					<h3>Putting it all together</h3>
+					<!-- use DB that is referenced several times in example -->
+					<small>Hovering over references will highlight where they are used in the code.</small>
+				</section>
+				<section>
+					<!-- click into worker: focus center, fade caller, references show from behind -->
+					<small>If they are functions or workers, the code inside will also show. Clicking into them allows you to edit their code.</small>
 				</section>
 				<section id="build">
 					MVP: Scope cuts
