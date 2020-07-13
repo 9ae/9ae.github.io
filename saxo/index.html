@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Expressive Therapy with Saxo</title>
+
+		<link rel="stylesheet" href="../lib/reset.css">
+		<link rel="stylesheet" href="../lib/reveal.css">
+		<link rel="stylesheet" href="../lib/theme/sky.css" id="theme">
+		<style type="text/css">
+			section.dark, section.dark h3, section.dark p {
+				color: aliceblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+						<h1>Saxo</h1>
+						<p>An expressive therapy app</p>
+				</section>
+				<section>
+					<h2>Process</h2>
+					<ul>
+						<li>Research: user interviews, affinity map, storyboard, persona, empathy map</li>
+						<li>Test prototype & revise</li>
+						<li>Visual Design: mood board, style guide, animations, & prototype</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Problem Statement</h2>
+					<blockquote>Therapy sessions can be expensive, how might we provide the benefits of expressive therapy in the comfort of your own space for free?</blockquote>
+				</section>
+				<section>
+					<h3>User research</h3>
+					<p><small>I surveyed 10 people and interviewed 3 people, who enjoy doing some form of art for leisure. And also learn about people’s relationship with mental health.</small></p>
+					<p>Learned about depression & anxiety cycle, and art therapy helps people struggling with depression.</p>
+					<p>Art heals, but only when it's non-competitive, done in private, in the moment.</p>
+				</section>
+				<section>
+					<small>I organized the research findings in an affinity map</small>
+					<img src="affinity.jpg" />
+				</section>
+				<section>
+					<h3>Brainstorming</h3>
+					<blockquote>‘Body introspection’, a phrase one interviewee used stucked in my mind. They spoke of the joy from dancing on their own.</blockquote>
+
+					<p> I decided to explore the relationship between movement and music.</p>
+				</section>
+				<section>
+					<img src="storyboard.png" style="height:500px" />
+					<small>Storyboard of someone improvising music for their mindfulness activity</small>
+				</section>
+				<section>
+					<h3>Constraints</h3>
+					<p>How can I prototype & test an interaction that relies on sound and motion in 2 days?</p>
+					<p>I lacked motion sensor chips and Arduino while living abroad</p>
+					<p>The sounds made must sound good, no matter how the user moves</p>
+				</section>
+				<section>
+					<p>But all I need to gauge people’s emotion response to the act of generating music by moving around.</p>
+					<br /><br />
+					<h4 class="fragment" data-fragment-index="1">We can fake it!</h4>
+					<p class="fragment" data-fragment-index="1"><small>My Android phone had an accelerometer and gyroscope!</small></p>
+					<p class="fragment" data-fragment-index="1"><small>I download an obscure song. It will play when the device is in motion, and paused when still.</small></p>
+				</section>
+				<section>
+					<h2>Testing</h2>
+					<iframe src="https://player.vimeo.com/video/260991827" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+				</section>
+				<section>
+					<h3>Learnings</h3>
+					<p>Using an unknown song did not fool people into thinking that they were improvising music.</p>
+					<p>Nonetheless some users expressed the remixing popular songs would be just as fun as making new songs.</p>
+				</section>
+				<section>
+					<h3>Revisions</h3>
+					<p>If want to make an improv music app, there will be many untested wireframes still left to design.</p>
+					<p>I decided to pivot and market it as a conducting music practice to help people struggling with anxiety feel in more control.</p>
+				</section>
+				<section>
+					<img src="empathy.png" style="height: 500px;" />
+					<small>Iceberg of thoughts and feelings from someone about to have a panic attack</small>
+				</section>
+				<section>
+					<img src="revise-wires.png" style="height: 500px;" />
+					<p>After revising a few wireframes, it's time to move on to visual design</p>
+				</section>
+				<section>
+					<img src="mood.jpeg" />
+					<small>The UI of this project is inspired by electric glows & spotify's May 4th easter egg.</small>
+				</section>
+				<section class="dark" data-background-color="#1c1e22">
+					<h3>Establish a style guide</h3>
+					<img src="style-guide.png" style="height: 500px;" />
+				</section>
+				<section class="dark" data-background-color="#1c1e22">
+					<img src="bundle.gif" style="height: 500px;" />
+					<img src="choose_song.jpg"  style="height: 500px;" />
+					<p>User adds songs to their bundle to remix</p>
+				</section>
+				<section class="dark" data-background-color="#1c1e22">
+					<img src="play-animation.gif" style="height: 500px;" />
+					<p>Remix song by moving their arms like a conductor.</p>
+				</section>
+				<section class="dark" data-background-color="#1c1e22">
+					<img src="song_complete.png"  style="height: 500px;" />
+					<img src="song_details.png"  style="height: 500px;" />
+					<p>Afterwards we check in with how they are feeling</p>
+				</section>
+				<section>
+					<h2>Retrospective</h2>
+					<ul>Given more time and hindsight, I would...
+						<li>Asked permission to take pictures of people’s reactions when I asked them to move my phone and test out the crude prototype. They were glorious.</li>
+						<li>Gave myself more time, so I may prototype the improv mode.</li>
+				</section>
+			</div>
+		</div>
+
+		<script src="../lib/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				hash: true,
+				progress: true,
+			});
+		</script>
+	</body>
+</html>
