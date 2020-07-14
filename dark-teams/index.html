@@ -14,6 +14,10 @@
 				box-shadow: #e5e5ea 0 1px 6px 2px;
 		}
 
+		.reveal section.light {
+			color:  #7cafc2;
+		}
+
 		.reveal img.light {
 			width:600px;
 		}
@@ -42,36 +46,38 @@
 				</section>
 				<section id="breakdown"><h3>Let's breakdown it down</h3>
 					<ol>For teamwork to be possible within the editor, users need to be able to:
-					<li class="fragment">Learn about the codebase's history. <span class="page-only">They should be able to find out who to ask for help.</span></li>
+					<li class="fragment">Learn about the codebase's history.<aside class="notes inline"> They should be able to find out who to ask for help.</aside></li>
 					<li class="fragment">Communicate about their code in the editor.</li>
-					<li class="fragment">Make changes to their codebase without changing production. <span class="page-only">They need to package their changes for another to review or a deploy.</span></li>
+					<li class="fragment">Make changes to their codebase without changing production. <aside class="notes inline">They need to package their changes for another to review or a deploy.</span></li>
 					</ol>
 				</section>
 				<section>
 					<h3>Out of scope</h3>
 					<aside class="notes">Why we solve to solve those three problems and not others?</aside>
 					<ul>Other concerns I thought of but tabled were:
-						<li class="fragment"><em>Merge conflicts</em><span class="page-only">- there might be some usability issues we need to consider later. Our main bottleneck is a backend engineering concern.</span></li>
-						<li class="fragment"><em>Pair-programming</em><span class="page-only"> - maybe something down the line. Right now users will have to do it through a third party voice/video service.</span></li>
-						<li class="fragment"><em>Forking and contributing common code</em><span class="page-only"> - to be addressed with our package manager and embed darklang code project. Right now we will focus on users working on the same project.</span></li></ul>
+						<li class="fragment">Merge conflicts<aside class="notes inline"> - there might be some usability issues we need to consider later. Our main bottleneck is a backend engineering concern.</aside></li>
+						<li class="fragment">Pair-programming<aside class="notes inline"> - maybe something down the line. Right now users will have to do it through a third party voice/video service.</aside></li>
+						<li class="fragment">Forking and contributing common code<aside class="notes inline"> - to be addressed with our package manager and embed darklang code project. Right now we will focus on users working on the same project.</aside></li></ul>
 				</section>
 								<!-- Goal 2 -->
 								<section id="solve2">
 									<h2>Solving: What does this code do?</h2>
-									<blockquote>users need to be able to communicate about their code in the editor.</blockquote>
+									<blockquote>Users need to be able to communicate about their code in the editor.</blockquote>
 								</section>
 								<section>
 									<h3>Constraints</h3>
 									<p>Right now the only way for users to add comments in their code is with unassigned strings.</p>
 									<img src="teamwork-2-a.png" style="height:250px; width:auto;" />
 									<aside class="notes">Comments are done by just having string literals, there is no clear visual distinction between them and other strings in the code.</aside>
-									<p><em>It is a workaround hack; not a language feature</em></p>
+									<p class="center"><em>It is a workaround hack; not a language feature</em></p>
 								</section>
 								<section>
 									<h4>Can we have simply implement comments?</h4>
-									<p> Maybe make <code>#</code> a keyword to create a comment line or block? We can but it will go against our founder's language design principle.</p>
+									<p> Maybe make <code>#</code> a keyword to create a comment line or block?</p>
 				
-				<p class="fragment">In which it states, content not core to the main flow logic of the code should not expand the code vertically. This is why we have <a href="https://darklang.github.io/docs/unique-aspects#functions-that-use-error-rail" target="_blank">Error Rails</a>, instead of letting users do their own error handling within the main flow of the logic.</p>
+				<p class="fragment">But it will violate our founder's language design principle.
+					<aside class="notes inline">
+					In which it states, content not core to the main flow logic of the code should not expand the code vertically. This is why we have <a href="https://darklang.github.io/docs/unique-aspects#functions-that-use-error-rail" target="_blank">Error Rails</a>, instead of letting users do their own error handling within the main flow of the logic.</aside></p>
 				
 				<p class="fragment"><em>How can we allow for users to add comments to their code?</em></p>
 								</section>
@@ -79,26 +85,26 @@
 									<ul>People use comments for 2 reasons:
 				
 				<li>To communicate about a complex chunk of code in a natural language.</li>
-				<li>To temporarily disable a chunk of code during execution. <span class="page-only">This can already be achieved with <a href="https://darklang.github.io/docs/feature-flags" target="_blank">Feature Flags</a>.</span></li></ul>
+				<li>To temporarily disable a chunk of code during execution. <aside class="notes inline">This can already be achieved with <a href="https://darklang.github.io/docs/feature-flags" target="_blank">Feature Flags</a>.</aside></li></ul>
 				
 				<aside class="notes">We can ignore the second reason for now since it is addressed by an existing feature. Let's focus on the first use case adding meta-information about the code to another person.</aside>
 								</section>
 								<section><h3>Arriving at a solution</h3>
 									<aside class="notes">Dark has borrowed many ideas from document editor experiences. I think like Airtable is trying to bring the power of databases to the general public by making it appear like a spreadsheet. Dark aims to democratize coding by borrowing rich text editing experiences; instead of solely deriving from the text editors users use to write code.</aside>
-									<p><em>Why don't we take page from collaborative document editing software?</em></p>
+									<p>Why don't we take page from collaborative document editing software?</p>
 									<img src="teamwork-2-b.png" />
 									<aside class="notes">The comments will appear to the side of the document without obstructing the reading experience of the main document.</aside>
 								</section>
-								<section  data-background-color="#efeff4"><h3>Solution</h3>
-									<p class="font-blue">When the user selects a code chunk they can add a comment to it.</p>
+								<section  data-background-color="#efeff4"  class="light"><h3>Solution</h3>
+									<p class="center">When the user selects a code chunk they can add a comment to it.</p>
 									<img src="select_code.png"  class="light" />
 								</section>
-								<section  data-background-color="#efeff4">
-									<p class="font-blue">They can type in a comment and collapse to hide it.</p>
+								<section  data-background-color="#efeff4"  class="light">
+									<p class="center">They can type in a comment and collapse to hide it.</p>
 									<img src="comment-opened.png"  class="light" />
 								</section>
-								<section  data-background-color="#efeff4">
-									<p class="font-blue">Collapsed comment will just show as a marker, and be read on click.</p>
+								<section  data-background-color="#efeff4"  class="light">
+									<p class="center">Collapsed comment will just show as a marker, and be read on click.</p>
 									<img src="comment-collapsed.png"  class="light" />
 								</section>
 
@@ -110,7 +116,7 @@
 				<section>
 					<p>With the popular demand for collaboration features, we have the ability to see other users who are on the same project.</small>
 					<img src="teamwork-1-b.png" />
-					<aside class="notes">If another user is editing the a code block on the same canvas you are on, their avatar will show to the right.</aside>
+					<aside class="notes">If another user is editing the a code block on the same project space you are on, their avatar will show to the right.</aside>
 				</section>
 				<!--
 				<section>
@@ -141,15 +147,15 @@
 					<blockquote><em>Introducting Layers!</em> As we add more features to Dark, we must give affordances for users to see different things, when performing different tasks. Not everything needs to be on the screen at all once. Layers help us reduce visual noise and solves out our no-space problem.
 					</blockquote>
 				</section>
-				<section data-background-color="#efeff4">
+				<section data-background-color="#efeff4" class="light">
 					<img src="story-2.png" class="light" />
-					<p class="font-blue">By activating the change log layer, users can see who edit last.</p>
+					<p class="center">By activating the change log layer, users can see who edit last.</p>
 				</section>
 
 				<!-- Goal 3 -->
 				<section id="solve3">
 					<h2>Solving: How do I edit code without affecting production?</h2>
-					<aside class="notes">All Dark code is already in production, everything a user write is immediately deployed. There are no local or staging environments.</aside>
+					<aside class="notes">All Dark code is already in production, everything a user writes is immediately deployed. There are no local or staging environments.</aside>
 
 					<blockquote>Users need to be able to make changes to their codebase without affecting their end-user immediately. They need to package their changes for another to review or a deploy</blockquote>
 					
@@ -161,46 +167,47 @@
 					<img src="teamwork-3-a.png" />
 				</section>
 				<section>
-					<p>But new features or fixes often span across multiple parts of the codebase.</p>
+					<div>But new features or fixes often span across multiple parts of the codebase.</div>
 					<aside class="notes">For example, let's say they add a new field to a database. They have to update POST endpoints to include the new field as input. Anywhere that performs <code>SELECT *</code> on the schema will have to handle the new column being fetched.</aside>
-					<p>We need a way for users to batch changes together.</p>
+					<div>We need a way for users to batch changes together.</div>
 				</section>
 				<section>
-					<h4>How can we extend feature flags to group changes together and allow someone to review all changes associated with the new feature?</h4>
+					<blockquote>How can we extend feature flags to group changes together and allow someone to review all changes associated with the new feature?</blockquote>
 					<ol>To do so it would need to do two things:
 					<li>Provide support for batching changes under a single feature flag.</li>
-					<li>Provide support to review the changes in in a feature flag<span class="page-only">, UI to request changes or approve changes. And also support for deploying changes either immediately on on a gradual basis.</span></li>
+					<li class="fragment">Provide support to review the changes in in a feature flag<aside class="notes inline">, UI to request changes or approve changes. And also support for deploying changes.</aside></li>
 					</ol>
 				</section>
-				<section  data-background-color="#efeff4"><h3>Solution</h3>
-					<p class="font-blue">When the user select a semantically valid code chunk, they can feature flag it!</p>
+				<section  data-background-color="#efeff4"  class="light"><h3>Solution</h3>
+					<p class="center">When the user select a semantically valid code chunk, they can feature flag it!</p>
 					<img src="select_code.png"  class="light" />
 				</section>
-				<section  data-background-color="#efeff4">
-					<p class="font-blue">The code in the feature flag will only execute for fellow teammates who enabled this feature flag. Their end-users will still get the production program.</p>
+				<section  data-background-color="#efeff4"  class="light">
+					<p class="center">The code in the feature flag will only execute for fellow teammates who enabled this feature flag. Their end-users will still get the production program.</p>
 					<img src="ff-new.png"  class="light" />
 				</section>
-				<section  data-background-color="#efeff4">
-					<p class="font-blue">Feature flag name field autocompletes with names of active feature flags. Or the user can enter a unique name to create a new feature flag.</p>
+				<section  data-background-color="#efeff4"  class="light">
+					<p class="center">Feature flag name field autocompletes with names of active feature flags. Or the user can enter a unique name to create a new feature flag.</p>
 					<img src="story-4.png"  class="light" />
 				</section>
-				<section data-background-color="#efeff4">
-					<p class="font-blue">Since Dark's code is all online, multiple users can add to the same feature flag without having to push and pull branches. When they are working on a FF with multiple changes, a list of all the changes in that FF pops up.</p>
+				<section data-background-color="#efeff4"  class="light">
+					<p class="center">Multiple users can make changes to the same feature flag</p>
 					<img src="ff-multiusers.png"  class="light" />
+					<aside class="notes">Since Dark's code is all online, multiple users can add to the same feature flag without having to push and pull branches. When they are working on a FF with multiple changes, a list of all the changes in that FF pops up.</aside>
 				</section>
-				<section data-background-color="#efeff4">
-					<p class="font-blue">Once all changes has been agreed upon by the team. The feature flag is ready to go live!</p>
+				<section data-background-color="#efeff4"  class="light">
+					<p class="center"><aside class="notes inline">Once all changes has been agreed upon by the team. </aside>The feature flag is ready to go live!</p>
 					<img src="story-9.png"  class="light" />
 				</section>
 				<section>
 					<h3>Go live! (Rollout)</h3>
 					<blockquote>Rollout is the proccess in with code in the feature flag replaces existing code. After rollout is complete the flag becomes inactive</blockquote>
 					<ul>There are several different rollout options:
-						<li><b>Gradual rollout</b><span class="page-only"> will first execute this code for a certain percent of grandusers, and slowly increasing the percent until 100%. At any point during this rollout process, if reports of errors or other problems occur, users may pause this rollout process.</span></li>
+						<li class="fragment">Gradual rollout<aside class="notes inline"> will first execute this code for a certain percent of grandusers, and slowly increasing the percent until 100%. At any point during this rollout process, if reports of errors or other problems occur, users may pause this rollout process.</aside></li>
 
-					<li><b>Scheduled rollout</b><span class="page-only"> will have all 100% of grandusers use the new code at a specific date-time. ie: The hour of a week when granduser traffic is at lowest.</span></li>
+					<li class="fragment">Scheduled rollout<aside class="notes inline"> will have all 100% of grandusers use the new code at a specific date-time. ie: The hour of a week when granduser traffic is at lowest.</aside></li>
 
-					<li><b>Immediate rollout</b><span class="page-only"> will have Dark deploy the new code ASAP as soon as the user clicks the button.</span></li>
+					<li class="fragment">Immediate rollout<aside class="notes inline"> will have Dark deploy the new code ASAP as soon as the user clicks the button.</aside></li>
 					</ul>
 
 				</section>
@@ -214,42 +221,42 @@
 					<b>Feature Request:</b> After users sign up, send them a slack invite code in their welcome email. 
 					</blockquote>
 				</section>
-				<section data-background-color="#efeff4">
-					<p class="font-blue">Ryan opens the project's canvas. They read the code and comments other users had annotated.</p>
+				<section data-background-color="#efeff4" class="light">
+					<div>Ryan opens the project's space. <aside class="notes inline"> They read the code and comments other users had annotated.</aside></div>
 					<img src="story-1.png"  class="light" />
 				</section>
-				<section data-background-color="#efeff4">
-					<p class="font-blue">But there is one part that is an extremely complex part, and they see Tatianna wrote most of it.</p>
+				<section data-background-color="#efeff4"  class="light">
+					<div><aside class="notes inline">But there is one part that is an extremely complex part.</aside> They see Tatianna wrote most of it.</div>
 					<img src="story-2.png"  class="light" />
 				</section>
-				<section data-background-color="#efeff4">
-					<p class="font-blue">Ryan reaches out to Tatianna, and she walks them through the code. Tatianna helps Ryan, and they pair together to create a fix. She shows them how to create a feature flag.</p>
+				<section data-background-color="#efeff4"  class="light">
+					<div><aside class="notes inline">Ryan reaches out to Tatianna, and she walks them through the code. </aside> Tatianna helps Ryan, and they pair together to create a fix. She shows them how to create a feature flag.</div>
 					<img src="story-3.png"  class="light" />
 				</section>
-				<section data-background-color="#efeff4">
-					<p class="font-blue">Ryan adds more changes on top of Tatianna's feature flag</p>
+				<section data-background-color="#efeff4"  class="light">
+					<div>Ryan adds more changes on top of Tatianna's feature flag</div>
 					<img src="story-4.png"  class="light" />
 				</section>
-				<section data-background-color="#efeff4">
-					<p class="font-blue">Ryan packages all changes into the "slack integration" feature flag, and ask Adam to review it.</p>
+				<section data-background-color="#efeff4"  class="light">
+					<div>Ryan packages all changes into the "slack integration" feature flag, and ask Adam to review it.</div>
 					<img src="story-5.png"  class="light" />
 				</section>
-				<section data-background-color="#efeff4">
-					<p class="font-blue">Adam gets a notification about a new feature flag in the code base. He goes to review the changes.</p>
+				<section data-background-color="#efeff4"  class="light">
+					<div>Adam gets a notification about a new feature flag, and goes to review it.</div>
 					<img src="story-6.png"  class="light" />
 				</section>
-				<section data-background-color="#efeff4">
-					<p class="font-blue">Adam rejects the feature flag, requesting additional changes to Ryan's code.</p>
+				<section data-background-color="#efeff4"  class="light">
+					<div>Adam rejects the feature flag, requesting additional changes to Ryan's code.</div>
 					<img src="story-7.png"  class="light" />
 				</section>
-				<section data-background-color="#efeff4">
-					<p class="font-blue">Ryan makes suggested changes, and ask Adam to look at it again.</p>
+				<section data-background-color="#efeff4"  class="light">
+					<div>Ryan makes suggested changes, and ask Adam to look at it again.</div>
 					<img src="story-8.png"  class="light" />
 				</section>
-				<section data-background-color="#efeff4">
-					<p class="font-blue">Adam finally approves, and sets a rollout plan for midnight on Sunday.</p>
+				<section data-background-color="#efeff4"  class="light">
+					<div>Adam finally approves, and sets a rollout plan for midnight on Sunday.</div>
 					<img src="story-9.png"  class="light" />
-					<h4><em>Everyone is delighted and go out for Happy Hour!</em></h4>
+					<div class="font-pink">Everyone is delighted and go out for Happy Hour!</div>
 				</section>
 				<section id="future">
 					<h2>Future Considerations</h2>
