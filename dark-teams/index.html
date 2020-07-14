@@ -34,14 +34,14 @@
 				data-background-repeat="no-repeat"
 				data-background-opacity="0.6"
 				><h1 class="font-blue">Collaborate with teammates</h2></section>
-				<section id="empathize"><p>Dark was first built for one developer. But developers normally work in teams, and we struggled to get larger projects onboard because of our lack of support for a team's workflow.</p>
+				<section id="empathize"><p>Dark was first built for one user. But users normally work in teams, and we struggled to get larger projects onboard because of our lack of support for a team's workflow.</p>
 				<p class="fragment">For a New Year's hack day, I looked into what are the steps necessary to give us a UI for enabling users to collaborate with each.</p>
 				</section>
 				<section><h2>The Problem</h2>
-				<blockquote>Multiple developers will struggle to work on the same project because they don't know <span class="font-blue">who</span> made <span class="font-pink">what</span> changes where and <span class="font-green">how</span> they made it.</blockquote>
+				<blockquote>Multiple users will struggle to work on the same project because they don't know <span class="font-blue">who</span> made <span class="font-pink">what</span> changes where and <span class="font-green">how</span> they made it.</blockquote>
 				</section>
 				<section id="breakdown"><h3>Let's breakdown it down</h3>
-					<ol>For teamwork to be possible within the editor, developers need to be able to:
+					<ol>For teamwork to be possible within the editor, users need to be able to:
 					<li class="fragment">Learn about the codebase's history. <span class="page-only">They should be able to find out who to ask for help.</span></li>
 					<li class="fragment">Communicate about their code in the editor.</li>
 					<li class="fragment">Make changes to their codebase without changing production. <span class="page-only">They need to package their changes for another to review or a deploy.</span></li>
@@ -52,13 +52,13 @@
 					<aside class="notes">Why we solve to solve those three problems and not others?</aside>
 					<ul>Other concerns I thought of but tabled were:
 						<li class="fragment"><em>Merge conflicts</em><span class="page-only">- there might be some usability issues we need to consider later. Our main bottleneck is a backend engineering concern.</span></li>
-						<li class="fragment"><em>Pair-programming</em><span class="page-only"> - maybe something down the line. Right now developers will have to do it through a third party voice/video service.</span></li>
+						<li class="fragment"><em>Pair-programming</em><span class="page-only"> - maybe something down the line. Right now users will have to do it through a third party voice/video service.</span></li>
 						<li class="fragment"><em>Forking and contributing common code</em><span class="page-only"> - to be addressed with our package manager and embed darklang code project. Right now we will focus on users working on the same project.</span></li></ul>
 				</section>
 								<!-- Goal 2 -->
 								<section id="solve2">
 									<h2>Solving: What does this code do?</h2>
-									<blockquote>Developers need to be able to communicate about their code in the editor.</blockquote>
+									<blockquote>users need to be able to communicate about their code in the editor.</blockquote>
 								</section>
 								<section>
 									<h3>Constraints</h3>
@@ -71,7 +71,7 @@
 									<h4>Can we have simply implement comments?</h4>
 									<p> Maybe make <code>#</code> a keyword to create a comment line or block? We can but it will go against our founder's language design principle.</p>
 				
-				<p class="fragment">In which it states, content not core to the main flow logic of the code should not expand the code vertically. This is why we have <a href="https://darklang.github.io/docs/unique-aspects#functions-that-use-error-rail" target="_blank">Error Rails</a>, instead of letting developers do their own error handling within the main flow of the logic.</p>
+				<p class="fragment">In which it states, content not core to the main flow logic of the code should not expand the code vertically. This is why we have <a href="https://darklang.github.io/docs/unique-aspects#functions-that-use-error-rail" target="_blank">Error Rails</a>, instead of letting users do their own error handling within the main flow of the logic.</p>
 				
 				<p class="fragment"><em>How can we allow for users to add comments to their code?</em></p>
 								</section>
@@ -81,16 +81,16 @@
 				<li>To communicate about a complex chunk of code in a natural language.</li>
 				<li>To temporarily disable a chunk of code during execution. <span class="page-only">This can already be achieved with <a href="https://darklang.github.io/docs/feature-flags" target="_blank">Feature Flags</a>.</span></li></ul>
 				
-				<aside class="notes">We can ignore the second reason for now since it is addressed by an existing feature. Let's focus on the first use case adding meta-information about the code to the code.</aside>
+				<aside class="notes">We can ignore the second reason for now since it is addressed by an existing feature. Let's focus on the first use case adding meta-information about the code to another person.</aside>
 								</section>
 								<section><h3>Arriving at a solution</h3>
-									<aside class="notes">Dark has borrowed many ideas from document editor experiences. I think like Airtable is trying to bring the power of databases to the general public by making it appear like a spreadsheet. Dark aims to democratize coding by borrowing rich text editing experiences; instead of solely deriving from the text editors developers use to write code.</aside>
+									<aside class="notes">Dark has borrowed many ideas from document editor experiences. I think like Airtable is trying to bring the power of databases to the general public by making it appear like a spreadsheet. Dark aims to democratize coding by borrowing rich text editing experiences; instead of solely deriving from the text editors users use to write code.</aside>
 									<p><em>Why don't we take page from collaborative document editing software?</em></p>
 									<img src="teamwork-2-b.png" />
 									<aside class="notes">The comments will appear to the side of the document without obstructing the reading experience of the main document.</aside>
 								</section>
 								<section  data-background-color="#efeff4"><h3>Solution</h3>
-									<p class="font-blue">When the developer selects a code chunk they can add a comment to it.</p>
+									<p class="font-blue">When the user selects a code chunk they can add a comment to it.</p>
 									<img src="select_code.png"  class="light" />
 								</section>
 								<section  data-background-color="#efeff4">
@@ -105,7 +105,7 @@
 				<!-- Goal 1 -->
 				<section id="solve1">
 					<h2>Solving: Who wrote what where</h2>
-					<blockquote>Developers need to be able to learn about the codebase. They should be able to find out who to ask for help.</blockquote>
+					<blockquote>Users need to be able to learn about the codebase. They should be able to find out who to ask for help.</blockquote>
 				</section>
 				<section>
 					<p>With the popular demand for collaboration features, we have the ability to see other users who are on the same project.</small>
@@ -143,24 +143,27 @@
 				</section>
 				<section data-background-color="#efeff4">
 					<img src="story-2.png" class="light" />
-					<p class="font-blue">By activating the change log layer, developers can see who edit last.</p>
+					<p class="font-blue">By activating the change log layer, users can see who edit last.</p>
 				</section>
 
 				<!-- Goal 3 -->
 				<section id="solve3">
 					<h2>Solving: How do I edit code without affecting production?</h2>
-					<blockquote>Developers need to be able to make changes to their codebase without changing production. They need to package their changes for another to review or a deploy</blockquote>
+					<aside class="notes">All Dark code is already in production, everything a user write is immediately deployed. There are no local or staging environments.</aside>
+
+					<blockquote>Users need to be able to make changes to their codebase without affecting their end-user immediately. They need to package their changes for another to review or a deploy</blockquote>
+					
 				</section>
 				<section>
 					<h3>Arriving at a solution</h3>
 					<aside class="notes">Dark lacks the traditional git branches frequently in most contemporary code bases. It is difficult for users to make changes in their code base that won't immediately affect production.</aside>
-					<p><a href="https://darklang.github.io/docs/feature-flags" target="_blank">Feature Flags</a> provide a method developers can change and test out their code, before enabling it for all their users. But as of now, they can only flag individual chunks of code at a time.</p>
+					<p><a href="https://darklang.github.io/docs/feature-flags" target="_blank">Feature Flags</a> provide a method users can change and test out their code, before enabling it for all their users. But as of now, they can only flag individual chunks of code at a time.</p>
 					<img src="teamwork-3-a.png" />
 				</section>
 				<section>
-					<h4>But new features or fixes often span across multiple parts of the codebase.</h4>
+					<p>But new features or fixes often span across multiple parts of the codebase.</p>
 					<aside class="notes">For example, let's say they add a new field to a database. They have to update POST endpoints to include the new field as input. Anywhere that performs <code>SELECT *</code> on the schema will have to handle the new column being fetched.</aside>
-					<p>We need a way for developers to batch changes together.</p>
+					<p>We need a way for users to batch changes together.</p>
 				</section>
 				<section>
 					<h4>How can we extend feature flags to group changes together and allow someone to review all changes associated with the new feature?</h4>
@@ -170,7 +173,7 @@
 					</ol>
 				</section>
 				<section  data-background-color="#efeff4"><h3>Solution</h3>
-					<p class="font-blue">When the developer select a semantically valid code chunk, they can feature flag it!</p>
+					<p class="font-blue">When the user select a semantically valid code chunk, they can feature flag it!</p>
 					<img src="select_code.png"  class="light" />
 				</section>
 				<section  data-background-color="#efeff4">
@@ -178,7 +181,7 @@
 					<img src="ff-new.png"  class="light" />
 				</section>
 				<section  data-background-color="#efeff4">
-					<p class="font-blue">Feature flag name field autocompletes with names of active feature flags. Or the developer can enter a unique name to create a new feature flag.</p>
+					<p class="font-blue">Feature flag name field autocompletes with names of active feature flags. Or the user can enter a unique name to create a new feature flag.</p>
 					<img src="story-4.png"  class="light" />
 				</section>
 				<section data-background-color="#efeff4">
@@ -193,11 +196,11 @@
 					<h3>Go live! (Rollout)</h3>
 					<blockquote>Rollout is the proccess in with code in the feature flag replaces existing code. After rollout is complete the flag becomes inactive</blockquote>
 					<ul>There are several different rollout options:
-						<li><b>Gradual rollout</b><span class="page-only"> will first execute this code for a certain percent of grandusers, and slowly increasing the percent until 100%. At any point during this rollout process, if reports of errors or other problems occur, developers may pause this rollout process.</span></li>
+						<li><b>Gradual rollout</b><span class="page-only"> will first execute this code for a certain percent of grandusers, and slowly increasing the percent until 100%. At any point during this rollout process, if reports of errors or other problems occur, users may pause this rollout process.</span></li>
 
 					<li><b>Scheduled rollout</b><span class="page-only"> will have all 100% of grandusers use the new code at a specific date-time. ie: The hour of a week when granduser traffic is at lowest.</span></li>
 
-					<li><b>Immediate rollout</b><span class="page-only"> will have Dark deploy the new code ASAP as soon as the developer clicks the button.</span></li>
+					<li><b>Immediate rollout</b><span class="page-only"> will have Dark deploy the new code ASAP as soon as the user clicks the button.</span></li>
 					</ul>
 
 				</section>
@@ -212,7 +215,7 @@
 					</blockquote>
 				</section>
 				<section data-background-color="#efeff4">
-					<p class="font-blue">Ryan opens the project's canvas. They read the code and comments other developers had annotated.</p>
+					<p class="font-blue">Ryan opens the project's canvas. They read the code and comments other users had annotated.</p>
 					<img src="story-1.png"  class="light" />
 				</section>
 				<section data-background-color="#efeff4">
@@ -251,12 +254,12 @@
 				<section id="future">
 					<h2>Future Considerations</h2>
 
-<ul>We cut scope on this to get out the best ideas within a day. There are additional considerations that would be taken into account in the next phases:
-<li>How do developers set the conditions in which the execution engine should run the flagged version vs production version?</li>
+<ul>I cut scope on this to get out the best ideas within a day. There are additional considerations that would be taken into account in the next phases:
+<li>How do users set the conditions in which the execution engine should run the flagged version vs production version?</li>
 <li>Who has permission to review?</li>
 <li>Are we going to keep the feature flags as is?</li>
 <li>How do we reverse or halt the deployment of a feature flag?</li>
-<li>Will developers want stricter permissions on who can amend to another's feature flag?</li>
+<li>Will users want stricter permissions on who can amend to another's feature flag?</li>
 <li>What should be the UI for gradual and scheduled rollout?</li>
 </ul>
 				</section>
