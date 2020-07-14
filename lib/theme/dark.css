@@ -138,13 +138,18 @@
 .reveal ul {
   display: inline-block;
   text-align: left;
-  margin: 0 0 0 1em; }
+  margin: 0 0 0 1em;
+ }
 
 .reveal ol {
   list-style-type: decimal; }
 
 .reveal ul {
   list-style-type: disc; }
+
+.reveal ol li, .reveal ul li {
+  margin-left: 20px;
+  }
 
 .reveal ul ul {
   list-style-type: square; }
@@ -480,8 +485,8 @@
 .page code {
   font-family: monospace;
   text-transform: none;
-  color: #666;
-  background-color: #eee;
+  color: #3f3688;
+  background-color: #f4eff2;
   padding: 0 1ch; }
 
 .page a {
