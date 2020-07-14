@@ -58,6 +58,10 @@
   line-height: 1.3;
   font-weight: inherit; }
 
+.reveal .page-only {
+  display: none !important;
+}
+
 /*********************************************
  * HEADERS
  *********************************************/
@@ -104,13 +108,13 @@
   text-align: right;
 }
 
-.reveal .font-blue {
+.reveal .font-blue, .page .font-blue {
   color: #7cafc2;
 }
-.reveal .font-pink {
+.reveal .font-pink, .page .font-pink {
   color: #d5839d;
 }
-.reveal .font-green {
+.reveal .font-green, .page .font-green {
   color: #a1b56c;
 }
 
@@ -298,7 +302,7 @@
     background-color: #111; } }
 
 /* Shortcut menu */
-div.shortcuts {
+#shortcuts {
   position: fixed;
   top: 10px;
   left: 20px;
@@ -309,7 +313,23 @@ div.shortcuts {
   justify-content: space-evenly;
 }
 
-div.shortcuts a {
+#shortcuts.on-page {
+  background-color: #fefefe;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: rgba(0,0,0, 0.2) 0 1px 8px 2px;
+}
+
+@media only screen and (max-device-width: 800px) {
+  #shortcuts.on-page {
+    display: none;
+  }
+}
+
+#shortcuts a {
   display: inline-block;
   color: var(--link-color);
   text-decoration: underline;
@@ -317,6 +337,159 @@ div.shortcuts a {
   text-transform: uppercase;
 }
 
-div.shortcuts a:hover {
+#shortcuts a:hover {
   color: var(--link-color-hover);
 }
+
+/* Page Styling */
+.page {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.0em;
+  font-weight: normal;
+  padding-top: 25px;
+}
+
+.page .slides-only {
+  display: none !important;
+}
+
+.page section {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fafafa;
+  box-sizing: border-box;
+}
+
+@media only screen and (min-device-width: 800px) {
+  .page section {
+    max-width: 1000px;
+    padding: 50px 100px;
+    box-sizing: content-box;
+  }
+}
+
+.page section.dark {
+  background-color: var(--background-color);
+  color: var(--main-color);
+}
+
+.page section[id] {
+  padding-top: 20px;
+}
+
+.page section[id] > h2,
+.page section[id] > h3,
+.page section[id] > h4 {
+  margin-top: 70px;
+}
+
+.page h1,
+.page h2,
+.page h3,
+.page h4 {
+  margin: 0 0 20px 0;
+  font-family: "Montserrat", Impact, sans-serif;
+  font-weight: normal;
+  line-height: 1.2;
+  text-transform: none;
+  text-shadow: none;
+  word-wrap: break-word;
+  color: #7cafc2;
+ }
+
+.page h4 {
+  font-size: 1.2em;
+}
+
+.page h3 {
+  font-size: 1.4em;
+}
+
+.page h2 {
+  font-size: 1.6em;
+}
+
+.page h1 {
+  font-size: 2.0em;
+  text-align: center;
+}
+
+.page p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.page table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+.page img,
+.page video,
+.page iframe {
+  max-width: 95%;
+  max-height: 95%; }
+
+.page em {
+  color: #d5839d;
+  font-style: normal; }
+
+.page ul, .page ol {
+  margin-left: 20px;
+}
+
+.page table th {
+  font-weight: bold; }
+
+.page table td {
+  padding: 0.5em;
+}
+
+.page blockquote {
+  display: block;
+  position: relative;
+  width: 70%;
+  margin: 20px auto;
+  padding: 10px;
+  font-style: italic;
+  border-left: 6px solid #d5839d;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+.reveal .small-on-slides {
+  font-size: 0.6em;
+}
+
+.page aside.notes {
+  display: inherit;
+}
+
+.page aside.notes.inline {
+  display: inline;
+}
+
+.page aside.notes.hide {
+  display: none;
+}
+
+.page code {
+  font-family: monospace;
+  text-transform: none;
+  color: #666;
+  background-color: #eee;
+  padding: 0 1ch; }
+
+.page a {
+  color: #7cafc2;
+  text-decoration: underline;
+  transition: color .15s ease; }
+
+.page a:hover {
+  color: #55bfe6;
+  text-shadow: none;
+  border: none; }
