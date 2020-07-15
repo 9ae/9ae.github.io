@@ -100,13 +100,13 @@
 			<p>We got here because, every time we added a new tooltip, we aimed only to solve the current problem.</p>
 				<p class="fragment">Let's take a step back to understand what we were trying to achieve in the <em>past</em>, and what we want to achieve in the <em>future</em>.</p>
 			</section>
-				<section id="ideate">
+				<section id="ideate" class="before-change">
 					<h2>I approached this problem by...</h2>
 						<p>First, found all instances where tooltips are used in the editor.</p>
 						<p>Then I categorized them by the functions they serve.</p>
 						<p>Lastly, theorized how we can use tooltips in the future to either <em>introduce Dark to new users</em> or <em>highlight new features to seasoned users</em>.</p>
 				</section>
-				<section class="dark">
+				<section class="dark before-change">
 					<h3>Taxonomize the chaos</h3>
 					<table class="middle-align-cells">
 						<tr><td colspan="2"><p>Our editor has over 60 tooltips. They all fall into one of the four categories:</p></td></tr>
@@ -166,7 +166,7 @@
 					</table>
 					<aside class="notes">Now we've got the product requirements down, let's make it pretty!</aside>
 				</section>
-				<section>
+				<section class="before-change">
 					<ul>From our model we will need mocks for:
 						<li>Tooltip with just a title</li>
 						<li>Tooltip with title and description</li>
@@ -203,7 +203,7 @@
 								<td><img src="d1-action.png" /></td></tr>
 					</table>
 				</section>
-				<section class="dark">
+				<section class="dark before-change">
 					<h3>Giving our users a voice</h3>
 					<p>We asked our users to vote on the top 3 styles and this won out</p>
 					<table class="top-align-cells">
@@ -253,7 +253,7 @@
 					<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 					<aside class="notes">I checked it is possible for the engineer implementing this feature to easily designate on which side the tooltip should appear relative to the UI element it is attached to.</aside>
 				</section>
-				<section id="ideate3">
+				<section id="ideate3" class="before-change">
 					<h2>Future tooltips</h2>
 					<aside class="notes">The first part of this project was to make existing tooltips consistent. I also want to make it possible to onboard new users with them.</aside>
 
@@ -271,7 +271,7 @@
 						<tr><td><b>Trigger</b></td><td>This tooltip will appear if the project has 404s, and the user has not yet created a handler from their 404s yet. It will appear without them hovering over the 404 icon.</td></tr>
 					</table>
 				</section>
-				<section  class="dark">
+				<section  class="dark before-change">
 					<h4>and when they create a request handler from the 404</h4>
 					<img src="future-trace.png" style="width:400px;" />
 					<table  class="top-align-cells small-on-slides">
@@ -280,6 +280,7 @@
 					</table>
 				</section>
 				<section id="build3">
+					<h2>Implementation Kickoff</h2>
 				<aside class="notes">Luckily, after re-positioning our product with increased focus on in-editor learning.</aside>
 
 				<p>A product owner used this as a jumping-off point to create an in-editor onboarding flow. And a frontend engineer implemented the tooltip component.</p>

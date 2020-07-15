@@ -23,7 +23,7 @@
 				data-background-color="#010101"
 				data-background-size="cover"
 				data-background-opacity="0.3"><h1>Navigate your codebase</h2></section>
-					<section>
+					<section  class="before-change">
 						<h2>Roles & Responsibilities</h2>
 
 						<p>For this project, I performed <em>problem analysis</em>, <em>user interaction flow</em>, <em>wireframes</em>, <em>interactive designs</em>, and <em>MVP implementation</em>. The CTO helped me cut scope for the MVP and implemented some follow-up changes.</p>
@@ -50,7 +50,7 @@
 					<center><iframe src="https://player.vimeo.com/video/435578880" width="727" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></center>
 					<p>Developers can create functions, which will be accessible throughout their own project. But these functions are NOT accessible within the main space<aside class="notes">; they exist in their own little world. Nor are they accessible from the code that uses them. They can only be reached through the sidebar.</aside></p>
 				</section>
-				<section class="dark">
+				<section class="dark before-change">
 					<h4>3. To understand workers</h4>
 					<p>Workers are like async functions that appear in the main space. But that doesn't make using them any easier.</p>
 					<img src="worker_diff_inputs.gif" style="height: 200px; width: auto;" />
@@ -119,7 +119,7 @@
 						</div>
 
 				</section>
-				<section id="ideate">
+				<section id="ideate"  class="before-change">
 						<h2>City planning!</h2>
 
 						<ul>In order to create a useful interface for writing & editing code, we must answer the following questions:
@@ -198,7 +198,7 @@
 					<h4>And all calls to the function appear</h4>
 				</section>
 				-->
-				<section>
+				<section class="before-change">
 					<h3>How to represent landmarks?</h3>
 					<p>So far references are just boxy links. How can we use the space to provide useful information to the developer?</p>
 
@@ -256,7 +256,7 @@
 					<img src="hover.gif" />
 					<aside class="notes">Hovering over references will highlight where they are used in the code.</aside class="notes">
 				</section>
-				<section class="dark">
+				<section class="dark before-change">
 					<img src="goto.gif" />
 					<aside class="notes">Clicking on the reference of a function or worker will take you to the code inside.</aside>
 				</section>
@@ -275,7 +275,7 @@
 					<h4>After scope cuts, this is our implemented solution</h4>
 					<img src="impl.gif" />
 				</section>
-				<section id="test">
+				<section id="test" class="before-change">
 					<h2>Field test</h2>
 					<p>Overall the feedback was positive. New developers pointed out it was one of the features they felt made Dark unique. Existing developers even discovered an unintended use case. <em>They used it to depreciate functions and migrate DB schemas.</em></p>
 					<p>But there were several things they didn't like:</p>
@@ -297,7 +297,7 @@
 						<img src="lvabove.png" />
 						<aside class="notes">We can move the live values into the code, and they would move above the cursor. They will appear in the line above. If the value is more than one line long, affordances can be added to expand and collapse it. <em>But values moving around is obstructive to typing. And it covers the line above which you may need to see for context.</em></aside>
 				</section>
-				<section class="dark">
+				<section class="dark before-change">
 					<h3>Idea 2: Show depending on user intentions</h3>
 					<p><small>The scope of focus while reading live values is different than when they are looking at incoming references.</small></p>
 					<img src="just-refs.png" data-fragment-index="1" class="fragment" style="height: 160px;" />

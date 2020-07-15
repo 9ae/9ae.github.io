@@ -373,9 +373,14 @@
 @media only screen and (min-device-width: 800px) {
   .page section {
     max-width: 1000px;
-    padding: 50px 100px;
+    width: 80%;
+    padding: 20px 100px;
     box-sizing: content-box;
   }
+}
+
+.page section.before-change {
+  padding-bottom: 70px;
 }
 
 .page section.dark {
@@ -385,6 +390,18 @@
 
 .page section[id] {
   padding-top: 20px;
+}
+
+.page section:first-child {
+  padding-top: 100px;
+}
+
+.page section:last-child {
+  padding-bottom: 100px;
+}
+
+.page section > h2, .page section > h3 {
+  margin-top: 50px;
 }
 
 .page section[id] > h2,
