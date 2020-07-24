@@ -240,18 +240,7 @@
 						<tr><td>INFO</td><td><img src="simple.png" /></td><td><img src="details.png" /></td><td><img src="actions.png" /></td></tr>
 						<tr><td>EXCEPTION</td><td><img src="err-simple.png" /></td><td><img src="err-details.png" /></td><td><img src="err-action.png" /></td></tr>
 					</table>
-					<aside class="notes">Instead of giving the exception style tooltips a red background, I made a deliberate choice to have the red title text on light background. Otherwise color-blind users will have difficulty distinguishing between red and marine tooltips.</aside>
-				</section>
-				<section>
-					<h2>Feasibility Test</h2>
-					<p>If I am ever unsure about the feasibility of my designs, I will test it out first.</p>
-					<p class="codepen" data-height="400" data-theme-id="dark" data-default-tab="result" data-user="alice" data-slug-hash="QWbmbEj" style="height: 400px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Tooltips">
-						<span>See the Pen <a href="https://codepen.io/alice/pen/QWbmbEj">
-						Tooltips</a> by Alice Q (<a href="https://codepen.io/alice">@alice</a>)
-						on <a href="https://codepen.io">CodePen</a>.</span>
-					</p>
-					<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-					<aside class="notes">I checked it is possible for the engineer implementing this feature to easily designate on which side the tooltip should appear relative to the UI element it is attached to.</aside>
+					<aside class="notes">Having learned my lession from contrast checking too late, I made sure to keep accessbility at top of mind, when I designed the exception tooltips. I made a deliberate choice to have the red title text on light background, instead of just applying a red background. It will be easier for red-green color-blind users to distinguish between informational and exception tooltips.</aside>
 				</section>
 				<section id="ideate3" class="before-change">
 					<h2>Future tooltips</h2>
@@ -278,6 +267,17 @@
 						<tr><td><b>Title</b></td><td>Data from your incoming requests will appear here</td></tr>
 						<tr><td><b>Trigger</b></td><td>When an HTTP handler is first is created, this tooltip appears automatically</td></tr>
 					</table>
+				</section>
+				<section>
+					<h2>Feasibility Test</h2>
+					<p>If I am ever unsure about the feasibility of my designs, I will test it out first.</p>
+					<p class="codepen" data-height="400" data-theme-id="dark" data-default-tab="result" data-user="alice" data-slug-hash="QWbmbEj" style="height: 400px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Tooltips">
+						<span>See the Pen <a href="https://codepen.io/alice/pen/QWbmbEj">
+						Tooltips</a> by Alice Q (<a href="https://codepen.io/alice">@alice</a>)
+						on <a href="https://codepen.io">CodePen</a>.</span>
+					</p>
+					<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+					<aside class="notes">I checked it is possible for the engineer implementing this feature to easily designate on which side the tooltip should appear relative to the UI element it is attached to.</aside>
 				</section>
 				<section id="build3">
 					<h2>Implementation Kickoff</h2>
