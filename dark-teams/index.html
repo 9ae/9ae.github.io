@@ -59,54 +59,53 @@
 						<li class="fragment">Pair-programming<aside class="notes inline"> - maybe something down the line. Right now users will have to do it through a third party voice/video service.</aside></li>
 						<li class="fragment">Forking and contributing common code<aside class="notes inline"> - to be addressed with our package manager and embed darklang code project. Right now we will focus on users working on the same project.</aside></li></ul>
 				</section>
-								<!-- Goal 2 -->
-								<section id="solve2">
-									<h2>Solving: What does this code do?</h2>
-									<blockquote>Users need to be able to communicate about their code in the editor.</blockquote>
-								</section>
-								<section>
-									<h3>Constraints</h3>
-									<p>Right now the only way for users to add comments in their code is with unassigned strings.</p>
-									<img src="teamwork-2-a.png" style="height:250px; width:auto;" />
-									<aside class="notes">Comments are done by just having string literals, there is no clear visual distinction between them and other strings in the code.</aside>
-									<p class="center"><em>It is a workaround hack; not a language feature</em></p>
-								</section>
-								<section>
-									<h4>Can we have simply implement comments?</h4>
-									<p> Maybe make <code>#</code> a keyword to create a comment line or block?</p>
-				
+			<!-- Goal 2 -->
+			<section id="solve2">
+				<h2>Solving: What does this code do?</h2>
+				<blockquote>Users need to be able to communicate about their code in the editor.</blockquote>
+			</section>
+			<section>
+				<h3>Constraints</h3>
+				<p>Right now the only way for users to add comments in their code is with unassigned strings.</p>
+				<img src="teamwork-2-a.png" style="height:250px; width:auto;" />
+				<aside class="notes">Comments are done by just having string literals, there is no clear visual distinction between them and other strings in the code.</aside>
+				<p class="center"><em>It is a workaround hack; not a language feature</em></p>
+			</section>
+			<section>
+				<h4>Can we have simply implement comments?</h4>
+				<p> Maybe make <code>#</code> a keyword to create a comment line or block?</p>
 				<p class="fragment">But it will violate our founder's language design principle.
 					<aside class="notes inline">
 					In which it states, content not core to the main flow logic of the code should not expand the code vertically. This is why we have <a href="https://darklang.github.io/docs/unique-aspects#functions-that-use-error-rail" target="_blank">Error Rails</a>, instead of letting users do their own error handling within the main flow of the logic.</aside></p>
 				
 				<p class="fragment"><em>How can we allow for users to add comments to their code?</em></p>
-								</section>
-								<section><h3>Reflective understanding</h3>
-									<ul>People use comments for 2 reasons:
+			</section>
+			<section><h3>Reflective understanding</h3>
+				<ul>People use comments for 2 reasons:
 				
 				<li>To communicate about a complex chunk of code in a natural language.</li>
 				<li>To temporarily disable a chunk of code during execution. <aside class="notes inline">This can already be achieved with <a href="https://darklang.github.io/docs/feature-flags" target="_blank">Feature Flags</a>.</aside></li></ul>
 				
 				<aside class="notes">We can ignore the second reason for now since it is addressed by an existing feature. Let's focus on the first use case adding meta-information about the code to another person.</aside>
-								</section>
-								<section><h3>Arriving at a solution</h3>
-									<aside class="notes">Dark has borrowed many ideas from document editor experiences. I think like Airtable is trying to bring the power of databases to the general public by making it appear like a spreadsheet. Dark aims to democratize coding by borrowing rich text editing experiences; instead of solely deriving from the text editors users use to write code.</aside>
-									<p>Why don't we take page from collaborative document editing software?</p>
-									<img src="teamwork-2-b.png" />
-									<aside class="notes">The comments will appear to the side of the document without obstructing the reading experience of the main document.</aside>
-								</section>
-								<section  data-background-color="#efeff4"  class="light"><h3>Solution</h3>
-									<p class="center">When the user selects a code chunk they can add a comment to it.</p>
-									<img src="select_code.png"  class="light" />
-								</section>
-								<section  data-background-color="#efeff4"  class="light">
-									<p class="center">They can type in a comment and collapse to hide it.</p>
-									<img src="comment-opened.png"  class="light" />
-								</section>
-								<section  data-background-color="#efeff4"  class="light">
-									<p class="center">Collapsed comment will just show as a marker, and be read on click.</p>
-									<img src="comment-collapsed.png"  class="light" />
-								</section>
+			</section>
+			<section><h3>Arriving at a solution</h3>
+				<aside class="notes">Dark has borrowed many ideas from document editor experiences. I think like Airtable is trying to bring the power of databases to the general public by making it appear like a spreadsheet. We aims to democratize coding by borrowing rich text editing experiences; instead of solely deriving from the text editors developers use.</aside>
+				<p>Why don't we take page from collaborative document editing software?</p>
+				<img src="teamwork-2-b.png" />
+				<aside class="notes">The comments will appear to the side of the document without obstructing the reading experience of the main document.</aside>
+			</section>
+			<section  data-background-color="#efeff4"  class="light"><h3>Solution</h3>
+				<p class="center">When the user selects a code chunk they can add a comment to it.</p>
+				<img src="select_code.png"  class="light" />
+			</section>
+			<section  data-background-color="#efeff4"  class="light">
+				<p class="center">They can type in a comment and collapse to hide it.</p>
+				<img src="comment-opened.png"  class="light" />
+			</section>
+			<section  data-background-color="#efeff4"  class="light">
+				<p class="center">Collapsed comment will just show as a marker, and be read on click.</p>
+				<img src="comment-collapsed.png"  class="light" />
+			</section>
 
 				<!-- Goal 1 -->
 				<section id="solve1">
@@ -117,6 +116,7 @@
 					<p>With the popular demand for collaboration features, we have the ability to see other users who are on the same project.</small>
 					<img src="teamwork-1-b.png" />
 					<aside class="notes">If another user is editing the a code block on the same project space you are on, their avatar will show to the right.</aside>
+					<p>But this feature only shows the user what is happening right now. <em>What if they want to gaze into the past?</em> How can they do that?</p>
 				</section>
 				<!--
 				<section>
@@ -133,8 +133,7 @@
 				</section>
 				 -->
 				<section>
-						<p>But this feature only shows the user what is happening right now. <em>What if they want to gaze into the past?</em> How can they do that?</p>
-
+						<h3>Space Constraints</h3>
 						<p>How can we show that information without adding more clutter?</p>
 
 						<img src="teamwork-1-a.png" />
