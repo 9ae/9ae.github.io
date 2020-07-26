@@ -26,7 +26,7 @@
 					<section  class="before-change">
 						<h2>Roles & Responsibilities</h2>
 
-						<p>For this project, I performed <em>problem analysis</em>, <em>user interaction flow</em>, <em>wireframes</em>, <em>interactive designs</em>, and <em>MVP implementation</em>. The CTO helped me cut scope for the MVP and implemented some follow-up changes.</p>
+						<p>For this project, I performed <em>problem analysis</em>, made <em>wireframes</em>, <em>interactive designs</em>, and the <em>MVP implementation</em>. The CTO helped me cut scope for the MVP and implemented some follow-up changes.</p>
 
 					</section>
 				<section id="empathize" class="dark">
@@ -34,27 +34,27 @@
 					<center>
 					<iframe src="https://player.vimeo.com/video/435405334" width="640" height="364" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 					</center>
-					<p>Dark lays its constructs (code and data schemas) in floating boxes. Developers spend their time panning, dragging, jumping around their project space instead of coding. <em>Why do they do that?</em></p>
+					<p>Dark lays its constructs (code and data schemas) in floating boxes. Users spend their time panning, dragging, jumping around their project space instead of coding. <em>Why do they do that?</em></p>
 				</section>
 				<section class="dark">
 					<h4>1. They do so to verify DB schemas</h4> 
-					<p>Developers need to drag databases close to code referring to it. Because <code>DB::set</code> requires the data inserted to match the schema exactly.</p>
+					<p>Often users need to drag databases close to their code because <code>DB::set</code> requires the data inserted to match the schema exactly.</p>
 					<center><iframe src="https://player.vimeo.com/video/435405240" width="505" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></center>
 				</section>
 				<section class="dark">
 					<center><iframe src="https://player.vimeo.com/video/435577183" width="450" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></center>
-					<p>When a function has code referring to a DB, the experience is even worse! <aside class="notes">Since functions are in their own separate space, developers must to go back to the main space to see the DB schema. They must either have fantastic short-term memory or take a screenshot of the DB double-check their code.</aside></p>
+					<p>When a function has code referring to a DB, the experience is even worse! <aside class="notes">Since functions are in their own separate space, users must to go back to the main space to see the DB schema. They must either have fantastic short-term memory or take a screenshot of the DB double-check their code is using the correct schema.</aside></p>
 				</section>
 				<section class="dark">
 					<h4>2. To read/write in functions</h4>
 					<center><iframe src="https://player.vimeo.com/video/435578880" width="727" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></center>
-					<p>Developers can create functions, which will be accessible throughout their own project. But these functions are NOT accessible within the main space<aside class="notes">; they exist in their own little world. Nor are they accessible from the code that uses them. They can only be reached through the sidebar.</aside></p>
+					<p>Users can create functions, which will be accessible throughout their project. But these functions are NOT accessible within the main space. <aside class="notes inline">They exist in their own little world. Nor are they accessible from the code that uses them. They can only be reached through the sidebar.</aside></p>
 				</section>
 				<section class="dark before-change">
 					<h4>3. To understand workers</h4>
 					<p>Workers are like async functions that appear in the main space. But that doesn't make using them any easier.</p>
 					<img src="worker_diff_inputs.gif" style="height: 200px; width: auto;" />
-					<aside class="notes">>They take only one argument <code>event</code> of type Any. The developer has to drag them near their code to determine its expected input, just like DBs. But unlike DBs, which have a set schema, the developer must read through the code to figure out what is the expected type and structure of the input.</aside>
+					<aside class="notes">They take only one argument <code>event</code> of type <code>Any</code>. The user has to drag a worker near their code to understand its expected input (just like they do with DBs). But unlike DBs, which have a set schema, the user must read through the code to figure out what is the expected type and structure of the input.</aside>
 				</section>
 				<section id="analyze"
 					data-background-image="nyc.jpeg"
@@ -65,9 +65,9 @@
 					><h2>How did we get here?</h2>
 					<q>Problems we face today are created by people in the past with the best intentions</q>
 					
-					<aside class="notes">The founder's vision for Dark is to bring data into development. He would start off with "imagine a city, where you have boroughs and neighborhoods...". He wanted constructs in Dark to be laid out as if they are on a map. The value of Dark is it would show developers live (or cumulative) traffic as it flows through the codebase.</aside>
+					<aside class="notes">The founder's vision for Dark is to bring data into development. He would start off his pitch with "imagine a city, where you have boroughs and neighborhoods...". He wanted Dark's constructs to be laid out as if they are landmarks on a map. The value of Dark is it would show users live (or cumulative) traffic as it flows through the codebase.</aside>
 
-					<p>The floating boxes (of code and DBs) are one day suppose to have dots/lines between them to show live traffic. They will organize code for developers instead of having files. File systems, he theorized, are arbitrary ways of splitting code. They give developers more problems to worry about (such as dependency cycles) than solutions.</p>
+					<p>The floating boxes (of code and DBs) are one day suppose to have dots/lines between them to show live traffic. They will organize code for users, replacing folders and files. File systems, he theorized, are arbitrary ways of splitting code. They give users more problems to worry about (such as dependency cycles) than solutions.</p>
 				</section>
 				<section>
 					<h4>Let's think through the city analogy</h4>
@@ -80,41 +80,41 @@
 
 				</section>
 				<section>
-					<h4>The path of a single trace is a trip.</h4>
 					<div class="side-by-side">
 						<img src="dresden_path.png" />
 						<img src="habits_path.jpg" />
 					</div>
+					<p class="center">The path of a single trace is a trip.</p>
 				</section>
 				<section>
 					<div class="side-by-side">
 						<img src="dresden_traffic.png" />
 						<img src="habits_traffic.jpg" />
 					</div>
-					<aside class="notes">Google maps show congestion. The API traffic map shows the density of requests passing through endpoints and into databases.</aside>
+					<aside class="notes">Google maps show congestion. The API traffic map shows the request frequency of data passing through endpoints and into databases.</aside>
 
-					<p>Over time we can construct a cumulative flow illustrating the popularity of certain paths. The developer will know which parts of the codebase to devote more resources.</p>
+					<p>Over time we can construct a cumulative flow illustrating the popularity of certain paths. The user will know which parts of the codebase to devote more resources.</p>
 
 				</section>
 				<section>
-					<h4>Unfortunately, most of our developers don't have live traffic yet*</h4>
+					<h4>Unfortunately, most of our users don't have live traffic yet*</h4>
 
-					<p>for the traffic feature to be useful. They find Dark such a frustrating experience they never finish their projects.</p>
+					<aside class="notes">for the traffic feature to be useful. They find Dark such a frustrating experience they never finish their projects.</aside>
 
 					<img src="overlap.png" />
 
 					<aside class="notes">They struggle to understand what is going on in their codebase because everything is too disorganized.</aside>
 
-					<p><small>At the time of this project (early 2019). Now we have many developers with live traffic</small></p>
+					<p><small>At the time of this project (early 2019). Now we have many users with live traffic</small></p>
 				</section>
 				<section id="define">
 						<h2>First, we must pave the streets</h2>
-						How can we help developers understand their codebase? So they may write, debug, and edit code with ease?
-
+						<p>How can we help users understand their codebase? So they may write, debug, and edit code with ease?</p>
+						
 						<div class="fragment" style="display: flex; justify-content: center; align-items: center;">
-							<p>For this case study, we'll be using a simple habits tracker application.</p>
-							<aside class="notes">
-								You set a weekly goal for how many times you want to do the activity (ie: run 3 times a week). When you do the habit the app calls the API with <code>POST /track</code>. The API checks to see if you've reached your goal this week. If you have, you'll get a text with a cute meme. Otherwise, you'll just get a motivational quote instead.</aside>
+							<span>For this case study, we'll be using a simple habits tracker application.
+							<aside class="notes inline">
+								You set a weekly goal for how many times you want to do the activity (ie: run 3 times a week). When you do the habit the app calls the API endpoint <code>POST /track</code>. The API checks to see if you've reached your goal this week. If you have, you'll get a text with a cute meme. Otherwise, you'll just get a motivational quote instead.</aside></span>
 							<img src="habits.png" style="width:200px; border-radius:16px; margin-left:20px;"/>
 						</div>
 
@@ -122,10 +122,10 @@
 				<section id="ideate"  class="before-change">
 						<h2>City planning!</h2>
 
-						<ul>In order to create a useful interface for writing & editing code, we must answer the following questions:
-							<li>What are all the possible paths a trace can take once an endpoint recieves the data?</li>
-							<li>How do we show the navigation of the through these paths?</li>
-							<li>What do information should be available for each construct type?</li>
+						<ul>In order to create a useful interface for writing & editing code, our solutions needs to answer the following questions:
+							<li>What are all the possible paths a trace can take?</li>
+							<li>How do we navigate through these paths?</li>
+							<li>What information should be available for each construct type?</li>
 						</ul>
 				</section>
 				<section class="dark">
@@ -140,22 +140,22 @@
 						<tr><td style="padding: 0; height:315px;"><img src="start-path-1.png" style="max-width:100%;max-height:100%;" /></td><td style="padding: 0; height:315px;"><img src="start-path-2.png" class="fragment" data-fragment-index="1" style="max-width:100%;max-height:100%;"/></td></tr>
 					</table>
 
-					<p>We start off with <code>POST /track</code>, its code it references <code>Habits DB</code> with <code>DB::get</code>. And emits an event to <code>"didHabit" worker</code>.<aside class="notes">So we add them as references. References allow the developer to preview or go down the path in a program's control flow.</aside></p>
+					<p>We start off with <code>POST /track</code>, its code it references <code>Habits DB</code> with <code>DB::get</code>. And emits an event to <code>"didHabit" worker</code>.<aside class="notes">So we add them as references. References allow the user to go through the program's control flow.</aside></p>
 				</section>
 			<!--<section>
 					<img src="path.png" style="height: 50px;" />
 					<h4>Seeing ahead</h4>
 					<img src="expand-worker.png" />
-					<p>When the developer hovers over a reference that contains code (functions and workers), they will be able to see a preview of the code. Just like when your GPS tells you "in 500 km turn right into Blueberry Lane".</p>
+					<p>When the user hovers over a reference that contains code (functions and workers), they will be able to see a preview of the code. Just like when your GPS tells you "in 500 km turn right into Blueberry Lane".</p>
 				</section>
 			-->
 				<section class="dark">
 					<img src="path.png" class="slides-only" style="height: 50px;" />
 					<h4>Going down the path</h4>
 					<img src="focus-worker.png" />
-					<aside class="notes">With <code>didHabit worker</code> in focus, the developer should still see most of <code>POST /track</code>. The fade out on the left side is for aesthetic balance on the slide. The actual mocks had no fade.</aside>
+					<aside class="notes">With <code>didHabit worker</code> in focus, the user will still see most of <code>POST /track</code>.</aside>
 
-					<aside class="notes">When the developer clicks into a reference, the screen now show all its contents and focus on it. Adding its own references to the right. In our navigation analogy, you have made your turn and now directions for the next steps are visible. </aside>
+					<aside class="notes">When the user clicks into a reference, the code inside it will show and viewport pans to focus on it. After in focus, its own references will be aded to the right. In our navigation analogy, you have made your turn and now directions for the next steps are visible. </aside>
 				</section>
 				<section class="dark">
 					<q>Are we there yet?</q>
@@ -172,24 +172,24 @@
 				</section>
 				<section class="dark">
 					<q>... and how do we get there?</q>
-					<p>Looks like they are functions. And a problem our developers face is:</p>
+					<p>Looks like they are functions. And a problem our users face is:</p>
 					<blockquote><small>Functions are NOT accessible within the main space; they exist in their own little world. Nor are they accessible from the code that uses them. They can only be reached through the sidebar.</small></blockquote>
 					<table>
 						<tr><td style="padding: 0; height:315px;"><img src="worker_hi_fn-1.jpg" style="max-width:100%;max-height:100%;" /></td>
 							<td style="padding: 0; height:315px;"><img src="worker_fn_refs.png" class="fragment" data-fragment-index="1" style="max-width:100%;max-height:100%;"/></td></tr>
 					</table>
-					<h4  class="fragment" data-fragment-index="1">Let's references for functions!</h4>
+					<div  class="fragment" data-fragment-index="1">Seems like functions references will be useful</div>
 				</section>
-				<section class="dark">
+				<!-- <section class="dark">
 					<q>Where else are there functions? Let's add those too!</q>
 					<table>
 					<tr><td style="padding: 0; height:315px;"><img src="post_hi_fn.jpg" style="max-width:100%;max-height:100%;" /></td>
 						<td style="padding: 0; height:315px;"><img src="start-path-3.png" class="fragment" data-fragment-index="1" style="max-width:100%;max-height:100%;"/></td></tr>
 				</table>
-				</section>
+				</section> -->
 				<section class="dark" data-transition="fade-out">
-					<p>Now, when the developer clicks into a function's reference, they can see the code.</p>
-					<img src="focus_fn.png" />
+					<p>Now, when the user clicks into a function's reference, they can see the code.</p>
+					<img src="inside_fn.png" />
 				</section>
 				<!-- DO this later
 				<section data-transition="fade-in">
@@ -200,29 +200,29 @@
 				-->
 				<section class="before-change">
 					<h3>How to represent landmarks?</h3>
-					<p>So far references are just boxy links. How can we use the space to provide useful information to the developer?</p>
+					<p>So far references are just boxy links. How can we use the space to provide useful information to the user?</p>
 
 					<img src="reststop_good.jpg" style="height:240px;" />
 					<aside class="notes">When we look at rest stop signs in highways, they provide information on what's coming up ahead.</aside>
-					<p>Sign designers anticipate a driver's needs as they drive by. Do they need a bathroom break? More gas? A snack? <em>What are our developer's needs?</em></p>
+					<p>Sign designers anticipate a driver's needs as they drive by. Do they need a bathroom break? More gas? A snack? <em>What are our user's needs?</em></p>
 
 					<p><small>Reach out <a href="https://twitter.com/aliceaskwhy" target="_blank">@aliceaskwhy</a>, if you want to share badly designed highway signs.</small></p>
 				</section>
 				<section class="dark">
-					<blockquote>Developers drag DBs closer to their code to check schema.</blockquote>
+					<blockquote>Users drag DBs closer to their code to check schema.</blockquote>
 					<img src="post-db-refs.png" />
-					<aside class="notes">Let's put the schema into a DB reference, so they will no longer have to drag the DB over to validate schema.</aside>
+					<aside class="notes">Let's put the schema into a DB reference, so they will no longer have to drag the DB over to validate their code.</aside>
 				</section>
 				<section class="dark">
 					<blockquote>
-						Developers want to see what happens to their code when it passes through a function.
+						Users want to see what happens to their code when it passes through a function.
 					</blockquote>
 					<img src="post-fn-refs.png" />
 					<aside class="notes">We can derive the return type from the code and show the function's input and output signature.</aside>
 				</section>
 				<section class="dark">
 					<blockquote>
-						Developers want to know what a worker expects for its input (<code>event : Any</code>)
+						Users want to know what a worker expects for its input (<code>event : Any</code>)
 					</blockquote>
 					<img src="post-worker-refs.png" />
 					<aside class="notes">We can derive the expected input by analyzing the worker's code!</aside>
@@ -249,7 +249,7 @@
 				<section class="dark">
 					<p>For now let's draw all the references on the right side with <em>incoming and outgoing arrows</em>. We'll think more about their ideal placement later.</p>
 					<img src="lv_with_references.png" />
-					<h4>It is more important to bring the value of references to developers sooner.</h4>
+					<h4>It is more important to bring the value of references to users sooner.</h4>
 				</section>
 				<section class="dark">
 					<h3>Putting it all together</h3>
@@ -262,12 +262,12 @@
 				</section>
 				<section id="build">
 					<h2>Making it real!</h2>
-					<aside class="notes">When it came time to build, we had to trim our requirements. And get an MVP out for developers to test and play with. So we had to cut scope.</aside>
+					<aside class="notes">When it came time to build, we had to trim our requirements. And get an MVP out for users to test and play with. So we had to cut scope.</aside>
 
-					<ul>Scope:
+					<ul>Scope cuts:
 						<li>Only show references on the right for HTTP code blocks.</li>
 						<li>Don't show a worker's event structure yet (because it involves complex program analysis)</li>
-						<li>Don't derive the return types for functions, because functions will have static return types. </li>
+						<li>Don't derive the return types for functions, because functions will have static return types in the future. </li>
 						<li>Instead of expanding to see the code in workers and functions, just pan to them spot in the project space.</li>
 					</ul>
 				</section>
@@ -277,12 +277,12 @@
 				</section>
 				<section id="test" class="before-change">
 					<h2>Field test</h2>
-					<p>Overall the feedback was positive. New developers pointed out it was one of the features they felt made Dark unique. Existing developers even discovered an unintended use case. <em>They used it to depreciate functions and migrate DB schemas.</em></p>
+					<p>Overall the feedback was positive. New users pointed out it was one of the features they felt made Dark unique. Existing users even discovered an unintended use case. <em>They used it to depreciate functions and migrate DB schemas.</em></p>
 					<p>But there were several things they didn't like:</p>
 					<ul>
 						<li>The (in/out) arrows are too subtle.</li>
 						<li>Viewing a function's code in another space is still disruptive to workflow</li>
-						<li>They want to be able to see caller and reference code side by side.</li>
+						<li>They want to be able to see caller's code and reference's code side by side.</li>
 					</ul>
 				</section>
 				<section  class="dark" id="revise">
@@ -293,18 +293,18 @@
 				</section>
 				<section class="dark">
 						<h3>Idea 1: Move it</h3>
-						<p>Now that references have proven their worth, we might be able to move live values. And it will be easier to get everyone on board with the move.</p>
+						<p>Now that references have proven their worth, we might be able to move live values.</p>
 						<img src="lvabove.png" />
-						<aside class="notes">We can move the live values into the code, and they would move above the cursor. They will appear in the line above. If the value is more than one line long, affordances can be added to expand and collapse it. <em>But values moving around is obstructive to typing. And it covers the line above which you may need to see for context.</em></aside>
+						<aside class="notes">We can move the live values into the code, and they would move with the cursor. They will appear in the line above. If the value is more than one line long, affordances can be added to expand and collapse it. <em>But values moving around is obstructive to typing. And it covers the line above which users may need to read for context.</em></aside>
 				</section>
 				<section class="dark before-change">
 					<h3>Idea 2: Show depending on user intentions</h3>
-					<p><small>The scope of focus while reading live values is different than when they are looking at incoming references.</small></p>
+					<p><small>The cursor is at a different place when users look at references than when they look at live values.</small></p>
 					<img src="just-refs.png" data-fragment-index="1" class="fragment" style="height: 160px;" />
-					<p data-fragment-index="1" class="fragment"><small>A developer looks at incoming references to see its usage. The code (and consequently live values) can be a black box. <em>We don't need to show live values in that case.</em></small></p>
+					<p data-fragment-index="1" class="fragment"><small>A user looks at incoming references to see its usage. The code (and consequently live values) can be a black box. <em>We don't need to show live values in that case.</em></small></p>
 
 					<img src="fade-ref.png" data-fragment-index="2" class="fragment" style="height: 160px;" />
-					<p data-fragment-index="2" class="fragment"><small>When a developer edits code, they want to know what is happening to the data. <em>We fade out the incoming references and show the live value then.</em></small></p>
+					<p data-fragment-index="2" class="fragment"><small>When a user edits code, they want to know what is happening to the data. <em>We fade out the incoming references and show the live value then.</em></small></p>
 				</section>
 				<section id="retro"
 					data-background-image="nyc.jpeg"
@@ -313,9 +313,9 @@
 					data-background-size="cover"
 					data-background-opacity="0.3"><h2>Retrospective</h2>
 
-					<p>After the scope was cut, and we implemented references for workers and functions. But there was no plan to implement other cut features nor the revisions.</p>
+					<p>After the scope was cut, and we implemented references for workers and functions. But there was no plan to implement other cut features nor execute on revisions.</p>
 
-					<p>Without moving our incoming references back to the left and showing code of the caller and function side by side. The map/navigation analogy is broken.</p>
+					<p>Without moving our incoming references on the opposite side of outgoing referencesm, the map/navigation analogy is broken.</p>
 				</section>
 			</div>
 		</div>
