@@ -1,138 +1,197 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>PyView</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="../lib/reset.css">
-		<link rel="stylesheet" href="../lib/reveal.css">
-		<link rel="stylesheet" href="../lib/theme/ki.css" id="theme">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<h2>Abstract Experiment Designer</h2>
-					<p>Empowering scientist to create hardware controlled experiments<br />
-					@ Stony Brook University's Neuroscience Dept. 2012</p>
-				</section>
-				<section><h3>Once upon a summer</h3>
-					<aside class="notes">before heading out into the real world, I wanted to audit a literature class. But to do that I had to remain affliated with the university, my Visualizations TA came to the rescue and recommended me to take over a position he had with the Neuroscience Department. Where...</aside>
+	<title>PyView</title>
 
-					<p>a professor and a post-doc wanted to find out which neurons fire upons <em>expectations.</em> They measured the electrical pulses in the brains of rats.</p>
-					<!-- TODO ratoulle picture -->
-				</section>
-				<section>
-					<p>Thristy rats are trained to press a lever when they hear a tone.</p>
-					<!-- TODO diagram of experiment control -->
-					<aside class="notes">The machine that controls when we send signals to play tones, release water valve, and detect lever press has an API in Python. The previous programmer, who worked with had wrote them a program which records the timestamps of when events happen, and connected the program to the API.</aside>
-				</section>
+	<link rel="stylesheet" href="../lib/reset.css">
+	<link rel="stylesheet" href="../lib/reveal.css">
+	<link rel="stylesheet" href="../lib/theme/ki.css" id="theme">
+</head>
+<!--  data-background-image="rat1.png" data-background-position="bottom right"
+				data-background-repeat="no-repeat" data-background-size="800px" -->
 
-				<section>
-					<h4>The code kept changing as experiment designs changed</h4>
-					<!-- screenshot of software -->
-					<p>Since the commands controlling the hardware was hard coded. Every time they wanted to change the order of events fired. We had to change the code.</p>
-					<aside class="notes">And this was before version control was widely used. So if we wanted to go back to do an experiement we did last week, I had to find the old code and replace it. We did a hacky version control where we made multiple copies, with minor tweaks.</aside>
-				</section>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h2>Experiment Control Creator</h2>
+				<p>Empowering scientist to create hardware controlled experiments<br />
+					@ Stony Brook University' s Neuroscience Dept. 2012</p>
+			</section>
+			<section>
+				<h3>Once upon a summer</h3>
+				<aside class="notes">before heading out into the real world, I wanted to audit a literature class. But to do
+					that I had to remain affliated with the university, my Visualizations TA came to the rescue and recommended me
+					to take over a position he had with the Neuroscience Department. Where...
+					/ They measured
+					the electrical activity in the brains of thirsty rats, who were trained to press a lever upon hearing a tone.
+					[!]
+				</aside>
 
-				<section>
-					<h1>It was not sustainable!</h1>
-					<aside class="notes">I'm a lazy person, who likes to minimize work for myself and other people. I brought this problem up to the professor I was working for....</p>
-					<!-- TODO ratouille mess -->
-				</section>
+				<p>a professor and a post-doc wanted to find out which neurons fire upons in your brain when you are
+					<em>expectating</em> a reward.
+				</p>
+				<div class="fragment">
+					<img src="setup.png" style="max-height: 500px;" />
+					<aside class="notes">The machine that controls when we send signals to play tones, release water valve, and
+						detect lever press has an API in Python. The previous programmer, who worked with had wrote them a program
+						which records the timestamps of when events happen, and connected the program to the API.</aside>
+				</div>
+			</section>
 
-				<section>
-					<aside class="notes">
-						and proposed a making an experiment creator. He thought it was an interesting idea, so over the weekend I made a paper prototype to test with him and our post-doc on Monday.
-					</aside>
-					<h2>How about we make an experiment creator?</h2>
-					<!-- TODO paper prototype -->
+			<section>
+				<p>The classic experiment is to give the rat a drop of water at the start of a trial. Play tone. During the
+					reward interval, if the rat presses the lever, she'll get another drop of water.</p>
+				<img src="ClassicExp.png" style="height: 100px; border-radius: 8px;" />
+
+				<p>There's a bunch of ways users want to vary the experiment.</p>
+				<img src="VarExp.png" style="height: 100px; border-radius: 8px;" />
+				<aside class="notes">And apparently that's why the lab needed a programmer.</aside>
+			</section>
+
+			<section>
+				<h4>Inherited Program</h4>
+				<img src="prev_software.png" style="max-height: 350px;" />
+				<p>Since the actions and intervals controlling the hardware was hard coded, the code hand to change everytime
+					experiment designs changed. </p>
+				<aside class="notes">And this was before version control was widely used. So if we wanted to go back to do an
+					experiement we did last week, I had to find the old code and replace it. We did a hacky version control where
+					we made multiple copies, with minor tweaks.</aside>
+			</section>
+
+			<section>
+				<h1>It was not sustainable!</h1>
+				<!-- POSITION AS HOW IT REPLIED ON THE USERS TO BE ABLE TO ACCURATELY TRACK WHICH EXPERIMENT HAD WHAT CONDITIONS, AND WAS RUN WHEN.
+					WE RAN INTO PROBLEMS SEVERAL TIMES, WHERE AFTER THE EXPERIMENT WAS DONE WE DISCOVERED WHAT HAPPENED BETWEEN TRIALS DIDN'T LINE UP.
+					-->
+				<aside class="notes">And left a lot of room for human error to conduct the experiment wrong, might have changed
+					variables without recording the change. So next time they want to run the experiment they might have forgotten
+					to note the time change. I brought this problem up to the professor I was working for....</p>
 					<p>Scientist should be able to run their experiments anytime without needing to edit code.</p>
-				</section>
+					<!-- TODO ratouille mess -->
+			</section>
 
-				<section>
-					<p>Experiments they designed are saved in files, that they can load into the execution program.</p>
-					<!-- Show wireframe of execution mode -->
-					
-				</section>
+			<section>
+				<aside class="notes">
+					and proposed a making an experiment creator. He thought it was an interesting idea, so over the weekend I made
+					a paper prototype to test with him and our post-doc on Monday.
+				</aside>
+				<h4>How about we make an experiment creator?</h4>
+				<p>An experiment design is just a sequence of events, over a time period. They can be broken down into
+					<em>intervals</em> (wait, tone, reward, no-go) and <em>actions</em> (deliver treat).</p>
+				<table>
+					<tr>
+						<td>
+							<img src="rough_editor.png" style="height: 300px;" />
+						</td>
+						<td><img src="exe_file.png" style="height: 300px;" /></td>
+					</tr>
+				</table>
+				<small>Experiments they designed are saved in files, and can load into the execution program.</small>
+			</section>
 
-				<section>
-					<aside class="notes">After playing around with the prototype, they gave me the go-ahead to build.</aside>
-					<img src="rat_typing.gif" />
-					<p>and three weeks later...</p>
-				</section>
+			<section>
+				<aside class="notes">After playing around with the prototype, they gave me the go-ahead to build this framework.
+				</aside>
+				<img src="rat_typing.gif" />
+				<p>and three weeks later...</p>
+			</section>
 
-				<section>
-					<aside class="notes">I had something they can try out and play with.</aside>
-					<h3>Experiment Editor</h3>
-					<!-- TODO gifs of builder -->
-					<!-- Create intervals -->
-					<!-- move intervals around -->
-				</section>
+			<section>
+				<aside class="notes">I had something they can try out and play with.</aside>
+				<h3>Experiment Editor</h3>
+				<small>Intervals can be added, edited, and deleted.</small><br />
+				<img src="editInterval.png" style="max-height:200px" /><br />
 
-				<section>
-					<div>The editor will allow scientist to define experiments by:
-						<ul>
-							<li>When to play tone (and its frequency)</li>
-							<li>When to make the rat wait</li>
-							<li>When to deliver reward</li>
-							<li>Save experiment logic and run trials any time</li>
-						</ul>
-					</div>
-					<em>and they can do all this with anyone editing any code.</em>
-				</section>
+				<small>and set times to dispense rewards freely</small><br />
+				<img src="addReward.gif" style="max-height:200px" />
+				<!-- TODO GIF should be run experiment -->
+			</section>
 
-				<section>
-					<aside class="notes">While the post-doc tested it out and created experiments, I fixed bugs she discovered. And also spent a week soldering because we ran out of wires with the probes we use to stick into rat brains.</aside>
-					<h2>Wait?! What about conditions?</h2>
-					<p>After running many trials of a few experiments she made, she thought of a experiment flow she's never tried before. <em>What if I gave the rats different types of water depending on how soon they press the lever?</em></p>
+			<section>
+				<h4>User testing, bug fixing, and soldering...</h4>
+				<p>The editor built didn't provide affordance to re-arrange intervals.</p>
+				<img src="rearrange.gif" style="max-height: 120px;" <p>And also included a new field in the tone interval to
+				allow for the tone to be played in different
+				frequencies.</p>
+			</section>
 
-					<p>Our linear experiment editor doesn't support that (T.T)</p>
-				</section>
+			<section>
+				<aside class="notes">While the post-doc tested it out and created experiments, I fixed bugs she discovered. And
+					also spent a week soldering because we ran out of wires with the probes we use to stick into rat brains.
+				</aside>
+				<h2>Wait?! What if you want to loop or jump intervals?</h2>
+				<p>With the experiment editor, Lucinda was able to run and accumulate data faster than before. She got around to
+					thinking of new variations, that she'll like to try:</p>
+				<ul>
+					<li>What if when the rat fails to wait for reward, we play tone again instead of restarting the trial?</li>
+					<li>What if I gave the rats different types of water depending on how soon they press the lever?</li>
+					<li>What if I want to do the tone & reward intervals over and over again until the subject gets it right?</li>
+				</ul>
+				<p>Our linear experiment editor doesn't support that (T.T)</p>
+			</section>
 
-				<section>
-					<aside class="notes">I initially tried to fit conditions into the interval editor. But it just end up confusing our user.</aside>
-					<!-- TODO split intervals -->
-				</section>
+			<!--
+			<section>
+				<aside class="notes">I initially tried to fit conditions into the interval editor. But it just end up confusing
+					our user.</aside>
+			</section>
+		-->
 
-				<section>
-					<h1>Enter the graph editor</h1>
-					<!-- TODO graph editor -->
+			<section>
+				<h1>Enter the graph editor</h1>
+				<!-- TODO graph editor -->
 
-				</section>
+			</section>
 
-				<section>
-					<!-- TODO execution with graph of a conditional experiment -->
-				</section>
-				
-				<section>
-					<h1>On to greater evils...</h1>
-					<p>Afterwards the stipend of the position ended, they were able to save money for their project, by not needing to hire another programmer.</p>
-				</section>
+			<section>
+				<!-- TODO execution with graph of a conditional experiment -->
+			</section>
 
-				<section>
-					<h1>What I didn't know back then</h1>
+			<section>
+				<div>The editor will allow scientist to define experiments by:
 					<ul>
-						<li>Version control</li>
-						<li>Design thinking</li>
+						<li>When to play tone (and its frequency)</li>
+						<li>When to make the rat wait</li>
+						<li>When to deliver reward</li>
+						<li>Save experiment logic and run trials any time</li>
 					</ul>
-				</section>
+				</div>
+				<em>and they can do all this with anyone editing any code.</em>
+			</section>
+
+			<section>
+				<h1>On to greater evils...</h1>
+				<p>Afterwards the stipend of the position ended, they were able to save money for their project, by not needing
+					to hire another programmer.</p>
+			</section>
+
+			<section>
+				<h1>What I didn't know back then</h1>
+				<ul>
+					<li>Version control</li>
+					<li>Design thinking</li>
+				</ul>
+			</section>
 
 
-			</div>
 		</div>
+	</div>
 
-		<script src="../lib/reveal.js"></script>
-		<script src="../lib/notes/notes.js"></script>
+	<script src="../lib/reveal.js"></script>
+	<script src="../lib/notes/notes.js"></script>
 
-		<script>
-			Reveal.initialize({
-				hash: true,
-				progress: true,
-				plugins: [ RevealNotes ]
-			});
-		</script>
-	</body>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			progress: true,
+			plugins: [RevealNotes]
+		});
+	</script>
+</body>
+
 </html>
