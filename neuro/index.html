@@ -10,81 +10,127 @@
 	<link rel="stylesheet" href="../lib/reset.css">
 	<link rel="stylesheet" href="../lib/reveal.css">
 	<link rel="stylesheet" href="../lib/theme/ki.css" id="theme">
+	<style type="text/css">
+		.image-with-caption {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			max-width: 600px;
+			margin: 10px auto;
+		}
+
+		.image-with-caption img {
+			margin-bottom: 0;
+		}
+
+		.image-with-caption p {
+			font-size: 0.6em;
+			margin-top: 2px;
+			color: #aaa;
+			font-style: italic;
+		}
+	</style>
 </head>
-<!--  data-background-image="rat1.png" data-background-position="bottom right"
-				data-background-repeat="no-repeat" data-background-size="800px" -->
 
 <body>
 	<div class="reveal">
 		<div class="slides">
 			<section data-background-image="rat1.png" data-background-position="bottom right"
 				data-background-repeat="no-repeat" data-background-size="800px">
-				<h4>Experiment Control Creator</h4>
+				<h4>Experiment Creation Framework</h4>
 				<p>Empowering scientist to create hardware controlled experiments<br />
 					@ Stony Brook University' s Neuroscience Dept. 2012</p>
+				<aside class="notes">
+					So some context, even though I chat about this project a lot. It's the first time I presented it in a
+					professional setting. Because it was such a long time ago, and before the start of my career as either an
+					engineer or designer. A lot of ignorant technical mistakes were made, and you'll probably see throughout the
+					project. But the framework I end up making here
+					felt relevant to your product, even if it is a
+					special case of the problem space. And if I talked exclusively about Dark, I risk putting 50% of
+					the audience to sleep.
+				</aside>
 			</section>
 			<section>
 				<h4>Once upon a summer</h4>
-				<aside class="notes">before heading out into the real world, I wanted to audit a literature class. But to do
-					that I had to remain affliated with the university, my Visualizations TA came to the rescue and recommended me
-					to take over a position he had with the Neuroscience Department. Where...
-					/ They measured
-					the electrical activity in the brains of thirsty rats, who were trained to press a lever upon hearing a tone.
-					[!]
-				</aside>
 
 				<p>a professor and a post-doc wanted to find out which neurons fire upons in your brain when you are
 					<em>expectating</em> a reward.
 				</p>
 				<div class="fragment">
 					<img src="setup.png" style="max-height: 500px;" />
-					<aside class="notes">The machine that controls when we send signals to play tones, release water valve, and
-						detect lever press has an API in Python. The previous programmer, who worked with had wrote them a program
-						which records the timestamps of when events happen, and connected the program to the API.</aside>
+					<aside class="notes">They measured
+						the electrical activity in the brains of thirsty rats, who were trained to press a lever upon hearing a
+						tone. This machine controls when we send signals to play tones, release water valve, and
+						detect lever press.</aside>
 				</div>
-			</section>
-
-			<section>
-				<p>The classic experiment is to give the rat a drop of water at the start of a trial. Play tone. During the
-					reward interval, if the rat presses the lever, she'll get another drop of water.</p>
-				<img src="ClassicExp.png" style="height: 100px; border-radius: 4px;" />
-
-				<p>There's a bunch of ways users want to vary the experiment.</p>
-				<img src="VarExp.png" style="height: 100px; border-radius: 4px;" />
-				<aside class="notes">And apparently that's why the lab needed a programmer.</aside>
 			</section>
 
 			<section>
 				<h4>Inherited Program</h4>
 				<img src="prev_software.png" style="max-height: 350px;" />
-				<p>Since the actions and intervals controlling the hardware was hard coded, the code hand to change everytime
-					experiment designs changed. </p>
-				<aside class="notes">And this was before version control was widely used. So if we wanted to go back to do an
-					experiement we did last week, I had to find the old code and replace it. We did a hacky version control where
-					we made multiple copies, with minor tweaks.</aside>
+				<p>Connects to hardware to record events. Has UI for debugging. Most of the logic controlling the experiment
+					protocol is not visible.</p>
+				<aside class="notes">Neurolink had a Python library to interact with it. The previous
+					programmer, who
+					(was my Visualizations TA and recommend me for the job)
+					had wrote a program which connects to the hardware
+					and records the timestamps when events happen.</aside>
 			</section>
 
 			<section>
-				<h4>It was not sustainable!</h4>
-				<!-- POSITION AS HOW IT REPLIED ON THE USERS TO BE ABLE TO ACCURATELY TRACK WHICH EXPERIMENT HAD WHAT CONDITIONS, AND WAS RUN WHEN.
-					WE RAN INTO PROBLEMS SEVERAL TIMES, WHERE AFTER THE EXPERIMENT WAS DONE WE DISCOVERED WHAT HAPPENED BETWEEN TRIALS DIDN'T LINE UP.
-					-->
+				<h3>How do the experiments work?</h3>
+				<div class="image-with-caption">
+					<img src="ClassicExp.png" style="height: 100px; border-radius: 4px;" />
+					<p>The classic experiment is to give the rat a drop of water at the start of a trial.</p>
+				</div>
+
+				<div class="image-with-caption">
+					<img src="VarExp.png" style="height: 100px; border-radius: 4px;" />
+					<p>The No-Go interval tests restraint, where the rat will only get a drop of water if she doesn't press the
+						lever.</p>
+				</div>
+				<aside class="notes">
+					Explains Classic:<br />
+					Play tone. During the
+					reward interval, if the rat presses the lever, she'll get another drop of water.
+					<br /><br />
+					There's a bunch of ways they want to vary the experiment. And apparently that's why the lab
+					needed a programmer. Because the logic to determine when
+					to play tone, give reward upon lever press was all hard coded. So everytime they want to try a different
+					protocol, I'll need to modify the code.
+					<br /><br />
+					What ended up happening frequently was:
+					The post-doc and interns runs one protocol for experiment over a few days. They collect the data, and then ask
+					me to modify the code for the next type of experiment they want to run. I did so, then run a week later. They
+					come back with some discrepencies in their data, and need to run more trials with previous protocol again. And
+					since we were obvious to version control, I just had to change the code and hope it behaved exactly the same.
+				</aside>
+			</section>
+
+
+			<section>
+				<h4>Is this how science really happens?!</h4>
 				<img src="ratatouille.jpg" style="max-height: 400px; border-radius: 8px;" />
-				<aside class="notes">And left a lot of room for human error to conduct the experiment wrong, might have changed
-					variables without recording the change. So next time they want to run the experiment they might have forgotten
-					to note the time change. I brought this problem up to the professor I was working for....</aside>
-				<p>Scientist should be able to run their experiments anytime without needing to edit code.</p>
+				<aside class="notes">I know it's not, because I spent a previous summer meticulously measuring the momentum of
+					muons. <br /><br />
+					The experiment protocol was recorded in a notebook, leaving a lot of room for human error. I brought this
+					concern up to the professor.</aside>
+				<p>Scientist should be able to run their experiments anytime consistently.</p>
 
 			</section>
 
 			<section>
 				<aside class="notes">
-					and proposed a making an experiment creator. He thought it was an interesting idea, so over the weekend I made
-					a paper prototype to test with him and our post-doc on Monday.
+					I proposed a making an experiment creator. He thought it was an interesting idea, so over the weekend I made
+					a prototype to test with him and our post-doc on Monday. My idea is to create a protocol editor where you can
+					create and edit experiments by defining intervals and actions. They are saved in a file, and can be loaded
+					into the experiment control program to run the experiments. This way when you want to retry a protocol, you
+					know it's consistent with the last time you ran it.
 				</aside>
 				<h4>How about we make an experiment creator?</h4>
-				<p>An experiment design is just a sequence of events, over a time period. They can be broken down into
-					<em>intervals</em> (wait, tone, reward, no-go) and <em>actions</em> (deliver treat).</p>
+				<p>An experiment protocol is just a sequence of events, over a time period. They can be broken down into
+					<em>intervals</em> (wait, tone, reward, no-go) and <em>actions</em> (deliver reward).</p>
 				<table>
 					<tr>
 						<td>
@@ -104,69 +150,91 @@
 
 			<section>
 				<aside class="notes">I had something they can try out and play with.</aside>
-				<h4>Experiment Editor</h4>
-				<small>Intervals can be added, edited, and deleted.</small><br />
-				<img src="editInterval.png" style="max-height:200px" /><br />
+				<h4>Protocol Editor</h4>
+				<div class="image-with-caption">
+					<img src="editInterval.png" style="max-height:200px" />
+					<p>Intervals can be added, edited, and deleted.</p>
+				</div>
 
-				<small>and set times to dispense rewards freely</small><br />
-				<img src="exe_exp.png" style="max-height:200px" />
+				<div class="image-with-caption">
+					<img src="exe_exp.png" style="max-height:200px" />
+					<p>Protocols can be loaded to run anytime.</p>
+				</div>
 			</section>
 
 			<section>
 				<h4>User testing, bug fixing, and soldering...</h4>
-				<p>The editor built didn't provide affordance to re-arrange intervals.</p>
-				<img src="rearrange.gif" style="max-height: 120px;" />
+				<aside class="notes">
+					They used it to create different protocols. Help find edge causes my initial implementation missed. During the
+					bug-free and no feature request days I help make the connector wires because I automated myself out of the
+					job.
+				</aside>
 
-				<p>And also included a new field in the tone interval to
-					allow for the tone to be played in different
-					frequencies.</p>
-				<!-- TODO screen -->
+				<div class="image-with-caption">
+					<img src="rearrange.gif" style="max-height: 120px;" />
+					<p>The editor built didn't provide affordance to re-arrange intervals.</p>
+				</div>
 
-				<p>Add different types of water in the valve (can we make the rats sugar addicts?)</p>
-				<!-- TODO screen -->
-			</section>
+				<p style="text-align: left;">And also included a new field in the tone interval to allow the tone to be played
+					at different frequencies.</p>
 
-			<section>
+				<p style="text-align: left;">Add different types of water in the valve (can we make the rats become sugar
+					addicts?)</p>
+
 				<aside class="notes">While the post-doc tested it out and created experiments, I fixed bugs she discovered.
 					Added new features such as tone frequency and select valve for reward. And
 					also spent a week soldering because we ran out of wires with the probes we use to stick into rat brains.
 				</aside>
+			</section>
+
+			<section>
 				<h4>Wait?! What if you want to loop or jump intervals?</h4>
-				<p>With the experiment editor, Lucinda was able to run and accumulate data faster than before. She got around to
-					thinking of new variations, that she'll like to try.</p>
-
-				<aside class="notes">I initially tried to fit the new requirements into the interval editor. But end up
-					confusing the user.</aside>
+				<p style="text-align: left;">With the experiment editor, they was able to run and accumulate data faster than
+					before. And also got
+					around
+					to
+					thinking of new variations to try. Some I had trouble modeling.</p>
 
 			</section>
 
 			<section>
-				<p>What if when the rat fails to wait for reward, we play tone again instead of restarting the trial?</p>
-				<img src="go_back.png" />
+				<h4>Can we jump to another interval?</h4>
+				<div class="image-with-caption">
+					<img src="go_back.png" />
+					<p>What if when the rat fails to wait for reward, we play tone again instead of restarting the trial?</p>
+				</div>
+
+				<div class="image-with-caption">
+					<img src="jump_around.png" />
+					<p>What if we want to skip the rest of the reward period, and go to another tone once the rat presses the
+						lever?</p>
+				</div>
 			</section>
 
 			<section>
-				<p>What if I gave the rats different types of water depending on how soon they press the lever?</p>
-				<img src="diff_rewards.png" />
+				<h4>What about conditional rewards?</h4>
+				<div class="image-with-caption">
+					<img src="diff_rewards.png" />
+					<p>What if I gave the rats different types of water depending on how soon they press the lever?</p>
+				</div>
+				<aside class="notes">I tried represent these new requirements into the existing framework, but just end up
+					confusing the users more.</aside>
+
+				<blockquote>What is the essence of these new protocols? What is our user trying to express?</blockquote>
 			</section>
 
 			<section>
-				<p>What if we want to skip the rest of the reward period, and go to another tone once the rat presses the
-					lever?</p>
-				<img src="jump_around.png" />
-			</section>
 
-			<section>
-				<blockquote>What is the essence of these new experiements? What is our user trying to express?</blockquote>
-
-				<p>Jumping to another interval breaks the timeline analogy we have been using in our editor to express trial
+				<p style="text-align: left;">Jumping to another interval breaks the timeline analogy we have been using in our
+					editor to express trial
 					time.</p>
 				<div>
 					<img src="jump_around.png" style="height: 50px; display: inline-block;" />
 					<img src="go_back.png" style="height: 50px; display: inline-block;"" />
 				</div>
 
-				<p>Triggering actions based on time within interval time is a desire for conditional control.
+				<p  style=" text-align: left;">Triggering actions based on time within is a desire for conditional
+					control.
 					<code>
 						<font color=" #00cc88">do</font> play tone,
 					<font color="#00cc88">if</font> t > 5
@@ -175,41 +243,55 @@
 			</section>
 
 			<section>
-				<p>I added Jump as
-					an action, then attached a conditional to it, to only trigger if the condition is true.</p>
-				<img src="jump_action.png" />
+				<h3>Defining new primatives</h3>
+				<div class="image-with-caption">
+					<img src="jump_action.png" />
+					<p style="text-align: left;">I added Jump as
+						an action, then attached a conditional to it, to only trigger if the condition is true.</p>
+				</div>
 			</section>
 
 			<section>
-				<p>Then gave slots to
-					an interval (at start, on lever press, when end) that can contain actions.</p>
-				<img src="interval_slots.png" style="max-height: 150px;" />
-
-				<p>Then the professor pointed out that Reward and NoGo can be represented as intervals, under the new framework.
-				</p>
-				<img src="just_wait.png" style="max-height: 200px;" />
+				<div class="image-with-caption">
+					<img src="interval_slots.png" style="max-height: 150px;" />
+					<p>Then gave slots to
+						an interval (at start, on lever press, when end) that can contain actions.</p>
+				</div>
+				<aside class="notes">Then the professor pointed out that Reward and NoGo can be represented as intervals, under
+					the new
+					framework.
+				</aside>
+				<div class="image-with-caption">
+					<img src="just_wait.png" style="max-height: 200px;" />
+					<p>Reward and No Go can be represented as intervals.</p>
+				</div>
 			</section>
 
 			<section>
-				<div style="display: flex; justify-content: flex-start; align-items: center;">
-					<span>So if we make a "Play Tone" action we can get rid of typed intervals all together.</span>
-					<img src="simple_tone.png" style="max-height: 150px;" />
+				<h4>Generalizing</h4>
+				<div style="display: flex; justify-content: flex-start; align-items: flex-start;text-align: left; ">
+					<img src="simple_tone.png" style="max-height: 150px; margin-right: 20px;" />
+					<span>If we make a "Play Tone" action, then we can get rid of typed intervals all
+						together.</span>
 				</div>
 
-				<p>And to provided even greater flexibility, got rid of begin/lever/end slots in the intervals, and just allowed
-					them to hold any number of conditions.
-					<em>Intervals</em> have <em>conditions</em>, when evaluated true do <em>actions</em>.</p>
+				<p style="text-align: left;">And to provided even greater flexibility, I got rid of begin/lever/end slots in the
+					intervals, and just allowed
+					them to hold any number of conditions.</p>
+				<blockquote>
+					<em>Intervals</em> have <em>conditions</em>, when evaluated true, <em>actions</em> are triggered.</blockquote>
 
-				<aside class="notes">An impedious for pushing for max flexibility is also because its mid August, and my time
-					with them is coming to an end. So I was also highly motivated to provide for them a solution they can use for
+				<aside class="notes">An impedious for pushing for max flexibility of this framework is also motivated by the
+					fact it's mid August, and my time
+					with them is coming to an end. So I was highly motivated to provide for them a solution they can use for
 					a long time.</aside>
 			</section>
 
 			<section>
-				<h4>Redefined primatives</h4>
+				<h3>Final primatives</h3>
 				<ul>
-					<li><em>Intervals</em> no longer typed, just holds an array of conditions</li>
-					<li class="fragment" data-fragment-index="2"><em>Conditions</em> Is lever pressed? Or time checks:
+					<li><em>Intervals</em> no longer typed, they just hold an array of conditions</li>
+					<li class="fragment" data-fragment-index="2"><em>Conditions</em> Lever pressed? Or time checks:
 						<code>t > 2</code>, <code>T > 10</code>
 					</li>
 					<li class="fragment" data-fragment-index="3"><em>Actions</em> Reward, Play tone, Jump (to another interval)
@@ -223,38 +305,49 @@
 					<img src="new_action.png" class="fragment" data-fragment-index="3"
 						style="position: absolute; top:0; left: 0; z-index: 2;" />
 				</div>
+				<aside class="notes">I realized we were making miniature control graphs, with our new primatives. So why not go
+					all the way.</aside>
 			</section>
 
 			<section>
 				<h4>Enter the graph editor</h4>
-				<p>I realized we were making miniature control graphs, with our new primatives. So why not go all the way.</p>
 				<img src="graph_editor.png" style="max-height: 600px;" />
 
 			</section>
 
+			<!-- TODO execution with graph of a conditional experiment -->
+
 			<section>
-				<!-- TODO execution with graph of a conditional experiment -->
+				<h3>On to greater evils...</h3>
+				<p>Afterwards the summer position ended, the lab did not have to hire another programmer because faculty and
+					students were able
+					to
+					make experiment protocols themselves.
+				</p>
 			</section>
 
 			<section>
-				<h4>On to greater evils...</h4>
-				<p>Afterwards the stipend of the position ended, they were able to save money for their project, by not
-					needing
-					to hire another programmer.</p>
-			</section>
-
-			<section>
-				<h4>What I didn't know back then</h4>
+				<h4 style="text-align: left;">What I didn't know back then</h4>
 				<ul>
-					<li>Version control</li>
-					<li>Design thinking</li>
-					<li>Maybe this would have sufficed as a library of functions</li>
-
+					<li><em>Version control</em> might have solved the problem</li>
+					<li><em>Design thinking</em> practices could have prevented having to switching model
+						representation.</li>
 				</ul>
-				<p>Trade-offs: Moving from the interval editor to the graph editor, provided more flexibility and expressive
-					power to the framework. However, it did introduce greater complexity. If my target users weren't
-					scientist, who possess great analytical ability and came with an pre-existing understanding of boolean
-					logic. I would not have made the switch in the editor interface.</p>
+				<p>&nbsp;</p>
+				<h4 style="text-align: left;">Reflection</h4>
+				<p style="text-align: left;">Was the framework and GUI editor excess? Could we just have
+					easily
+					solved the
+					problem with just writing a
+					library of functions? And taught that to the scientist?</p>
+
+				<!-- <p style="text-align: left;"><em>Trade-offs</em> Moving from the interval editor to the graph editor, provided
+					more
+					flexibility and expressive
+					power to the framework. However, it did introduce greater complexity.</p>
+				<aside class="notes">If my target users weren't
+					scientist, who possess great analytical ability. I would not have made the switch in the editor interface.
+				</aside> -->
 			</section>
 
 		</div>
