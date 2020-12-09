@@ -37,6 +37,10 @@
 			color: #aaa;
 			font-style: italic;
 		}
+
+		.reveal section.light {
+			color: #7cafc2;
+		}
 	</style>
 </head>
 
@@ -49,40 +53,46 @@
 			<section>
 				<h2>Roles & Responsibilities</h2>
 
-				<p>I worked with a backend developer to tackle this problem. I was responsible for designing a solution and
-					implementing the frontend changes.</p>
+				<p>I worked with a backend developer to tackle this problem. I was responsible for <em>designing a solution</em>
+					and
+					<em>implementing the frontend</em> changes.</p>
 
 			</section>
 			<section>
 				<h2>Background</h2>
-				<aside class="notes"> A differentiating feature of Dark is always seeing what code evaluates to for real data.
+				<aside class="notes"> A differentiating feature of Dark is, you can always see what code evaluates to given your
+					input data.
 					This often overlaps with debug functionality, and we needed a clear way to message several error types when
-					appropriate, including X Y Z. <br /><br />
+					appropriate.<br /><br />
 					The example below shows how query parameters from a GET request are accessed and transformed from strings to
-					integers.</aside>
+					integers and used for evaluation later in the program.</aside>
 
-				<div class="image-with-caption">
-					<img src="errors_lv-1.png" />
-					<p>This is from a request made to <code>/test?a=1&b=2&c=3</code></p>
+				<div class="side-by-side" style="width:100%;">
+					<div class="image-with-caption" style="align-items: flex-end;">
+						<img src="errors_lv-1.png" />
+						<p>This is from a request made to <code>/test?a=1&b=2&c=3</code></p>
+					</div>
+					<div class="image-with-caption" style="align-items: flex-end;">
+						<img src="errors_lv-2.png" />
+						<p>You can pass data into functions and have them evaluated</p>
+					</div>
 				</div>
 
-				<div class="image-with-caption">
-					<img src="errors_lv-2.png" />
-					<p>You can pass data into functions and have them evaluated</p>
+				<div class="side-by-side">
+					<div class="image-with-caption" style="align-items: flex-end;">
+						<img src="errors_lv-3.png" />
+						<p>Live values are kept, propagates through for later evaluation</p>
+					</div>
 				</div>
 
-				<div class="image-with-caption">
-					<img src="errors_lv-3.png" />
-					<p>And these live values are kept, and gets propagated through for later evaluation</p>
-				</div>
-
-				<p>Live values shows the developer what exactly will happen to the data passed into their software.</p>
+				<p>Live value shows the developer what exactly will happen to the data passed into
+					their software.</p>
 
 			</section>
 			<section id="empathize">
 				<h3>Problem</h3>
 				<p>Dark's structured editor prevents developers from entering syntactically invalid code. But they still can
-					have semantically invalid code.</p>
+					have <em>semantically invalid code</em>.</p>
 				<div class="image-with-caption">
 					<img src="errors_prob-1.png" />
 					<p>Since the queryParams are <code>?a=1&b=2&c=3</code>, d is not defined and therefore resulting in
@@ -92,47 +102,55 @@
 				<div class="image-with-caption">
 					<img src="errors_prob-2.png" />
 					<p><code>String::toInt</code> expects you to pass in a <code>String</code> as an argument but gets a
-						<code>null</code>. Therefore the <code>let d =</code> assignment equates to an error.</p>
+						<code>null</code>.</p>
 				</div>
+
+				<aside class="notes">Therefore the <code>let d =</code> assignment equates to an error.</p>
 
 			</section>
 			<section>
-				<p>When errors will propagate to other parts of the code, and those expressions will not evaluate because it
-					sees an error in its input. <em>Soon all of the live values will be shown with errors all over, even if the is
-						just a single error in your codebase.</em></p>
+				<aside class="notes">When errors will propagate to other parts of the code, and following expressions will not
+					evaluate because it
+					sees an error in its input.</aside>
+				<p>Many live values will be shown with errors all over, even if there is
+					just a single error in your codebase.</p>
 
-				<div class="image-with-caption">
-					<img src="errors_prob-3.png" />
-					<p>Since <code>d</code> is an error, any evaluation involving d will also result in the same error.</p>
-				</div>
+				<div class="side-by-side" style="width:100%;">
+					<div class="image-with-caption">
+						<img src="errors_prob-3.png" />
+						<p>Since <code>d</code> is an error, any evaluation involving d will also result in the same error.</p>
+					</div>
 
-				<div class="image-with-caption">
-					<img src="errors_prob-4.png" />
-					<p>And the same error propagates through to other areas of the code.</p>
+					<div class="image-with-caption">
+						<img src="errors_prob-4.png" />
+						<p>And the same error propagates through to other areas of the code.</p>
+					</div>
 				</div>
 
 			</section>
 
-			<section>
+			<section data-background-color="#efeff4" class="light">
 				<p>The of the way the Dark evaluation engine is engineered is that later expressions don't get evaluated, and
 					the original error carries through.</p>
 				<div class="image-with-caption">
-					<img src="eval_error_prop.png" style="background-color: #eee; border-radius: 8px;" />
+					<img src="eval_error_prop.png" />
 					<p>Dark's evaluation engine will just carry the same error throughout the code.</p>
 				</div>
 
 			</section>
 
 			<section id="brainstorm">
-				<q>How do we help developers find the origin of theirs errors?</q>
+				<blockquote>How do we help developers find the origin of theirs errors?</blockquote>
 				<p>Firstly, we want to alert the users when there is a semantic error.</p>
-				<p>Secondly, if the error is propagated from another place in the code, we want to make it loud and clear where
-					the error came from.</p>
+				<p class="fragment">Secondly, if an error is propagated from another place in the code, we want to make it loud
+					and clear where
+					in came from.</p>
 			</section>
 
 			<section>
 				<h4>Signaling error in expression</h4>
-				<p>Let's look at the first case. Many code editors either highlight the line number on the
+				<aside class="notes">Let's look at the first case.</aside>
+				<p>Many code editors either highlight the line number on the
 					left, or show it on the right.</p>
 
 				<div class="image-with-caption">
@@ -143,38 +161,47 @@
 			</section>
 
 			<section>
-				<p>Unfortunately, the sides of the Dark editor is already used, and we don't want to overload those spaces with
-					more information.</p>
+				<aside class="notes">Unfortunately, the sides of the Dark editor is already used, and we don't want to overload
+					those spaces with
+					more information.</aside>
 
 				<div class="image-with-caption">
 					<img src="sides.png" />
 					<p>To the left of the we have live values, and the Error Rail to the right.</p>
 				</div>
 
-				<p>Furthermore, putting the error indicator on the sides will not capture, instances where there's multiple
-					errors on the same line. Unless we design our error messaging to list out each case clearly.</p>
+				<div class="fragment">
+					<aside class="notes">Furthermore, putting the error indicator on the sides will not capture, instances where
+						there's multiple
+						errors on the same line. Unless we design our error messaging to list out each case clearly.</aside>
 
-				<div class="image-with-caption">
-					<img src="errors_on-same-line.png" />
-					<p>This example has and error on the right and left of the +. They are different errors on the same line.</p>
+					<div class="image-with-caption">
+						<img src="errors_on-same-line.png" />
+						<p>This example has and error on the right and left of the +. They are different errors on the same line.
+						</p>
+					</div>
 				</div>
 
 			</section>
 
 			<section>
-				<p>So far, our editor borrows many ideas from Google Doc's editing experience. So I decided to borrow a pattern
-					many people (including non-developers) are familiar with. The red swivel line from a text editor.</p>
+				<aside class="notes">So far, our editor borrows many ideas from Google Doc's editing experience. So I decided to
+					borrow a pattern
+					many people (including non-developers) are familiar with. The red swivel line from a text editor. That way we
+					can highlight different errors on the same line.</aside>
 
 				<div class="image-with-caption">
 					<img src="same-line-error.png" />
 					<p>Expressions that produce errors get a red dashed line.</p>
 				</div>
 
-				<p>The expressions which produce errors are now highlighted with a dashed red line.</p>
-				<div class="image-with-caption">
-					<img src="just-underline.png" />
-					<p>The function call <code>String::toInt</code> produces an error and we denote it by giving it an error
-						marker.</p>
+				<div class="fragment">
+					<aside class="notes">The expressions which produce errors are now highlighted with a dashed red line.</aside>
+					<div class="image-with-caption">
+						<img src="just-underline.png" />
+						<p>The function call <code>String::toInt</code> produces an error and we denote it by giving it an error
+							marker.</p>
+					</div>
 				</div>
 			</section>
 
@@ -184,22 +211,23 @@
 				<aside class="notes">Now what do we do, if the error came from another place in the code. First I didn't want to
 					highlight places
 					the error is propagated to because it will suggest to the developer, that they will have to fix multiple
-					problems when they might only have to fix just one.</aside>
+					problems when they only have to fix just one.</aside>
 
 				<div class="image-with-caption">
 					<img src="errors_highlighting-props.png" />
-					<p>Even though this is technically correct by illustrating the place there are errors. It poorly conveys what
-						the developer will have to do to fix those errors. </p>
+					<p>They only have to fix <code>let d = String:toInt </code></p>
 				</div>
 
-				<q>If we are not going to highlight the places, where errors are propagated to then how will developers know
-					that the error they are seeing crept up to earlier parts of their code?</q>
+				<p>Developers need to know
+					that the error, they are looking at, had crept up from earlier parts of their code. <em>How can we signal
+						that?</em></p>
 
 			</section>
 
 			<section>
 				<p>Here live values come to the rescue! Errors values will show in live values.</p>
-				<aside class="notes"> If the developer is has their cursor on a place with a propagated error we will change the
+				<aside class="notes"> If the developer is has their cursor on a place with a propagated error, the editor will
+					change the
 					subtle dashed red line to an annoying blinking background. Signaling to them that "HEY THIS IS WHY YOUR
 					EXPRESSION WON'T EVALUATE, GO FIX IT NOW."</aside>
 
@@ -224,29 +252,46 @@
 
 			<section>
 				<h2>Testing & Revisions</h2>
-				<p>At first, I didn't want to confuse the user with the propagated error message since the problem with
+				<aside class="notes">At first, I didn't want to confuse the developers with the propagated error message since
+					the
+					problem with
 					<code>sum * diff</code> is not "String::toInt was called with the wrong type", but "the second argument of *
 					is called with the wrong type". Therefore I made it necessary for the developer to go to the live value of the
-					origin error to see the error message.</p>
-				<aside class="notes">But it turns out this annoyed developers, because they had to click to see the error. And
-					we realized because we have the arrow pointing to the origin error's line. They won't be confused. So I
-					changed it to show shows the origin error's message in the propagated error's live value. We want the original
-					error message to be shown if the error propogated down.</aside>
-				<img src="errors_sol-3.png" />
+					origin error to see the error message.<br /><br />
+					But it turns out this added an extra step for developers, because they had to click to see the error. And
+					we realized because we have the arrow pointing to the origin error's line. They won't will know that the
+					message refers to a previous statement. So I
+					changed it to show shows the origin error's message in the propagated error's live value.</aside>
+				<div class="image-with-caption" style="max-width: 800px;">
+					<img src="errors_sol-3.png" />
+					<p>We want the original
+						error message to be shown if the error propogated down.</p>
+				</div>
 			</section>
 
 			<section id="retro">
 				<h2>Retrospective & Future Improvements</h2>
-				<p>One common complaint we also get is that the blinking is too loud, they know there is an error and plan to
+
+				<p>Blinking is too loud</p>
+				<p>Context aware highlighting</p>
+				<p>A list of all errors across the codebase</p>
+				<aside class="notes">One common complaint we also get is that the <em>blinking is too loud</em>, they know there
+					is an error and
+					plan to
 					fix it later. I think this falls under the scope of problems with our editor. It has no awareness of whether
-					the user is writing code or debugging their code.</p>
+					the user is writing code or debugging their code.<br /><br />
 
-				<p>Maybe we don't want to annoy the user when they are writing code, and only blink when they are debugging.
+					Maybe we don't want to annoy the user when they are writing code, and only blink when they are debugging.
 					This can be accomplished by tracking each user's typing speed to figure out their average speed. If they are
-					typing significantly below their average speed, then consider them to be debugging.</p>
+					typing significantly below their average speed, then consider them to be debugging.<br /><br />
 
-				<p>Another simple fix is that maybe having the arrow pointing to the line of the original error is enough to
-					signal where it came from and we don't need to blink in an annoying fashion.</p>
+					Another simple fix is that maybe having the arrow pointing to the line of the original error is enough to
+					signal where it came from and we don't need to blink in an annoying fashion.<br /><br />
+
+					Another nice to have is all like how at compile time, all errors are listed, across different functions and
+					handlers. So you don't have to hunt for them.
+
+				</aside>
 
 			</section>
 
@@ -254,9 +299,9 @@
 	</div>
 
 	<div id="shortcuts">
-		<a href="#/empathize">Empathize</a>
+		<!-- <a href="#/empathize">Empathize</a>
 		<a href="#/brainstorm">Brainstorm</a>
-		<a href="#/retro">Retrospective</a>
+		<a href="#/retro">Retrospective</a> -->
 	</div>
 
 	<script src="../lib/reveal.js"></script>
