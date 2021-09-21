@@ -192,23 +192,45 @@
 		],
 		"tags": ["ReactJs", "ES6"]
 	},
-    {
-        "company": "Dark Inc.",
-        "title": "Designer & UX Engineer",
-        "start": "2018-07-01",
+	{
+		"company": "Dark Inc.",
+		"title": "Designer & UX Engineer",
+		"start": "2018-07-01",
 		"end": "2020-07-01",
-        "details": [
-            "Identify problems our users face, and brainstorm approaches to solve them.",
-            "Bring up low effort/high impact changes that would improve product usability",
-            "Design the visual treatment and interaction flow for the solution.",
-            "Scope design work to meet project timeline and engineering resources.",
-            "Explain trade-offs in design, accounting for edge cases.",
-            "Make deliberate decisions about scope; segment the ideal solution, so the scope can be cut to deliver MVP first, and follow-up bells and whistles later.",
-            "Provide detailed style and state change specifications for a feature, so engineers know exactly what is needed to for them to implement the solution.",
-            "Provide support for engineers implementing the solution. Helping them with CSS, or changing the design so it may be easier for them to implement.",
-            "Reduce UX/Design debt/inconsistencies, coalesce designs/workflows.",
-            "Sometimes, implement solutions and features in OCaml and ReasonML.",
-            "Design graphical assets our company needs. ie: icons, logo, mascot, print material."
-        ]
-    }
+		"details": [
+			"Identify problems our users face, and brainstorm approaches to solve them.",
+			"Bring up low effort/high impact changes that would improve product usability",
+			"Design the visual treatment and interaction flow for the solution.",
+			"Scope design work to meet project timeline and engineering resources.",
+			"Explain trade-offs in design, accounting for edge cases.",
+			"Make deliberate decisions about scope; segment the ideal solution, so the scope can be cut to deliver MVP first, and follow-up bells and whistles later.",
+			"Provide detailed style and state change specifications for a feature, so engineers know exactly what is needed to for them to implement the solution.",
+			"Provide support for engineers implementing the solution. Helping them with CSS, or changing the design so it may be easier for them to implement.",
+			"Reduce UX/Design debt/inconsistencies, coalesce designs/workflows.",
+			"Sometimes, implement solutions and features in OCaml and ReasonML.",
+			"Design graphical assets our company needs. ie: icons, logo, mascot, print material."
+		]
+	},
+	{
+		"company": "Stedi Inc",
+		"title": "Product Designer",
+		"start": "2020-08-01",
+		"end": "2020-12-31",
+		"details": [
+			"Designed features to help our client's access their order transactions & tracking.",
+			"Implemented features in React, EmotionJs, and Typescript.",
+			"Coordinated with Product team and backend teams to design, build, and ship."
+		]
+	},
+	{
+		"company": "Lynxtool",
+		"title": "Designer & UX Engineer",
+		"start": "2021-01-04",
+		"end": "NOW",
+		"details": [
+			"Created a design system for node-editor's GUI.",
+			"Designed visual representation of programming concepts, such that they be easily understood for non-programmers.",
+			"Refine GUI after engineers have implemented core functionality, in Typescript using HTML's Canvas and Svelte."
+		]
+	}
 ]
