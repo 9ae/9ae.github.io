@@ -170,16 +170,6 @@
 		"tags": ["Java", "Android SDK", "Framer.js"]
 	},
 	{
-		"company": "Freelance",
-		"title": "Designer / Developer",
-		"start": "2016-11-01",
-		"end": "2017-07-01",
-		"details": [
-			"Design and develop web and mobile applications."
-		],
-		"tags": ["Sketch 3", "AngularJS"]
-	},
-	{
 		"company": "Techolutions / J.Crew",
 		"title": "Sr. Frontend Developer (Consultant)",
 		"start": "2017-07-01",
@@ -198,17 +188,15 @@
 		"start": "2018-07-01",
 		"end": "2020-07-01",
 		"details": [
-			"Identify problems our users face, and brainstorm approaches to solve them.",
-			"Bring up low effort/high impact changes that would improve product usability",
-			"Design the visual treatment and interaction flow for the solution.",
-			"Scope design work to meet project timeline and engineering resources.",
-			"Explain trade-offs in design, accounting for edge cases.",
-			"Make deliberate decisions about scope; segment the ideal solution, so the scope can be cut to deliver MVP first, and follow-up bells and whistles later.",
-			"Provide detailed style and state change specifications for a feature, so engineers know exactly what is needed to for them to implement the solution.",
-			"Provide support for engineers implementing the solution. Helping them with CSS, or changing the design so it may be easier for them to implement.",
-			"Reduce UX/Design debt/inconsistencies, coalesce designs/workflows.",
-			"Sometimes, implement solutions and features in OCaml and ReasonML.",
-			"Design graphical assets our company needs. ie: icons, logo, mascot, print material."
+			"Identified problems our users face, and researched approaches to solve them.",
+			"Found low effort/high impact changes that would improve product usability",
+			"Designed the visual treatment and interaction flow for features.",
+			"Scoped feature specifications to meet project timeline and engineering resources.",
+			"Wrote detailed style guidelines and state charts for a feature, so engineers know exactly what is necessary to implement.",
+			"Supported engineers implementing the a feature, helped them with software achitecture and CSS, or changed the design so it may be easier for them to implement within timeframe.",
+			"Reduced UX and visual inconsistencies, and coalesce workflows.",
+			"Implemented solutions and features in OCaml and ReasonML, when engineering resource is low.",
+			"Designed graphical assets our company needs. ie: icons, logo, mascot, print material."
 		]
 	},
 	{
@@ -230,7 +218,7 @@
 		"details": [
 			"Created a design system for node-editor's GUI.",
 			"Designed visual representation of programming concepts, such that they be easily understood for non-programmers.",
-			"Refine GUI after engineers have implemented core functionality, in Typescript using HTML's Canvas and Svelte."
+			"Implemented features in Typescript using <canvas> Context2d and Svelte."
 		]
 	}
 ]
