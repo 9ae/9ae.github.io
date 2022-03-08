@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>{PROJECT Title}</title>
+
+    <link rel="stylesheet" href="../lib/reset.css" />
+    <link rel="stylesheet" href="../lib/reveal.css" />
+    <link rel="stylesheet" href="../lib/theme/lynx.css" id="theme" />
+  </head>
+
+  <body>
+    <div id="case">
+      <div class="slides">
+        <section class="app">
+          <h1>Representing conditionals graphically</h1>
+          <img src="final.png" />
+        </section>
+        <section id="context">
+          <h2>Showing you what happens</h2>
+          <img src="home-ex.png" />
+          <aside class="notes"></aside>
+            Lynxtool's aim is to help non-programmers process complex data by
+            showing them what is going on. Instead of having to simulate the
+            effects of code in their heads, we draw it out for them.
+          </aside>
+        </section>
+        <section>
+          <h2>How do we show "What-ifs"?</h2>
+          <aside class="notes">
+            A core feature of computational instructions is the ability to do
+            different things under different conditions. In the example below,
+            we'll send a different message to your courier depending on the day
+            the delivery was made.
+          </aside>
+          <img src="basicex.png" />
+        </section>
+
+        <section class="app">
+          <aside class="notes">
+            Since conditionals are so important, they were one of the first
+            things our CEO made before I joined the team. <br /><br />
+            The top pair of inputs are values to be returned if the condition is
+            <i>true</i>. The conditional input is in the middle, and everything
+            below is the values to be returned if the condition is <i>false</i>.
+          </aside>
+          <img src="old_if_impl.png" />
+          <i>Can you understand all that without an explanation?</i>
+        </section>
+        <section class="app" id="problem">
+          <blockquote>
+            As the a basic part of computation our conditional node should be
+            simple but was not. It was confusing because there's too many things
+            to plug into and coming out of it.
+          </blockquote>
+          .
+          <aside class="notes">
+            Furthermore, our design philosophy had evolved since this node was
+            initially created. We wanted users to learn by example, so instead
+            of just creating single nodes, we plan to allow users to insert a
+            cluster of nodes together. We want to users how to express complex
+            ideas with simple nodes.
+          </aside>
+        </section>
+        <section class="app">
+          <h3>Why do we have so many inputs?</h3>
+          <aside class="notes">
+            To enable multiple values to be returned, per conditional
+            evaluation.<br />
+            For example, let's say we tip extra on the weekends. So we can
+            extend that node to also include the percent to add to the delivery
+            cost.
+          </aside>
+          <img src="old_impl_multi.png" />
+        </section>
+        <section class="app">
+          <h3>Same idea, different expression</h3>
+          <aside class="notes">
+            Original nodes try to do a lot, our direction has changed. We want
+            users to be able to learn the tool by playing around with a cluster
+            of nodes. But we want to keep nodes atomic, an expression of a
+            programming concept as simple as possible.<br /><br />Nodes
+            constructed together can express more complex concepts. And the same
+            can be done with the old Conditional node by combining it with the
+            Pack and Unpack nodes
+          </aside>
+          <img src="if_as_packs.png" />
+          <p className="center">
+            With this in mind, we can just focus on making a better 3-input
+            conditional node.
+          </p>
+        </section>
+        <section>
+          <h2>Design @ Lynxtool</h2>
+          <aside class="notes">
+            At lynx we follow a paired down design process to get us to our MVP.
+          </aside>
+          <ul>
+            <li>Alice & stakeholder will <b>define the problems</b></li>
+            <li>With the whole team, we will <b>brainstorm ideas</b></li>
+            <li>
+              Alice will go through iterations to <b>refine our best ideas</b>
+            </li>
+          </ul>
+        </section>
+        <section id="brainstorm">
+          <h2>Brainstorm</h2>
+          <aside class="notes">
+            Before our brainstorm jam-session, I prepare my team with a few big
+            questions, we must answer for the project. And I'll prepare a
+            variety of solutions or rough ideas on how to answer these
+            questions.
+          </aside>
+        </section>
+        <section>
+          <h3 style="{{color:" textColor}}>Ideas from before my time</h3>
+          <aside class="notes">
+            Since this is a re-design project. Before getting started, I dug up
+            our CEO's old sketches to make sure I am not re-treading dead paths.
+          </aside>
+          <img src="prev_ideas.png" />
+        </section>
+        <section class="white">
+          <h3>Ideas shared at brainstorm</h3>
+          <aside class="notes">
+            With that in mind, I came up with new ideas and presented them
+            during our meeting. We used Miro to provide feedback & sketch.
+          </aside>
+          <img src="springboard.jpg" />
+        </section>
+        <section class="white">
+          <h3>New ideas that came up during our jam</h3>
+          <img src="other_ideas.jpg" />
+          <aside class="notes">
+            Often times other team members also contribute with ideas of their
+            own. And I take the most popular ones to refine them.
+          </aside>
+        </section>
+        <section class="app" id="design">
+          <h2>Refine idea visually</h2>
+          <img src="shapes1.png" />
+          <aside class="notes">
+            I took our top 3 favorites and cleaned them up as well as try
+            different variations of them. Testing the ideas across different
+            states:
+            <ul>
+              <li>
+                <b>No inputs yet</b>, we don't know which path (true or false)
+                our data will take, nor do we know the type of data.
+              </li>
+              <li>
+                <b>Condition known</b>, we know which path the data will take
+                even if we don't know what type of data we have yet.
+              </li>
+              <li><b>Data types known</b>, our paths can be color coded</li>
+            </ul>
+            We end up deciding to go with the
+          </aside>
+        </section>
+        <section class="app">
+          <aside class="notes">
+            I expored a variety of the way the paths on the node can be drawn.
+          </aside>
+          <img src="shapes2.png" />
+          <p className="center">
+            We found the one where they all meet at 60 degrees to be neat.
+          </p>
+        </section>
+        <section class="app">
+          <h3>Chosing colors</h3>
+          <aside class="notes">
+            I played around with various shades of grey for the dial and path
+            tracks. A surprising find was the the dial is almost black it looks
+            rather sleak. But also having a light dial will help the data paths
+            stand out better.
+          </aside>
+          <img src="colors1.png" />
+        </section>
+        <section class="app">
+          <h3>Testing our colors against data types</h3>
+          <aside class="notes">
+            So we tested both candidates against data-type colors to see how
+            they will look like filled in. We decided against the black dial
+            because it will have poor contrast for nested boolean statements,
+            and hypothesize it will be a likely use case.
+          </aside>
+          <img src="colors2.png" />
+        </section>
+        <section class="app">
+          <h2>Final designs</h2>
+          <img src="final.png" />
+        </section>
+        <section class="app" id="build">
+          <h2>Implementation</h2>
+          <img src="Explaination.png" />
+          <aside class="notes">
+            I also ended up being the one to implement our new conditional node
+            design. A fun part of coding here was I had to brush up on
+            trigonometry to calculate where to draw the points so the lines will
+            align pixel perfectly when they meet.
+          </aside>
+        </section>
+        <section>
+          <h2>Retrospective</h2>
+          <ul>
+            <li>The empty state can still be a little confusing.</li>
+            <li>
+              If I had known I'll be the one implementing it, I'd spend less
+              time iterating through the states for each approach.
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <div id="shortcuts">
+		<a href="#/context">Context</a>
+		<a href="#/problem">Problem</a>
+		<a href="#/brainstorm">Brainstorm</a>
+		<a href="#/design">Design</a>
+		<a href="#/build">Build</a>
+	</div>
+    <script src="../lib/reveal.js"></script>
+    <script src="../lib/notes/notes.js"></script>
+    <script src="../lib/init.js"></script>
+    <script>
+      initModes();
+    </script>
+  </body>
+</html>

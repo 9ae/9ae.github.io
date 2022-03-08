@@ -1,0 +1,581 @@
+/*********************************************
+  * GLOBAL STYLES
+  *********************************************/
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+
+:root {
+  --background-color: #c0c6c9;
+  --main-font: "Open Sans", sans-serif;
+  --main-font-size: 26px;
+  --main-color: #1e0d3f;
+  --block-margin: 20px;
+  --heading-margin: 0 0 20px 0;
+  --heading-font: "Montserrat", sans-serif;
+  --heading-color: #666971;
+  --heading-line-height: 1.2;
+  --heading-letter-spacing: -0.03em;
+  --heading-text-transform: none;
+  --heading-text-shadow: none;
+  --heading-font-weight: normal;
+  --heading1-text-shadow: none;
+  --heading1-size: 3.77em;
+  --heading2-size: 2.11em;
+  --heading3-size: 1.55em;
+  --heading4-size: 1em;
+  --code-font: monospace;
+  --link-color: #8f5bf5;
+  --link-color-hover: #9b7cda;
+  --selection-background-color: #3396fa;
+  --selection-color: #fff;
+}
+
+.reveal-viewport {
+  background: var(--background-color);
+  background-color: var(--background-color);
+}
+
+.reveal {
+  font-family: var(--main-font);
+  font-size: var(--main-font-size);
+  font-weight: normal;
+  color: var(--main-color);
+}
+
+.reveal ::selection {
+  color: var(--selection-color);
+  background: var(--selection-background-color);
+  text-shadow: none;
+}
+
+.reveal ::-moz-selection {
+  color: var(--selection-color);
+  background: var(--selection-background-color);
+  text-shadow: none;
+}
+
+.reveal .slides section,
+.reveal .slides section > section {
+  line-height: 1.3;
+  font-weight: inherit;
+}
+
+.reveal .page-only {
+  display: none !important;
+}
+
+/*********************************************
+    * HEADERS
+    *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 20px 0;
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  font-weight: normal;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  text-transform: none;
+  text-shadow: none;
+  word-wrap: break-word;
+}
+
+.reveal h1 {
+  font-size: 3.77em;
+}
+
+/* .reveal h2 {
+     font-size: 2.11em; } */
+
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-size: 1.55em;
+}
+
+/* .reveal h4 {
+     font-size: 1em; } */
+
+.reveal h1 {
+  text-shadow: none;
+}
+
+/*********************************************
+    * OTHER
+    *********************************************/
+.reveal p {
+  margin: 20px 0;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.reveal p.center {
+  text-align: center;
+}
+
+.reveal p.right {
+  text-align: right;
+}
+
+.reveal .font-blue,
+.page .font-blue {
+  color: #7cafc2;
+}
+.reveal .font-pink,
+.page .font-pink {
+  color: #d5839d;
+}
+.reveal .font-green,
+.page .font-green {
+  color: #a1b56c;
+}
+
+/* Ensure certain elements are never larger than the slide itself */
+.reveal img,
+.reveal video,
+.reveal iframe {
+  max-width: 95%;
+  max-height: 95%;
+}
+
+.reveal strong,
+.reveal b {
+  font-weight: bold;
+}
+
+.reveal em {
+  color: var(--link-color);
+  font-style: normal;
+}
+
+.reveal ol,
+.reveal dl,
+.reveal ul {
+  display: inline-block;
+  text-align: left;
+  margin: 0 0 0 1em;
+}
+
+.reveal ol {
+  list-style-type: decimal;
+}
+
+.reveal ul {
+  list-style-type: disc;
+}
+
+.reveal ol li,
+.reveal ul li {
+  margin-left: 2ch;
+}
+
+.reveal ul ul {
+  list-style-type: square;
+}
+
+.reveal ul ul ul {
+  list-style-type: circle;
+}
+
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ol,
+.reveal ol ul {
+  display: block;
+  margin-left: 40px;
+}
+
+.reveal dt {
+  font-weight: bold;
+}
+
+.reveal dd {
+  margin-left: 40px;
+}
+
+.reveal blockquote {
+  display: block;
+  position: relative;
+  width: 70%;
+  margin: 20px auto;
+  padding: 10px;
+  font-style: italic;
+  border-left: 6px solid var(--selection-background-color);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+.reveal blockquote p:first-child,
+.reveal blockquote p:last-child {
+  display: inline-block;
+}
+
+.reveal q {
+  font-style: italic;
+}
+
+.reveal pre {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  text-align: left;
+  font-size: 0.55em;
+  font-family: monospace;
+  line-height: 1.2em;
+  word-wrap: break-word;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.reveal code {
+  font-family: monospace;
+  text-transform: none;
+  color: var(--link-color-hover);
+}
+
+.reveal pre code {
+  display: block;
+  padding: 5px;
+  overflow: auto;
+  max-height: 400px;
+  word-wrap: normal;
+}
+
+.reveal table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.reveal table th {
+  font-weight: bold;
+}
+
+.reveal table th,
+.reveal table td {
+  text-align: left;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+.reveal table th[align="center"],
+.reveal table td[align="center"] {
+  text-align: center;
+}
+
+.reveal table th[align="right"],
+.reveal table td[align="right"] {
+  text-align: right;
+}
+
+.reveal sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+.reveal sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+.reveal small {
+  display: inline-block;
+  font-size: 0.6em;
+  line-height: 1.2em;
+  vertical-align: top;
+}
+
+.reveal small * {
+  vertical-align: top;
+}
+
+.reveal img {
+  margin: 20px 0;
+}
+
+/*********************************************
+    * LINKS
+    *********************************************/
+.reveal a {
+  color: var(--link-color);
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+
+.reveal a:hover {
+  color: var(--link-color-hover);
+  text-shadow: none;
+  border: none;
+}
+
+.reveal .roll span:after {
+  color: #fff;
+  background: var(--link-color);
+}
+
+/*********************************************
+    * Frame helper
+    *********************************************/
+.reveal .r-frame {
+  border: 4px solid #eee;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.reveal a .r-frame {
+  transition: all 0.15s linear;
+}
+
+.reveal a:hover .r-frame {
+  border-color: var(--selection-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+}
+
+/*********************************************
+    * NAVIGATION CONTROLS
+    *********************************************/
+.reveal .controls {
+  color: var(--link-color);
+}
+
+/*********************************************
+    * PROGRESS BAR
+    *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--selection-color);
+}
+
+/*********************************************
+    * PRINT BACKGROUND
+    *********************************************/
+@media print {
+  .backgrounds {
+    background-color: #111;
+  }
+}
+
+/* Shortcut menu */
+#shortcuts {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  font-family: var(--main-font);
+  width: calc(100% - 100px);
+
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#shortcuts.on-page {
+  background-color: #fefefe;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 8px 2px;
+}
+
+@media only screen and (max-device-width: 800px) {
+  #shortcuts.on-page {
+    display: none;
+  }
+}
+
+#shortcuts a {
+  display: inline-block;
+  color: var(--link-color);
+  text-decoration: underline;
+  transition: color 0.15s ease;
+  text-transform: uppercase;
+}
+
+#shortcuts a:hover {
+  color: var(--link-color-hover);
+}
+
+/* Page Styling */
+.page {
+  font-family: var(--main-font);
+  font-size: 1em;
+  font-weight: normal;
+  padding-top: 25px;
+}
+
+.page .slides-only {
+  display: none !important;
+}
+
+.page section {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #d1d6db;
+  box-sizing: border-box;
+}
+
+@media only screen and (min-device-width: 800px) {
+  .page section {
+    max-width: 1000px;
+    width: 80%;
+    padding: 20px 100px;
+    box-sizing: content-box;
+  }
+}
+
+.page section.before-change {
+  padding-bottom: 70px;
+}
+
+.page section.app {
+  background-color: var(--background-color);
+  color: var(--main-color);
+}
+
+.page section.white {
+  background-color: white;
+  color: var(--main-color);
+}
+
+.page section[id] {
+  padding-top: 20px;
+}
+
+.page section:first-child {
+  padding-top: 100px;
+}
+
+.page section:last-child {
+  padding-bottom: 100px;
+}
+
+.page section > h2,
+.page section > h3 {
+  margin-top: 50px;
+}
+
+.page section[id] > h2,
+.page section[id] > h3,
+.page section[id] > h4 {
+  margin-top: 70px;
+}
+
+.page h1,
+.page h2,
+.page h3,
+.page h4 {
+  margin: 0 0 20px 0;
+  font-family: var(--heading-font);
+  font-weight: normal;
+  line-height: 1.2;
+  text-transform: none;
+  text-shadow: none;
+  word-wrap: break-word;
+  color: var(--main-color);
+}
+
+.page h4 {
+  font-size: 1.2em;
+}
+
+.page h3 {
+  font-size: 1.4em;
+}
+
+.page h2 {
+  font-size: 1.6em;
+}
+
+.page h1 {
+  font-size: 2em;
+  text-align: center;
+}
+
+.page p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.page table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+.page img,
+.page video,
+.page iframe {
+  max-width: 95%;
+  max-height: 95%;
+}
+
+.page em {
+  color: var(--heading-color);
+  font-style: normal;
+}
+
+.page ul,
+.page ol {
+  margin-left: 2ch;
+}
+
+.page table th {
+  font-weight: bold;
+}
+
+.page table td {
+  padding: 0.5em;
+}
+
+.page blockquote {
+  display: block;
+  position: relative;
+  width: 70%;
+  margin: 20px auto;
+  padding: 10px;
+  font-style: italic;
+  border-left: 6px solid var(--link-color-hover);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+.reveal .small-on-slides {
+  font-size: 0.6em;
+}
+
+.page aside.notes {
+  display: inherit;
+}
+
+.page aside.notes.inline {
+  display: inline;
+}
+
+.page aside.notes.hide {
+  display: none;
+}
+
+.page code {
+  font-family: monospace;
+  text-transform: none;
+  color: var(--main-color);
+  background-color: var(--background-color);
+  padding: 0 1ch;
+}
+
+.page a {
+  color: var(--link-color);
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+
+.page a:hover {
+  color: var(--link-color-hover);
+  text-shadow: none;
+  border: none;
+}
