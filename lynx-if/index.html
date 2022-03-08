@@ -7,11 +7,38 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
-    <title>{PROJECT Title}</title>
+    <title>Visualizing Conditionals @ Lynxtool</title>
 
     <link rel="stylesheet" href="../lib/reset.css" />
     <link rel="stylesheet" href="../lib/reveal.css" />
     <link rel="stylesheet" href="../lib/theme/lynx.css" id="theme" />
+    <style type="text/css">
+      #case {
+        display: none;
+      }
+
+      #case.show {
+        display:block;
+      }
+
+      #denied {
+        width: 400px;
+        margin: 100px auto;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      #denied form {
+        margin: 40px 0;
+      }
+
+      #denied.hide {
+        display: none;
+      }
+
+      #accessMessage {
+        color: #bb1122;
+      }
+    </style>
   </head>
 
   <body>
@@ -217,6 +244,14 @@
         </section>
       </div>
     </div>
+    <div id="denied">
+      <form>
+        <label for="pwd">Access Code</label>
+        <input type="password" id="pwd" />
+        <button type="button" onclick="requestAccess()">Go!</button>
+      </form>
+      <p id="accessMessage"></p>
+    </div>
 
     <div id="shortcuts">
 		<a href="#/context">Context</a>
@@ -229,7 +264,17 @@
     <script src="../lib/notes/notes.js"></script>
     <script src="../lib/init.js"></script>
     <script>
-      initModes();
+      function requestAccess(){
+        const pwd = document.getElementById("pwd").value;
+        fetch(`https://alice-folio.builtwithdark.com/access?password=${encodeURI(pwd)}`).then(r => {
+          if(r.ok){
+            initModes();
+            document.getElementById("case").classList.add("show");
+          } else {
+            document.getElementById("accessMessage").innerText = "You do not have access to this page. E-mail alice@valour.me to request access.";
+          }
+        })
+      }
     </script>
   </body>
 </html>
